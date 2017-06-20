@@ -1,4 +1,4 @@
-# Melekinha
+# Booktionator
 
 Book trading platform powered by Angular 2 and Firebase Tools.
 

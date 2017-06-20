@@ -1,10 +1,10 @@
-import { MelekinhaPage } from './app.po';
+import { BooktionatorPage } from './app.po';
 
-describe('melekinha App', () => {
-  let page: MelekinhaPage;
+describe('Booktionator App', () => {
+  let page: BooktionatorPage;
 
   beforeEach(() => {
-    page = new MelekinhaPage();
+    page = new BooktionatorPage();
   });
 
   it('should display welcome message', () => {

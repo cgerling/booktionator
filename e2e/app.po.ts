@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class MelekinhaPage {
+export class BooktionatorPage {
   navigateTo() {
     return browser.get('/');
   }
