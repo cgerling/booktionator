@@ -8,10 +8,10 @@ If you already have the angular-cli and firebase-tools installed jump to step 4.
 
 1. You will need of angular-cli `npm -g install @angular/cli`
 2. And maybe the firebase-tools(to test things locally) `npm -g install firebase-tools`
-4. Clone the repository `git clone https://github.com/calvingerling/booktionator.git`
-5. Go to directory `cd booktionator/`
-6. Install the dependencies of main project `npm install`
-  * Install the dependencies of Cloud Functions `cd functions/ && npm install`
+3. Clone the repository `git clone https://github.com/calvingerling/booktionator.git`
+4. Go to directory `cd booktionator/`
+5. Install the dependencies of main project `npm install`
+6. Install the dependencies of Cloud Functions `cd functions/ && npm install`
 7. To check if everything runs ok just `npm run build`
 
 ## Development server
