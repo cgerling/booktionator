@@ -1,4 +1,4 @@
-# Booktionator
+# Booktionator [![Build Status](https://travis-ci.org/calvingerling/booktionator.svg?branch=master)](https://travis-ci.org/calvingerling/booktionator)
 
 :notebook_with_decorative_cover: Book trading platform powered by Angular 2 and Firebase Tools.
 
