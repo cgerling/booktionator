@@ -12,6 +12,7 @@ before_script:
 
 script:
   - npm run ci
+  - cd functions/ && npm install
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN
