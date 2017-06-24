@@ -6,8 +6,8 @@
     </div>
   </md-toolbar-row>
   <md-toolbar-row class="spaced">
-    <a class="brand" routerLink="access">
-      <img class="logo" src="https://pbs.twimg.com/profile_images/378800000017423279/1a6d6f295da9f97bb576ff486ed81389_400x400.png">Booktionator
+    <a class="brand" routerLink="/">
+      <img class="logo" src="assets/logo.png">Booktionator
     </a>
     <button md-button *ngIf="!isLogged" routerLink="access/login">{{accessText}}</button>
     <button md-button *ngIf="isLogged" [mdMenuTriggerFor]="menu">
