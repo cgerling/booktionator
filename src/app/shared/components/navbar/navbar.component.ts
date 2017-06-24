@@ -21,8 +21,10 @@ export class NavbarComponent implements OnInit {
     this.withSearch = this.withSearch.toString() == 'true';
     this.isLogged = this.isLogged.toString() == 'true';
 
-    if (this.pageName === 'Login') {
+    if (this.pageName.toLowerCase() === 'login') {
       this.accessText = 'Sign up';
+    } else if (this.pageName.toLowerCase() === 'register') {
+
     }
   }
 }
