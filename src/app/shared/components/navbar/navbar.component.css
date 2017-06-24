@@ -42,11 +42,6 @@
   margin-right: 5px;
 }
 
-.search button,
-button[md-button] {
-  text-transform: uppercase;
-}
-
 .spaced {
   justify-content: space-between;
 }
