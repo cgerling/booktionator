@@ -1,0 +1,32 @@
+<md-toolbar color="primary" class="nav">
+  <md-toolbar-row *ngIf="withSearch">
+    <div class="search">
+      <input type="text">
+      <button md-button type="button">Search</button>
+    </div>
+  </md-toolbar-row>
+  <md-toolbar-row class="spaced">
+    <a class="brand" routerLink="access">
+      <img class="logo" src="https://pbs.twimg.com/profile_images/378800000017423279/1a6d6f295da9f97bb576ff486ed81389_400x400.png">Booktionator
+    </a>
+    <button md-button *ngIf="!isLogged" routerLink="access/login">{{accessText}}</button>
+    <button md-button *ngIf="isLogged" [mdMenuTriggerFor]="menu">
+      {{username}}
+      <md-icon>account_box</md-icon>
+    </button>
+    <md-menu #menu="mdMenu" xPosition="before" yPosition="above">
+      <button md-menu-item>
+        <md-icon>perm_identity</md-icon>
+        <span>Profile</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>settings</md-icon>
+        <span>Settings</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>exit_to_app</md-icon>
+        <span>Log out</span>
+      </button>
+    </md-menu>
+  </md-toolbar-row>
+</md-toolbar>
