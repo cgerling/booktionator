@@ -1,0 +1,20 @@
+<navbar withSearch="false" actualPage="Login"></navbar>
+
+<div class="intro">
+  <img src="assets/logo.png">
+  <p>Booktionator</p>
+</div>
+
+<form (ngSubmit)="login()" #searchForm="ngForm" class="login">
+  <md-input-container>
+    <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
+    <md-error></md-error>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="password" required name="password" placeholder="Password" [type]="passwordType">
+    <md-icon mdSuffix (click)="togglePassword()">{{passwordMode}}</md-icon>
+    <md-error></md-error>
+  </md-input-container>
+
+  <button md-raised-button type="submit">Sign in</button>
+</form>
