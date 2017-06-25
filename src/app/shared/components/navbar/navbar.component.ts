@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   @Input('actualPage')
   pageName: string = '';
 
+  pageRoute: string = 'access/login';
   accessText: string = 'Sign in';
 
   ngOnInit(): void {
@@ -23,8 +24,10 @@ export class NavbarComponent implements OnInit {
 
     if (this.pageName.toLowerCase() === 'login') {
       this.accessText = 'Sign up';
+      this.pageRoute = '/access/register';
     } else if (this.pageName.toLowerCase() === 'register') {
-
+      this.accessText = 'Sign in';
+      this.pageRoute = '/access/login';
     }
   }
 }
