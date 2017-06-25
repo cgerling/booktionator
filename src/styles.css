@@ -14,3 +14,13 @@ button[md-fab],
 button[md-mini-fab] {
   text-transform: uppercase;
 }
+
+
+/*Remove pre margin and padding from body and html*/
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
