@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /*Workaround to hide the first md-toolbar-row that angular-material2 auto add*/
 md-toolbar-row.mat-toolbar-row:first-of-type {
