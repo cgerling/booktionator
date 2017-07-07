@@ -1,31 +1,14 @@
 # Booktionator [![Build Status](https://travis-ci.org/calvingerling/booktionator.svg?branch=master)](https://travis-ci.org/calvingerling/booktionator)
 
-:notebook_with_decorative_cover: Book trading platform powered by Angular 2 and Firebase Tools.
+:notebook_with_decorative_cover: Your brand new favorite mobile-first book exchange platform. 
 
-## Setup
+You can choose from 3 ways to receive the equivalent of your book:
+* Exchange - pre-order for an object that will convince you to giveaway your book;
+* Sell - give the price you want to your book;
+* Auction - say the minimum price and take the highest bidder.
 
-If you already have the angular-cli and firebase-tools installed jump to step 4.
+## Characteristics
+Using Angular to bring up the platform and Firebase tools to life as support for [data storage](https://firebase.google.com/products/database/), [hosting](https://firebase.google.com/products/hosting/), [authentication](https://firebase.google.com/products/auth/) and [heavy-logic processment](https://firebase.google.com/products/functions/). Continuos deployment to Firebase with [Travis CI](https://travis-ci.org/).
+Read the [project wiki](https://github.com/calvingerling/booktionator/wiki) for further techinical information.
 
-1. You will need of angular-cli `npm -g install @angular/cli`
-2. And maybe the firebase-tools(to test things locally) `npm -g install firebase-tools`
-3. Clone the repository `git clone https://github.com/calvingerling/booktionator.git`
-4. Go to directory `cd booktionator/`
-5. Install the dependencies of main project `npm install`
-6. Install the dependencies of Cloud Functions `cd functions/ && npm install`
-7. To check if everything runs ok just `npm run build`
-
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+This is a nonprofit project and was done just for the academic purpose in mind.
