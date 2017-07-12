@@ -11,13 +11,22 @@ import { User } from 'firebase/app';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  private service: AuthService;
+  private router: Router;
+
   email: string;
   password: string;
 
-  passwordMode: string = 'visibility';
-  passwordType: string = 'password';
+  passwordMode: string;
+  passwordType: string;
 
-  constructor(private service: AuthService, private router: Router) { }
+  constructor(service: AuthService, router: Router) {
+    this.service = service;
+    this.router = router;
+
+    this.passwordMode = 'visibility';
+    this.passwordType = 'password';
+  }
 
   login(): void {
     this.service.login(this.email, this.password).then((user: User) => {
@@ -26,8 +35,8 @@ export class LoginComponent {
   }
 
   togglePassword(): void {
-    let visibility = 'visibility', visibility_off = 'visibility_off';
-    let text = 'text', password = 'password';
+    const visibility = 'visibility', visibility_off = 'visibility_off';
+    const text = 'text', password = 'password';
 
     if (this.passwordType === password) {
       this.passwordMode = visibility_off;
