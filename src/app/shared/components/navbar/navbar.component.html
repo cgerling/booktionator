@@ -11,7 +11,7 @@
     </a>
     <button md-button *ngIf="!isLogged" routerLink="{{pageRoute}}">{{accessText}}</button>
     <button md-button *ngIf="isLogged" [mdMenuTriggerFor]="menu">
-      {{username}}
+      {{loggedUser}}
       <md-icon>account_box</md-icon>
     </button>
     <md-menu #menu="mdMenu" xPosition="before" yPosition="above">
