@@ -14,6 +14,10 @@ export class AuthService {
   }
 
   isLogged(): boolean {
-    return this.authFirebase.auth.currentUser !== null;
+    return this.currentUser() !== null;
+  }
+
+  currentUser(): User {
+    return this.authFirebase.auth.currentUser;
   }
 }
