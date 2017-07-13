@@ -5,7 +5,7 @@ import { AuthGuard } from 'app/shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'access', loadChildren: 'app/access/acess.module#AccessModule' },
+  { path: 'access', loadChildren: 'app/access/access.module#AccessModule' },
   { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
   {
     path: 'book', loadChildren: 'app/book/book.module#BookModule',
