@@ -1,6 +1,48 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    "users": {
+      "$user_id": {
+        ".read": "auth != null && auth.uid === $user_id && auth.provider !== 'anonymous'",
+        ".write": "auth != null && auth.uid === $user_id && auth.provider !== 'anonymous'",
+        ".validate": "newData.hasChildren(['phone', 'postalcode'])"
+      }
+    },
+    "books": {
+      "$book_id": {
+        ".read": "true",
+        ".write": "auth != null && auth.provider !== 'anonymous'",
+        ".validate": "newData.hasChildren(['title','synopsis','author','year','score'])",
+        "author": {
+          ".validate": "newData.hasChildren(['name'])"
+        },
+        "offers": {
+          "$offer_id": {
+            ".write": "auth != null && newData.child('author').val() == auth.uid",
+            ".validate": "newData.hasChildren(['author', 'modality', 'exchange'])"
+          }
+        }
+      }
+    },
+    "transactions": {
+      "$transaction_id": {
+        ".read": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
+        ".write": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
+        ".validate": "newData.hasChildren(['from', 'to', 'beginAt', 'endAt', 'product', 'modality', 'exchange'])"
+      }
+    },
+    "auctions": {
+      "$auction_id": {
+        ".read": "auth != null",
+        ".write": "auth != null && data.child('author').val() == auth.uid",
+        ".validate": "newData.hasChildren(['author', 'createdAt', 'due', 'product'])",
+        "bids": {
+          "$author_id": {
+            ".read": "auth.provider !== 'anonymous'",
+            ".write": "auth != null",
+            ".validate": "newData.hasChildren(['value', 'at'])"
+          }
+        }
+      }
+    }
   }
 }
