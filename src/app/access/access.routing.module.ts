@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AccessComponent } from './access.component';
+
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: undefined,
+    component: AccessComponent,
     children: [
       {
         path: 'login', component: LoginComponent
