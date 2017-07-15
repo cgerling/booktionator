@@ -8,7 +8,7 @@ import { User } from 'firebase/app';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['../child.component.scss']
 })
 export class LoginComponent {
   private service: AuthService;
