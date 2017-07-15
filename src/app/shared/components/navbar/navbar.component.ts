@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs/Subscription';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   private auth: AuthService;
