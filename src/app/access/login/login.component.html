@@ -1,16 +1,10 @@
-<div class="intro">
-  <img src="assets/logo.png">
-  <p>Booktionator</p>
-</div>
-
 <form (ngSubmit)="login()" #loginForm="ngForm" class="form">
   <md-input-container>
     <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="password" required name="password" placeholder="Password" [type]="passwordType">
-    <md-icon mdSuffix (click)="togglePassword()">{{passwordMode}}</md-icon>
+    <input mdInput [(ngModel)]="password" required name="password" placeholder="Password" [type]="toggler.passwordType">
+    <password-toggle mdSuffix></password-toggle>
   </md-input-container>
-
   <button md-raised-button type="submit">Sign in</button>
 </form>
