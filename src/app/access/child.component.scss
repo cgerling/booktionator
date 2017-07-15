@@ -1,0 +1,17 @@
+:host {
+  padding: 5% 10%;
+  align-self: stretch;
+}
+
+.form {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  md-input-container,
+  password {
+    align-self: stretch;
+  }
+}
