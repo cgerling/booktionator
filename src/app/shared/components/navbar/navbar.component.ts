@@ -35,9 +35,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.withSearch = this.withSearch.toString() === 'true';
-    this.isLogged = this.auth.isLogged();
-    this.loggedUser = this.isLogged ? this.auth.currentUser().displayName : undefined;
 
+    this.updateUser();
     this.updateButton(this.router.url);
 
     this.routeSubs = this.router.events.subscribe(this.routeHandle.bind(this));
@@ -54,6 +53,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private routeHandle(value): void {
     let route = value.url || value.route.path;
 
+    this.updateUser();
     this.updateButton(route);
   }
 
@@ -68,5 +68,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.accessText = 'Sign in';
       this.pageRoute = 'access/login';
     }
+  }
+
+  private updateUser(): void {
+    this.isLogged = this.auth.isLogged();
+    this.loggedUser = this.isLogged ? this.auth.currentUser().displayName.split(' ')[0] : undefined;
   }
 }
