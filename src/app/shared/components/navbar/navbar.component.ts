@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'app/shared/services/auth.service';
 
 import { Subscription } from 'rxjs/Subscription';
