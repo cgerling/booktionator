@@ -7,7 +7,13 @@ import { Promise, User } from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  constructor(private authFirebase: AngularFireAuth, private storage: StorageService) { }
+  private authFirebase: AngularFireAuth;
+  private storage: StorageService;
+
+  constructor(authFirebase: AngularFireAuth, storage: StorageService) {
+    this.authFirebase = authFirebase;
+    this.storage = storage;
+  }
 
   login(email: string, password: string): Promise<User> {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
