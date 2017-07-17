@@ -1,0 +1,20 @@
+<form (ngSubmit)="register()" #registerForm="ngForm" class="form">
+  <md-input-container>
+    <input mdInput [(ngModel)]="name" required name="name" placeholder="Name" type="text">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="password" required name="password" placeholder="Password" [type]="toggler.type">
+    <password-toggle mdSuffix></password-toggle>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="postalcode" required name="postalcode" placeholder="Postal code" type="text">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="phone" required name="phone" placeholder="Phone" type="tel">
+  </md-input-container>
+
+  <button md-raised-button type="submit">Sign up</button>
+</form>

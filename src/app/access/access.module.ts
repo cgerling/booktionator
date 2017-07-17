@@ -8,10 +8,11 @@ import { SharedModule } from 'app/shared/shared.module';
 
 import { AccessComponent } from './access.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [AccessRoutingModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, SharedModule],
-  declarations: [AccessComponent, LoginComponent],
+  declarations: [AccessComponent, LoginComponent, RegisterComponent],
   providers: [],
   exports: []
 })
