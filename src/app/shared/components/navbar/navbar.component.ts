@@ -51,8 +51,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate([this.pageRoute]);
   }
 
-  private routeHandle(value: NavigationStart | NavigationEnd | NavigationCancel | NavigationError): void {
-    this.updateButton(value.url);
+  private routeHandle(value): void {
+    let route = value.url || value.route.path;
+
+    this.updateButton(route);
   }
 
   private updateButton(actualRoute: string): void {
