@@ -17,9 +17,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   @Input()
   withSearch: boolean;
-  @Input()
-  actualPage: string;
 
+  actualPage: string;
   isLogged: boolean;
   loggedUser: string;
   pageRoute: string;
