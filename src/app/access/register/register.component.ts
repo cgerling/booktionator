@@ -6,6 +6,7 @@ import { AuthService } from 'app/shared/services/auth.service';
 import { Email } from "types/email";
 import { PostalCode } from "types/postalcode";
 import { Phone } from "types/phone";
+import { LoaderService } from 'app/shared/services/loader.service';
 
 @Component({
   selector: 'register',
@@ -29,15 +30,20 @@ export class RegisterComponent {
 
   private service: AuthService;
   private snackbar: MdSnackBar;
+  private loader: LoaderService;
 
-  constructor(service: AuthService, snackbar: MdSnackBar) {
+  constructor(service: AuthService, snackbar: MdSnackBar, loaderService: LoaderService) {
     this.service = service;
     this.snackbar = snackbar;
+    this.loader = loaderService;
+
     this.errors = {};
   }
 
   register(): void {
     if (!this.validate()) return;
+
+    this.loader.update(true);
 
     let email = new Email(this.email);
     let postalcode = new PostalCode(this.postalcode);
@@ -45,11 +51,15 @@ export class RegisterComponent {
 
     let self = this;
     this.service.register(this.name, email, this.password, postalcode, phone).then(function registered() {
+      self.loader.update(false);
+
       self.reset();
       self.snackbar.open('Successfully registered! Please confirm your email', undefined, {
         duration: 2000
       });
     }, function error(error) {
+      self.loader.update(false);
+
       self.snackbar.open(error.message, undefined, {
         duration: 2000
       });
