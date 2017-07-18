@@ -1,12 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
 import { NgForm } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
+
 import { AuthService } from 'app/shared/services/auth.service';
-import { Email } from "types/email";
-import { PostalCode } from "types/postalcode";
-import { Phone } from "types/phone";
 import { LoaderService } from 'app/shared/services/loader.service';
+
+import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+
+import { Email } from 'types/email';
+import { PostalCode } from 'types/postalcode';
+import { Phone } from 'types/phone';
 
 @Component({
   selector: 'register',
