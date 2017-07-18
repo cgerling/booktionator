@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordToggleComponent } from './components/password-toggle/password-toggle.component';
 
 import { AuthService } from './services/auth.service';
+import { LoaderService } from './services/loader.service';
 import { StorageService } from './services/storage.service';
 
 import { AuthGuard } from './guards/auth.guard';
@@ -15,7 +16,7 @@ import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule],
   declarations: [NavbarComponent, PasswordToggleComponent],
-  providers: [AuthGuard, AuthService, StorageService],
+  providers: [AuthGuard, AuthService, LoaderService, StorageService],
   exports: [NavbarComponent, PasswordToggleComponent]
 })
 export class SharedModule { }
