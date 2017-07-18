@@ -4,4 +4,10 @@
   flex-direction: column;
   height: 100%;
   justify-content: center;
+
+  md-progress-bar {
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
 }
