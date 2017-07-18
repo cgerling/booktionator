@@ -2,6 +2,11 @@
   width: 100%;
 }
 
+.small-button {
+  min-width: 56px;
+  padding: 0;
+}
+
 .nav {
   bottom: 0;
   left: 0;
@@ -74,7 +79,6 @@ a {
   .shadow.simple {
     height: 56px;
   }
-
   .shadow.expanded {
     height: 112px;
   }
