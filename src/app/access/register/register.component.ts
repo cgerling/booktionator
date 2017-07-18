@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+import { MdSnackBar } from '@angular/material';
 import { AuthService } from 'app/shared/services/auth.service';
 import { Email } from "types/email";
 import { PostalCode } from "types/postalcode";
@@ -23,9 +24,11 @@ export class RegisterComponent {
   errors: { [input: string]: string };
 
   private service: AuthService;
+  private snackbar: MdSnackBar;
 
-  constructor(service: AuthService) {
+  constructor(service: AuthService, snackbar: MdSnackBar) {
     this.service = service;
+    this.snackbar = snackbar;
     this.errors = {};
   }
 
@@ -36,7 +39,16 @@ export class RegisterComponent {
     let postalcode = new PostalCode(this.postalcode);
     let phone = new Phone(this.phone);
 
-    this.service.register(this.name, email, this.password, postalcode, phone);
+    let self = this;
+    this.service.register(this.name, email, this.password, postalcode, phone).then(function registered() {
+      self.snackbar.open('Successfully registered! Please confirm your email', undefined, {
+        duration: 2000
+      });
+    }, function error(error) {
+      self.snackbar.open(error.message, undefined, {
+        duration: 2000
+      });
+    });
   }
 
   private validate(): boolean {
