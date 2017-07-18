@@ -70,7 +70,7 @@ export class RegisterComponent {
     this.errors = {};
     let name = this.name !== '';
     let email = Email.validate(this.email);
-    let password = this.password.length > 6;
+    let password = this.password.length >= 6;
     let postalcode = PostalCode.validate(this.postalcode);
     let phone = Phone.validate(this.phone);
 
