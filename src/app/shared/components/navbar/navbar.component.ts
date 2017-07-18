@@ -21,23 +21,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
   actualPage: string;
   isLogged: boolean;
   loggedUser: string;
-  pageRoute: string;
-  accessText: string;
 
   constructor(auth: AuthService, router: Router) {
     this.auth = auth;
     this.router = router;
 
     this.withSearch = true;
-    this.pageRoute = 'access/register';
-    this.accessText = 'Sign up';
   }
 
   ngOnInit(): void {
     this.withSearch = this.withSearch.toString() === 'true';
 
     this.updateUser();
-    this.updateButton(this.router.url);
 
     this.routeSubs = this.router.events.subscribe(this.routeHandle.bind(this));
   }
@@ -46,30 +41,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.routeSubs.unsubscribe();
   }
 
-  navigate(): void {
-    this.router.navigate([this.pageRoute]);
+  navigateToLogin(): void {
+    this.router.navigate(['access/login/']);
+  }
+  
+  navigateToRegister(): void {
+    this.router.navigate(['access/register/']);
   }
 
   private routeHandle(value): void {
     let route = value.url || value.route.path;
 
     this.updateUser();
-    this.updateButton(route);
   }
-
-  private updateButton(actualRoute: string): void {
-    let route: string[] = actualRoute.split('/');
-    let actualPage: string = route[route.length - 1];
-
-    if (actualPage === 'login') {
-      this.accessText = 'Sign up';
-      this.pageRoute = 'access/register';
-    } else if (actualPage === 'register') {
-      this.accessText = 'Sign in';
-      this.pageRoute = 'access/login';
-    }
-  }
-
+  
   private updateUser(): void {
     this.isLogged = this.auth.isLogged();
     this.loggedUser = this.isLogged ? this.auth.currentUser().displayName.split(' ')[0] : undefined;
