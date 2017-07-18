@@ -25,12 +25,15 @@ export class AuthService {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
   }
 
-  register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): void {
+  register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<void> {
     let self = this;
-    this.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
-      user.updateProfile({ displayName: name, photoURL: undefined }).then(function updateSuccess() {
-        self.dbFirebase.object('/users/' + user.uid).set({ name, postalcode, phone });
-      });
+    return new Promise(function executor(resolve, reject) {
+      self.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
+        user.updateProfile({ displayName: name, photoURL: undefined }).then(function updateSuccess() {
+          user.sendEmailVerification();
+          self.dbFirebase.object('/users/' + user.uid).set({ name, postalcode, phone }).then(() => { resolve(undefined); }, reject);
+        }).catch(reject);
+      }).catch(reject);
     });
   }
 
