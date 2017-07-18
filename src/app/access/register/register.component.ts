@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+import { NgForm } from '@angular/forms';
 import { MdSnackBar } from '@angular/material';
 import { AuthService } from 'app/shared/services/auth.service';
 import { Email } from "types/email";
@@ -14,6 +15,9 @@ import { Phone } from "types/phone";
 export class RegisterComponent {
   @ViewChild(PasswordToggleComponent)
   toggler: PasswordToggleComponent;
+
+  @ViewChild(NgForm)
+  form: NgForm;
 
   name: string;
   email: string;
@@ -41,6 +45,7 @@ export class RegisterComponent {
 
     let self = this;
     this.service.register(this.name, email, this.password, postalcode, phone).then(function registered() {
+      self.reset();
       self.snackbar.open('Successfully registered! Please confirm your email', undefined, {
         duration: 2000
       });
@@ -76,5 +81,9 @@ export class RegisterComponent {
     }
 
     return name && email && password && postalcode && phone;
+  }
+
+  private reset(): void {
+    this.form.resetForm();
   }
 }
