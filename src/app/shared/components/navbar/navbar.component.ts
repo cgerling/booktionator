@@ -45,6 +45,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.routeSubs.unsubscribe();
   }
 
+  logout(): void {
+    this.auth.logout();
+  }
 
   private routeHandle(value): void {
     this.updateButtons(value.url || value.route.path);
