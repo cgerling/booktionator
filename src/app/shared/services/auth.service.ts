@@ -25,6 +25,10 @@ export class AuthService {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
   }
 
+  logout(): void {
+    this.authFirebase.auth.signOut();
+  }
+
   register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<void> {
     let self = this;
     return new Promise(function executor(resolve, reject) {
