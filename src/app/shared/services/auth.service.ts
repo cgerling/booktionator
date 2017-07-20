@@ -30,13 +30,14 @@ export class AuthService {
   }
 
   register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<void> {
-    let self = this;
+    let self = this, newUser;
     return new Promise(function executor(resolve, reject) {
       self.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
-        user.updateProfile({ displayName: name, photoURL: undefined }).then(function updateSuccess() {
-          user.sendEmailVerification();
-          self.dbFirebase.object('/users/' + user.uid).set({ name, postalcode, phone }).then(() => { resolve(undefined); }, reject);
-        }).catch(reject);
+        newUser = user;
+        return user.updateProfile({ displayName: name, photoURL: undefined });
+      }).then(function updateSuccess() {
+        newUser.sendEmailVerification();
+        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(resolve);
       }).catch(reject);
     });
   }
