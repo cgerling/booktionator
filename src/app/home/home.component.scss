@@ -1,0 +1,12 @@
+md-card {
+  padding: 40px;
+  * {
+    min-width: 100px;
+  }
+  md-card-title {
+    text-align: center;
+  }
+  md-card-subtitle {
+    text-align: right;
+  }
+}

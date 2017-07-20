@@ -1,1 +1,14 @@
-<navbar withSearch="true"></navbar>
+<md-card *ngFor="let book of books">
+  <md-card-title (click)="navigate(book.uid)">
+    {{ book.title }}
+  </md-card-title>
+  <img md-card-image [src]="book.image" alt="Merlin configure a Book API">
+  <md-card-subtitle>
+    {{ book.author }}, {{ book.year }}
+  </md-card-subtitle>
+  <md-card-content>
+    Pontuação: {{ book.score }}
+  </md-card-content>
+</md-card>
+<navbar withSearch="true">
+</navbar>
