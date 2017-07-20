@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit{
   
   private dbFirebase: AngularFireDatabase;
   
-  private books: Book[];
-  
+  books: Book[];
+
   constructor(auth: AuthService, router: Router, db: AngularFireDatabase) {
     this.auth = auth;
     this.router = router;
