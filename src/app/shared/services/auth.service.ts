@@ -42,6 +42,11 @@ export class AuthService {
     });
   }
 
+  requestPasswordReset(email: Email): Promise<any> {
+    if (!email.valid) return;
+    return this.authFirebase.auth.sendPasswordResetEmail(email.value);
+  }
+
   isLogged(): boolean {
     return this.currentUser() !== null;
   }
