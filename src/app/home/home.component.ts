@@ -36,7 +36,10 @@ export class HomeComponent implements OnInit{
         limtiToLast: 10
       }
     }).subscribe(values => {
-      self.books = values.map(value => new Book(value.$key, value.title, value.synopsis, value.author.name._name, value.year, value.score, value.imageUrl));
+      self.books = values.map(value => new Book(value.$key, value.title, value.synopsis, value.author.name._name, value.year, value.score, value.imageUrl))
+        .sort((v1, v2) => {
+        return (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0;
+      });
     });
   }
   
