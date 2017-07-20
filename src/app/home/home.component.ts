@@ -13,21 +13,21 @@ import { Author } from '../../types/author';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   private auth: AuthService;
   private router: Router;
-  
+
   private dbFirebase: AngularFireDatabase;
-  
+
   books: Book[];
 
   constructor(auth: AuthService, router: Router, db: AngularFireDatabase) {
     this.auth = auth;
     this.router = router;
-    this.dbFirebase= db;
+    this.dbFirebase = db;
     this.books = [];
   }
-  
+
   ngOnInit(): void {
     let self = this;
     this.dbFirebase.list('books', {
@@ -38,11 +38,11 @@ export class HomeComponent implements OnInit{
     }).subscribe(values => {
       self.books = values.map(value => new Book(value.$key, value.title, value.synopsis, value.author.name._name, value.year, value.score, value.imageUrl))
         .sort((v1, v2) => {
-        return (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0;
-      });
+          return (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0;
+        });
     });
   }
-  
+
   navigate(value): void {
     this.router.navigate([`books/${value}`]);
   }
