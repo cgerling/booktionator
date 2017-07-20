@@ -35,9 +35,9 @@ export class HomeComponent implements OnInit{
         orderByChild: 'score',
         limtiToLast: 10
       }
-    }).subscribe(values => { for (let value of values) {
-      self.books.push(new Book(value.$key, value.title, value.synopsis, value.author.name._name, value.year, value.score, value.imageUrl));
-     }});
+    }).subscribe(values => {
+      self.books = values.map(value => new Book(value.$key, value.title, value.synopsis, value.author.name._name, value.year, value.score, value.imageUrl));
+    });
   }
   
   navigate(value): void {
