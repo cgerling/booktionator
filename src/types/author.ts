@@ -1,18 +1,18 @@
 export class Author {
-  private _uuid: string;
+  private _uid: string;
   private _name: string;
 
-  static validate(uuid: string, name: string): boolean {
-    return uuid !== '' && name !== '';
+  static validate(uid: string, name: string): boolean {
+    return uid !== '' && name !== '';
   }
 
-  constructor(uuid: string, name: string) {
-    this._uuid = uuid;
+  constructor(/*uid: string, */name: string) {
+    //this._uid = uid;
     this._name = name;
   }
 
-  get uuid(): string {
-    return this._uuid;
+  get uid(): string {
+    return this._uid;
   }
 
   get name(): string {
@@ -20,7 +20,7 @@ export class Author {
   }
 
   get valid(): boolean {
-    return Author.validate(this._uuid, this.name);
+    return Author.validate(this._uid, this.name);
   }
 }
 
