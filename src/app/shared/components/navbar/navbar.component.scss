@@ -15,21 +15,17 @@
   display: flex;
   justify-content: center;
   width: 100%;
-
-
   * {
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
   }
-
   input {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     flex-grow: 1;
     padding: 0 0 0 5px;
   }
-
   button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -42,7 +38,6 @@
   display: flex;
   justify-content: flex-start;
   padding-right: 5px;
-
   img {
     height: 40px;
     margin-right: 5px;
@@ -59,17 +54,14 @@ a {
   text-decoration: none;
 }
 
-
 .shadow {
   width: 100%;
-}
-
-.shadow.simple {
-  height: 63px;
-}
-
-.shadow.expanded {
-  height: 127px;
+  &.simple {
+    height: 63px;
+  }
+  &.expanded {
+    height: 127px;
+  }
 }
 
 @media (max-width: 600px) {
