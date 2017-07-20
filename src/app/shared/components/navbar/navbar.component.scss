@@ -65,10 +65,12 @@ a {
 }
 
 @media (max-width: 600px) {
-  .shadow.simple {
-    height: 56px;
-  }
-  .shadow.expanded {
-    height: 112px;
+  .shadow {
+    &.simple {
+      height: 56px;
+    }
+    &.expanded {
+      height: 112px;
+    }
   }
 }
