@@ -9,10 +9,7 @@
     <a class="brand" routerLink="/home">
       <img class="logo" src="assets/logo.png">Booktionator
     </a>
-    <div *ngIf="!isLogged">
-      <button md-button *ngIf="showSignIn" routerLink="/access/login">Sign In</button>
-      <button md-button *ngIf="showSignUp" routerLink="/access/register">Sign Up</button>
-    </div>
+    <button md-button *ngIf="!isLogged" routerLink="/access/register">Sign Up</button>
     <button md-button *ngIf="isLogged" [mdMenuTriggerFor]="menu">
       {{loggedUser}}
       <md-icon>account_box</md-icon>

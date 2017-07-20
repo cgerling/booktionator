@@ -18,10 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   @Input()
   withSearch: boolean;
 
-  showSignUp: boolean;
-  showSignIn: boolean;
   isLogged: boolean;
-
   actualPage: string;
   loggedUser: string;
 
@@ -35,7 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.withSearch = this.withSearch.toString() === 'true';
 
-    this.updateButtons(this.router.url);
     this.updateUser();
 
     this.routeSubs = this.router.events.subscribe(this.routeHandle.bind(this));
@@ -50,23 +46,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   private routeHandle(value): void {
-    this.updateButtons(value.url || value.route.path);
     this.updateUser();
-  }
-
-  private updateButtons(route: string): void {
-    let routeSplitted = route.split('/');
-    route = routeSplitted[routeSplitted.length - 1];
-
-    if (route === 'login') {
-      this.showSignIn = false;
-      this.showSignUp = true;
-    } else if (route === 'register') {
-      this.showSignIn = true;
-      this.showSignUp = false;
-    } else {
-      this.showSignIn = this.showSignUp = true;
-    }
   }
 
   private updateUser(): void {
