@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from "@angular/router";
 import { MdSnackBar } from '@angular/material';
 
 import { AuthService } from 'app/shared/services/auth.service';
@@ -34,11 +35,13 @@ export class RegisterComponent {
   private service: AuthService;
   private snackbar: MdSnackBar;
   private loader: LoaderService;
+  private router: Router;
 
-  constructor(service: AuthService, snackbar: MdSnackBar, loaderService: LoaderService) {
+  constructor(service: AuthService, snackbar: MdSnackBar, loaderService: LoaderService, router: Router) {
     this.service = service;
     this.snackbar = snackbar;
     this.loader = loaderService;
+    this.router = router;
 
     this.errors = {};
   }
@@ -60,6 +63,7 @@ export class RegisterComponent {
       self.snackbar.open('Registro efetuado! Um email de confirmação foi enviado.', undefined, {
         duration: 2000
       });
+      self.router.navigate(['/home']);
     }, function error(error) {
       self.loader.update(false);
 
