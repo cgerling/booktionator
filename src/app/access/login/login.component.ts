@@ -9,7 +9,7 @@ import { PasswordToggleComponent } from 'app/shared/components/password-toggle/p
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
-  styleUrls: ['../child.component.scss']
+  styleUrls: ['../child.component.scss', './login.component.scss']
 })
 export class LoginComponent {
   private service: AuthService;

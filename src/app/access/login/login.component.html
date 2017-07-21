@@ -6,6 +6,7 @@
     <input mdInput [(ngModel)]="password" required name="password" placeholder="Senha" [type]="toggler.type">
     <password-toggle mdSuffix></password-toggle>
   </md-input-container>
+  <a routerLink="/access/request-reset" class="forget-password">Esqueceu a sua senha?</a>
   <button md-raised-button type="submit">Entrar</button>
 </form>
 <divider></divider>
