@@ -54,4 +54,8 @@ export class AuthService {
   currentUser(): User {
     return this.authFirebase.auth.currentUser;
   }
+
+  onAuthStateChanged(nextOrObserver: object, error = (a: FirebaseError) => { }, completed = () => { }): Function {
+    return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
+  }
 }
