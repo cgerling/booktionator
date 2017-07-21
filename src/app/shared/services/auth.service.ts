@@ -66,4 +66,8 @@ export class AuthService {
   resetPassword(code: string, newPassword: string): Promise<any> {
     return this.authFirebase.auth.confirmPasswordReset(code, newPassword);
   }
+
+  verifyEmail(code: string): Promise<any> {
+    return this.authFirebase.auth.applyActionCode(code);
+  }
 }
