@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegisterComponent } from './register/register.component';
 import { RequestPasswordComponent } from './request-reset/request-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
       },
       {
         path: 'password-reset/:oobCode', component: PasswordResetComponent
+      },
+      {
+        path: 'verify-email/:oobCode', component: VerifyEmailComponent
       }
     ]
   }
