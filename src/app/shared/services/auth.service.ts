@@ -58,4 +58,12 @@ export class AuthService {
   onAuthStateChanged(nextOrObserver: object, error = (a: FirebaseError) => { }, completed = () => { }): Function {
     return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
   }
+
+  verifyPasswordResetCode(code: string): Promise<any> {
+    return this.authFirebase.auth.verifyPasswordResetCode(code);
+  }
+
+  resetPassword(code: string, newPassword: string): Promise<any> {
+    return this.authFirebase.auth.confirmPasswordReset(code, newPassword);
+  }
 }
