@@ -35,6 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.updateUser();
 
     this.routeSubs = this.router.events.subscribe(this.routeHandle.bind(this));
+    this.auth.onAuthStateChanged(this.updateUser.bind(this));
   }
 
   ngOnDestroy(): void {
