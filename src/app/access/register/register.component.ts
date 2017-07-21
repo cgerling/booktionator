@@ -57,7 +57,7 @@ export class RegisterComponent {
       self.loader.update(false);
 
       self.reset();
-      self.snackbar.open('Successfully registered! An confirmation email was sent.', undefined, {
+      self.snackbar.open('Registro efetuado! Um email de confirmação foi enviado.', undefined, {
         duration: 2000
       });
     }, function error(error) {
