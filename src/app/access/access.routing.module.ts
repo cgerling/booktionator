@@ -5,6 +5,7 @@ import { AccessComponent } from './access.component';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RequestPasswordComponent } from './request-reset/request-password.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
       },
       {
         path: 'register', component: RegisterComponent
+      },
+      {
+        path: 'request-reset', component: RequestPasswordComponent
       }
     ]
   }
