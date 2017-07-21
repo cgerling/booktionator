@@ -9,12 +9,13 @@ import { SharedModule } from 'app/shared/shared.module';
 
 import { AccessComponent } from './access.component';
 import { LoginComponent } from './login/login.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { RegisterComponent } from './register/register.component';
 import { RequestPasswordComponent } from './request-reset/request-password.component';
 
 @NgModule({
   imports: [AccessRoutingModule, CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule, SharedModule],
-  declarations: [AccessComponent, LoginComponent, RegisterComponent, RequestPasswordComponent],
+  declarations: [AccessComponent, LoginComponent, PasswordResetComponent, RegisterComponent, RequestPasswordComponent],
   providers: [],
   exports: []
 })
