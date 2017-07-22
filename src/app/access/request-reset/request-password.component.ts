@@ -21,6 +21,8 @@ export class RequestPasswordComponent implements AfterViewChecked {
   @ViewChild('requestResetForm')
   currentForm: NgForm;
 
+  validator: FormValidator;
+
   formError = {
     'email': ''
   };
@@ -35,7 +37,6 @@ export class RequestPasswordComponent implements AfterViewChecked {
   private auth: AuthService;
   private loader: LoaderService;
   private snackbar: MdSnackBar;
-  private validator: FormValidator;
 
   constructor(auth: AuthService, loader: LoaderService, snackbar: MdSnackBar) {
     this.auth = auth;
