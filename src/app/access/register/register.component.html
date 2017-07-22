@@ -1,19 +1,23 @@
 <form (ngSubmit)="register()" #registerForm="ngForm" class="form">
   <md-input-container>
-    <input mdInput [(ngModel)]="name" required name="name" placeholder="Nome" type="text">
+    <input mdInput [(ngModel)]="name" name="name" type="text" required placeholder="Nome">
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
+    <input mdInput [(ngModel)]="email" name="email" type="email" required placeholder="Email">
+    <md-error *ngIf="validator.errors.email">{{validator.errors.email}}</md-error>
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="password" required name="password" placeholder="Senha" [type]="toggler.type">
+    <input mdInput [(ngModel)]="password" [type]="toggler.type" name="password" required placeholder="Senha" minlength="6">
     <password-toggle mdSuffix></password-toggle>
+    <md-error *ngIf="validator.errors.password">{{validator.errors.password}}</md-error>
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="postalcode" required name="postalcode" placeholder="CEP" type="text">
+    <input mdInput [(ngModel)]="postalcode" name="postalcode" type="cep" required placeholder="CEP">
+    <md-error *ngIf="validator.errors.postalcode">{{validator.errors.postalcode}}</md-error>
   </md-input-container>
   <md-input-container>
-    <input mdInput [(ngModel)]="phone" required name="phone" placeholder="Celular" type="tel">
+    <input mdInput [(ngModel)]="phone" name="phone" type="tel" required placeholder="Celular">
+    <md-error *ngIf="validator.errors.phone">{{validator.errors.phone}}</md-error>
   </md-input-container>
 
   <button md-raised-button type="submit">Registrar</button>

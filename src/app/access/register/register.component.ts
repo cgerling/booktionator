@@ -1,10 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
 import { AuthService } from 'app/shared/services/auth.service';
 import { LoaderService } from 'app/shared/services/loader.service';
+
+import { FormValidator } from 'app/shared/services/formValidator.service';
 
 import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
 
@@ -17,7 +19,7 @@ import { Phone } from 'types/phone';
   templateUrl: './register.component.html',
   styleUrls: ['../child.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements AfterViewChecked {
   @ViewChild(PasswordToggleComponent)
   toggler: PasswordToggleComponent;
 
@@ -30,7 +32,27 @@ export class RegisterComponent {
   postalcode: string;
   phone: string;
 
-  errors: { [input: string]: string };
+  validator: FormValidator;
+  private messages = {
+    'email': {
+      'pattern': 'Email inválido'
+    },
+    'postalcode': {
+      'pattern': 'CEP inválido'
+    },
+    'phone': {
+      'pattern': 'Celular inválido'
+    },
+    'password': {
+      'minlength': 'Mínimo de 6 caracteres'
+    }
+  };
+  private error = {
+    'email': '',
+    'postalcode': '',
+    'phone': '',
+    'password': ''
+  };
 
   private service: AuthService;
   private snackbar: MdSnackBar;
@@ -43,11 +65,15 @@ export class RegisterComponent {
     this.loader = loaderService;
     this.router = router;
 
-    this.errors = {};
+    this.validator = new FormValidator(this.form, this.messages, this.error);
+  }
+
+  ngAfterViewChecked(): void {
+    this.validator.updateForm(this.form);
   }
 
   register(): void {
-    if (!this.validate()) return;
+    if (!this.form.valid) return;
 
     this.loader.update(true);
 
@@ -71,33 +97,6 @@ export class RegisterComponent {
         duration: 2000
       });
     });
-  }
-
-  private validate(): boolean {
-    this.errors = {};
-    let name = this.name !== '';
-    let email = Email.validate(this.email);
-    let password = this.password.length >= 6;
-    let postalcode = PostalCode.validate(this.postalcode);
-    let phone = Phone.validate(this.phone);
-
-    if (!email) {
-      this.errors['email'] = 'Invalid format';
-    }
-
-    if (!password) {
-      this.errors['password'] = 'Must have at least 6 characters';
-    }
-
-    if (!postalcode) {
-      this.errors['postalcode'] = 'Invalid format';
-    }
-
-    if (!phone) {
-      this.errors['phone'] = 'Invalid format';
-    }
-
-    return name && email && password && postalcode && phone;
   }
 
   private reset(): void {
