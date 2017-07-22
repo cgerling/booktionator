@@ -8,7 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordToggleComponent } from './components/password-toggle/password-toggle.component';
 import { DividerComponent } from './components/divider/divider.component';
 
-import { EmailValidatorDirective } from './directives/email.directive';
+import { EmailValidatorDirective } from './directives/emailValidator.directive';
 
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
