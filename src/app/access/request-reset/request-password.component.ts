@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { AuthService } from 'app/shared/services/auth.service';
+import { FormValidator } from 'app/shared/services/formValidator.service';
 import { LoaderService } from 'app/shared/services/loader.service';
 
 import { MdSnackBar } from '@angular/material';
@@ -12,23 +14,42 @@ import { Email } from 'types/email';
   templateUrl: './request-password.component.html',
   styleUrls: ['../child.component.scss']
 })
-export class RequestPasswordComponent {
+export class RequestPasswordComponent implements AfterViewChecked {
   email: string;
   message: string;
+
+  @ViewChild('requestResetForm')
+  currentForm: NgForm;
+
+  formError = {
+    'email': ''
+  };
+
+  validationMessages = {
+    'email': {
+      'required': 'Campo obrigatório',
+      'pattern': 'Email inválido'
+    }
+  };
 
   private auth: AuthService;
   private loader: LoaderService;
   private snackbar: MdSnackBar;
+  private validator: FormValidator;
 
   constructor(auth: AuthService, loader: LoaderService, snackbar: MdSnackBar) {
     this.auth = auth;
     this.loader = loader;
     this.snackbar = snackbar;
+    this.validator = new FormValidator(this.currentForm, this.validationMessages, this.formError);
+  }
+
+  ngAfterViewChecked(): void {
+    this.validator.updateForm(this.currentForm);
   }
 
   send(): void {
-    if (!this.valid()) return;
-
+    if (!this.currentForm.valid) return;
     this.loader.update(true);
 
     let self = this;
