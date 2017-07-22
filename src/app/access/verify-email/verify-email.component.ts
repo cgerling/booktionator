@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { LoaderService } from 'app/shared/services/loader.service';
 import { AuthService } from 'app/shared/services/auth.service';
@@ -13,9 +14,11 @@ export class VerifyEmailComponent implements OnInit {
   private activatedRoute: ActivatedRoute;
   private auth: AuthService;
   private loader: LoaderService;
+  private dialog: MdDialog;
 
   title: string;
   message: string;
+  error: boolean;
 
   constructor(activatedRoute: ActivatedRoute, auth: AuthService, loader: LoaderService) {
     this.activatedRoute = activatedRoute;
@@ -28,9 +31,11 @@ export class VerifyEmailComponent implements OnInit {
       this.auth.verifyEmail(params.oobCode).then((resp) => {
         this.title = 'Email verificado!';
         this.message = 'Verificação concluída com sucesso.';
+        this.error = false;
       }).catch((error) => {
         this.title = 'Ocorreu um erro!';
         this.message = 'Por favor solicite uma nova verificação.';
+        this.error = true;
       });
     });
   }
