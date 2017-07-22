@@ -1,3 +1,4 @@
+<result-viewer [hidden]="!error" [content]="errorMessage" error="true"></result-viewer>
 <form (ngSubmit)="login()" #loginForm="ngForm" class="form">
   <md-input-container>
     <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">

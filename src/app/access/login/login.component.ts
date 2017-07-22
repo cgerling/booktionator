@@ -20,6 +20,8 @@ export class LoginComponent {
 
   email: string;
   password: string;
+  errorMessage: string;
+  error: boolean;
 
   constructor(service: AuthService, router: Router) {
     this.service = service;
@@ -27,8 +29,12 @@ export class LoginComponent {
   }
 
   login(): void {
+    this.error = false;
     this.service.login(this.email, this.password).then((user: User) => {
       this.router.navigate(['/home']);
+    }).catch(error => {
+      this.error = true;
+      this.errorMessage = 'Email ou senha inválidos.';
     });
   }
 }
