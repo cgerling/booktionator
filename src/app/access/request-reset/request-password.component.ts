@@ -67,16 +67,4 @@ export class RequestPasswordComponent implements AfterViewChecked {
       });
     });
   }
-
-  private valid(): boolean {
-    this.message = '';
-
-    let email = Email.validate(this.email);
-
-    if (!email) {
-      this.message = 'Invalid email format';
-    }
-
-    return email;
-  }
 }
