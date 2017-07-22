@@ -9,6 +9,7 @@ import { PasswordToggleComponent } from './components/password-toggle/password-t
 import { DividerComponent } from './components/divider/divider.component';
 
 import { EmailValidatorDirective } from './directives/emailValidator.directive';
+import { CepValidatorDirective } from './directives/cepValidator.directive';
 
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
@@ -18,8 +19,8 @@ import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule],
-  declarations: [DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent],
+  declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent],
   providers: [AuthGuard, AuthService, LoaderService, StorageService],
-  exports: [DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent]
+  exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent]
 })
 export class SharedModule { }
