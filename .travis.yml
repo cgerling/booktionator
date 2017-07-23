@@ -14,10 +14,10 @@ script:
   - cd functions/ && npm install
 
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN --only functions
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive --only functions
   - cd ..
-  - firebase deploy --token $FIREBASE_TOKEN --only database
-  - firebase deploy --token $FIREBASE_TOKEN --only hosting
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive --only database
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive --only hosting
 
 
 notifications:
