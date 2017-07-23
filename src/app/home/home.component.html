@@ -4,7 +4,7 @@
   </md-card-title>
   <img md-card-image [src]="book.image" alt="Merlin configure a Book API">
   <md-card-subtitle>
-    {{ book.author }}, {{ book.year }}
+    {{ book.author }}, {{ book.date.getFullYear() }}
   </md-card-subtitle>
   <md-card-content>
     Pontuação: {{ book.score }}
