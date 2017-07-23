@@ -5,24 +5,24 @@ export class Book {
   private _title: string;
   private _synopsis: string;
   private _author: string;
-  private _year: number;
+  private _date: Date;
   private _score: number;
   private _imageUrl: string;
 
-  static validate(title: string, year: number): boolean {
-    return title !== '' && Number.isInteger(year);
+  static validate(title: string, date: Date): boolean {
+    return title !== '' && !isNaN(date.getTime());
   }
 
-  constructor(uid: string, title: string, synopsis: string = '', author: string, year: number, score: number = 0.0, imageUrl: string = '') {
+  constructor(uid: string, title: string, synopsis: string = '', author: string, date: Date, score: number = 0.0, imageUrl: string = '') {
     this._uid = uid;
     this._title = title;
     this._synopsis = synopsis;
     this._author = author;
-    this._year = year;
+    this._date = date;
     this._score = score;
     this._imageUrl = imageUrl;
   }
-  
+
   get uid(): string {
     return this._uid;
   }
@@ -39,19 +39,19 @@ export class Book {
     return this._author;
   }
 
-  get year(): number {
-    return this._year;
+  get date(): Date {
+    return this._date;
   }
 
   get score(): number {
     return this._score;
   }
-  
+
   get imageUrl(): string {
     return this._imageUrl;
   }
 
   get valid(): boolean {
-    return Book.validate(this.title, this.year);
+    return Book.validate(this.title, this.date);
   }
 }
