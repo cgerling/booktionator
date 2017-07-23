@@ -14,7 +14,9 @@ script:
   - cd functions/ && npm install
 
 after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - firebase deploy --token $FIREBASE_TOKEN --only hosting, database
+  - cd functions/ && firebase deploy --token $FIREBASE_TOKEN --only functions
+
 
 notifications:
   email:
