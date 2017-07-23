@@ -40,8 +40,4 @@ export class HomeComponent implements OnInit {
         .sort((v1, v2) => (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0);
     });
   }
-
-  navigate(value): void {
-    this.router.navigate([`books/${value}`]);
-  }
 }

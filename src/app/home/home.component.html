@@ -1,5 +1,5 @@
-<md-card *ngFor="let book of books">
-  <md-card-title (click)="navigate(book.uid)">
+<md-card [routerLink]="['/book', book.uid]" *ngFor="let book of books">
+  <md-card-title>
     {{ book.title }}
   </md-card-title>
   <img md-card-image [src]="book.image" alt="Merlin configure a Book API">
