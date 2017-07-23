@@ -8,8 +8,8 @@
       }
     },
     "books": {
+      ".read": "true",
       "$book_id": {
-        ".read": "true",
         ".write": "auth != null && auth.provider !== 'anonymous'",
         ".validate": "newData.hasChildren(['title','synopsis','author','year','score'])",
         "author": {
