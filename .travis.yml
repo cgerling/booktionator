@@ -15,7 +15,9 @@ script:
 
 after_success:
   - firebase deploy --token $FIREBASE_TOKEN --only functions
-  - cd .. && firebase deploy --token $FIREBASE_TOKEN
+  - cd ..
+  - firebase deploy --token $FIREBASE_TOKEN --only database
+  - firebase deploy --token $FIREBASE_TOKEN --only hosting
 
 
 notifications:
