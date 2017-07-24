@@ -1,10 +1,2 @@
-<div class="container">
-  <md-card [routerLink]="['/book', book.uid]" *ngFor="let book of books">
-    <md-card-title>{{ book.title }}</md-card-title>
-    <img md-card-image [src]="book.imageUrl" alt="Merlin configure a Book API">
-    <md-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</md-card-subtitle>
-    <md-card-content>Pontuação: {{ book.score }}</md-card-content>
-  </md-card>
-
-  <navbar></navbar>
-</div>
+<book-list [books]="books"></book-list>
+<navbar></navbar>
