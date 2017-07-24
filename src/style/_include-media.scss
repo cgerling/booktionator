@@ -1,0 +1,12 @@
+@import "node_modules/include-media/dist/_include-media.scss";
+
+$breakpoints: (
+  x-small: 480px,
+  small: 600px,
+  s-medium: 840px,
+  medium: 960px,
+  l-medium: 1280px,
+  s-large: 1440px,
+  large: 1600px,
+  x-large: 1920px
+);
