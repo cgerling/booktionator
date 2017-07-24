@@ -11,24 +11,26 @@
     </a>
     <span class="spacer"></span>
     <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
-    <button md-button *ngIf="isLogged" [mdMenuTriggerFor]="menu">
+    <div *ngIf="isLogged">
+      <button md-button [mdMenuTriggerFor]="menu">
       {{loggedUser}}
       <md-icon>account_box</md-icon>
     </button>
-    <md-menu #menu="mdMenu" xPosition="before" yPosition="above">
-      <button md-menu-item>
-        <md-icon>perm_identity</md-icon>
-        <span>Perfil</span>
-      </button>
-      <button md-menu-item>
-        <md-icon>settings</md-icon>
-        <span>Configurações</span>
-      </button>
-      <button md-menu-item (click)="logout()">
-        <md-icon>exit_to_app</md-icon>
-        <span>Sair</span>
-      </button>
-    </md-menu>
+      <md-menu #menu="mdMenu" xPosition="before" yPosition="above">
+        <button md-menu-item>
+          <md-icon>perm_identity</md-icon>
+          <span>Perfil</span>
+        </button>
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          <span>Configurações</span>
+        </button>
+        <button md-menu-item (click)="logout()">
+          <md-icon>exit_to_app</md-icon>
+          <span>Sair</span>
+        </button>
+      </md-menu>
+    </div>
   </md-toolbar-row>
 </md-toolbar>
 <div class="shadow simple" [class.expanded]="withSearch"></div>
