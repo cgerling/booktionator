@@ -6,9 +6,11 @@
   padding: 6% 8%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 md-card {
+  width: 200px;
   cursor: pointer;
   margin: 20px 0;
   padding: 40px;
@@ -17,24 +19,27 @@ md-card {
   }
   md-card-title {
     text-align: center;
-    height: 84px;
+    height: 140px;
   }
   md-card-subtitle {
     text-align: right;
   }
 }
 
-@media (min-width: 600px) {
-  .container {
-    justify-content: space-around;
-  }
-  md-card {
-    width: 170px;
-  }
-}
-
 @media (min-width: 1280px) {
   md-card {
     margin: 20px;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2159px) {
+  md-card {
+    margin: 20px 40px;
+  }
+}
+
+@media (min-width: 2160px) and (max-width: 2559px) {
+  md-card {
+    margin: 20px 60px;
   }
 }
