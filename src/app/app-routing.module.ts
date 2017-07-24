@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'app/shared/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'access', loadChildren: 'app/access/access.module#AccessModule' },
   { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
   {
@@ -14,7 +13,9 @@ const routes: Routes = [
   {
     path: 'settings', loadChildren: 'app/settings/settings.module#SettingsModule',
     canActivate: [AuthGuard], canActivateChild: [AuthGuard], canLoad: [AuthGuard]
-  }
+  },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
