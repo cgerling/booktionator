@@ -15,14 +15,22 @@
     flex-grow: 1;
   }
 
-.brand {
-  align-items: center;
-  display: flex;
-  justify-content: flex-start;
-  padding-right: 5px;
-  img {
-    height: 40px;
-    margin-right: 5px;
+  .brand {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding-right: 5px;
+
+    img {
+      height: 40px;
+      margin-right: 5px;
+    }
+  }
+
+  a {
+    color: currentColor;
+    cursor: pointer;
+    text-decoration: none;
   }
 }
 
@@ -30,14 +38,9 @@
   flex: 1 1 auto;
 }
 
-a {
-  color: currentColor;
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .shadow {
   width: 100%;
+
   &.simple {
     height: 63px;
   }
