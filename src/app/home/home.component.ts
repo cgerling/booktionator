@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'app/shared/services/auth.service';
 
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
@@ -13,15 +12,13 @@ import { Book } from '../../types/book';
 })
 
 export class HomeComponent implements OnInit {
-  private auth: AuthService;
   private router: Router;
 
   private dbFirebase: AngularFireDatabase;
 
   books: Book[];
 
-  constructor(auth: AuthService, router: Router, db: AngularFireDatabase) {
-    this.auth = auth;
+  constructor(router: Router, db: AngularFireDatabase) {
     this.router = router;
     this.dbFirebase = db;
     this.books = [];
