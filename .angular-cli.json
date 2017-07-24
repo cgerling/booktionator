@@ -19,8 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss",
-        "theme/booktionator-theme.scss"
+        "style/styles.scss",
+        "style/booktionator-theme.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
