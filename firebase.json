@@ -6,6 +6,10 @@
     "public": "dist",
     "rewrites": [
       {
+        "source": "/api/search",
+        "function": "search"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
