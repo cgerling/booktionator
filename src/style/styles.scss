@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '_include-media';
 /*Remove pre margin and padding from body and html*/
 html,
 body {
@@ -14,4 +15,16 @@ input[type=search]::-webkit-search-cancel-button {
 
 [hidden] {
   display: none!important;
+}
+
+@include media('>small') {
+  .only-mobile {
+    display: none!important;
+  }
+}
+
+@include media('<small') {
+  .hide-mobile {
+    display: none!important;
+  }
 }
