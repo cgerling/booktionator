@@ -9,12 +9,12 @@
     },
     "books": {
       ".read": "true",
+      ".indexOn": [
+        "score"
+      ],
       "$book_id": {
         ".write": "auth != null && auth.provider !== 'anonymous'",
         ".validate": "newData.hasChildren(['title','synopsis','author','year','score'])",
-        ".indexOn": [
-          "score"
-        ],
         "author": {
           ".validate": "newData.hasChildren(['name'])"
         },
@@ -30,26 +30,26 @@
       }
     },
     "transactions": {
+      ".indexOn": [
+        "from",
+        "to",
+        "product",
+        "modality"
+      ],
       "$transaction_id": {
         ".read": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
         ".write": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
-        ".validate": "newData.hasChildren(['from', 'to', 'beginAt', 'endAt', 'product', 'modality', 'exchange'])",
-        ".indexOn": [
-          "from",
-          "to",
-          "product",
-          "modality"
-        ]
+        ".validate": "newData.hasChildren(['from', 'to', 'beginAt', 'endAt', 'product', 'modality', 'exchange'])"
       }
     },
     "auctions": {
+      ".indexOn": [
+        "product"
+      ],
       "$auction_id": {
         ".read": "auth != null",
         ".write": "auth != null && data.child('author').val() == auth.uid",
         ".validate": "newData.hasChildren(['author', 'createdAt', 'due', 'product'])",
-        ".indexOn": [
-          "product"
-        ],
         "bids": {
           "$author_id": {
             ".read": "auth.provider !== 'anonymous'",
