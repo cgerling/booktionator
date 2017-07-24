@@ -6,7 +6,6 @@
     <a class="brand" routerLink="/home">
       <img class="logo" src="assets/logo.png">Booktionator
     </a>
-    <span class="spacer"></span>
     <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
     <div *ngIf="isLogged">
       <button md-button [mdMenuTriggerFor]="menu">
