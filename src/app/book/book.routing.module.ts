@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 
+import { SellComponent } from './sell/sell.component';
+
 const routes: Routes = [
   {
-    path: '',
-    component: undefined,
-    children: []
+    path: 'sell', component: SellComponent
+  },
+  {
+    path: 'book/:uid', component: undefined
   }
 ];
 
