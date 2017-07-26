@@ -25,12 +25,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(auth: AuthService, router: Router) {
     this.auth = auth;
     this.router = router;
-
-    this.withSearch = true;
   }
 
   ngOnInit(): void {
-    this.withSearch = this.withSearch.toString() === 'true';
+    this.withSearch = (this.withSearch || true).toString() === 'true';
 
     this.updateUser();
 
