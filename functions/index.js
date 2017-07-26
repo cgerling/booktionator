@@ -8,11 +8,11 @@ admin.initializeApp(functions.config().firebase);
 
 exports.search = functions.https.onRequest(function search(req, res) {
   cors(req, res, () => {
-    const { q, limit } = req.query;
+    let { q, limit } = req.query;
     if (!q) res.status(400).json("Search term parameter is not optional");
     if (!limit) limit = 12;
 
-    admin.database().ref('/books').limitToFirst(limit).once('value').then(function data(snapshot) {
+    admin.database().ref('/books').limitToFirst(parseInt(limit)).once('value').then(function data(snapshot) {
       const result = filterByName(searchTerm, toArray(snapshot.val()));
       res.json({ term: q, result: result });
     }).catch(function onError(error) {
