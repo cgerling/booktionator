@@ -7,17 +7,20 @@ import { AuthService } from 'app/shared/services/auth.service';
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.isLogged();
-  }
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    return this.isLogged();
-  }
-  canLoad(route: Route): boolean {
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return this.isLogged();
   }
 
-  private isLogged(): boolean {
+  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
+    return this.isLogged();
+  }
+
+  canLoad(route: Route): Promise<boolean> {
+    return this.isLogged();
+  }
+
+  private isLogged(): Promise<boolean> {
     return this.authService.isLogged();
   }
 }
