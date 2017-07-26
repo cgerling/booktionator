@@ -51,7 +51,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   private updateUser(): void {
-    this.isLogged = this.auth.isLogged();
-    this.loggedUser = this.isLogged ? this.auth.currentUser().displayName.split(' ')[0] : undefined;
+    this.auth.currentUser().then((user) => {
+      this.isLogged = user !== null;
+      this.loggedUser = this.isLogged ? user.displayName.split(' ')[0] : undefined;
+    });
   }
 }
