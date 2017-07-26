@@ -13,7 +13,7 @@ exports.search = functions.https.onRequest(function search(req, res) {
     if (!limit) limit = 12;
 
     admin.database().ref('/books').limitToFirst(parseInt(limit)).once('value').then(function data(snapshot) {
-      const result = filterByName(searchTerm, toArray(snapshot.val()));
+      const result = filterByName(q, toArray(snapshot.val()));
       res.json({ term: q, result: result });
     }).catch(function onError(error) {
       res.json(error);
