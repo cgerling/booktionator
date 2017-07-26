@@ -10,7 +10,8 @@
     "books": {
       ".read": "true",
       ".indexOn": [
-        "score"
+        "score",
+        "modality"
       ],
       "$book_id": {
         ".write": "auth != null && auth.provider !== 'anonymous'",
@@ -21,10 +22,7 @@
         "offers": {
           "$offer_id": {
             ".write": "auth != null && newData.child('author').val() == auth.uid",
-            ".validate": "newData.hasChildren(['author', 'modality', 'exchange'])",
-            ".indexOn": [
-              "modality"
-            ]
+            ".validate": "newData.hasChildren(['author', 'modality', 'exchange'])"
           }
         }
       }
