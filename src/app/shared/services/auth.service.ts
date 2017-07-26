@@ -47,12 +47,18 @@ export class AuthService {
     return this.authFirebase.auth.sendPasswordResetEmail(email.value);
   }
 
-  isLogged(): boolean {
-    return this.currentUser() !== null;
+  async isLogged(): Promise<boolean> {
+    let user: User = await this.currentUser();
+    return user !== null;
   }
 
-  currentUser(): User {
-    return this.authFirebase.auth.currentUser;
+  async currentUser(): Promise<User> {
+    let self = this;
+    return new Promise<User>(function resolver(resolve) {
+      self.authFirebase.auth.onAuthStateChanged((user: User) => {
+        resolve(user);
+      });
+    });
   }
 
   onAuthStateChanged(nextOrObserver: object, error = (a: FirebaseError) => { }, completed = () => { }): Function {
