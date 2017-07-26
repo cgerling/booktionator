@@ -5,8 +5,11 @@ import { AuthService } from 'app/shared/services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
-  constructor(private authService: AuthService) { }
+  private auth: AuthService;
 
+  constructor(auth: AuthService) {
+    this.auth = auth;
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     return this.isLogged();
@@ -21,6 +24,6 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   private isLogged(): Promise<boolean> {
-    return this.authService.isLogged();
+    return this.auth.isLogged();
   }
 }
