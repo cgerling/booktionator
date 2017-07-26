@@ -6,17 +6,19 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 exports.search = functions.https.onRequest(function search(req, res) {
-  const searchTerm = req.query.q;
-  admin.database().ref('/books').once('value').then(function data(snapshot) {
-    const valAsArray = convertToArray(snapshot.val());
-    const result = filterByName(searchTerm, valAsArray);
-    res.json({ result: result });
+  const { q, limit } = req.query;
+  if (!q) res.status(400).json("Search term parameter is not optional");
+  if (!limit) limit = 12;
+
+  admin.database().ref('/books').limitToFirst(limit).once('value').then(function data(snapshot) {
+    const result = filterByName(searchTerm, toArray(snapshot.val()));
+    res.json({ term: q, result: result });
   }).catch(function onError(error) {
     res.json(error);
   });
 });
 
-function convertToArray(val) {
+function toArray(val) {
   const array = [];
   for (const key in val) {
     array.push(Object.assign({ uid: key }, val[key]));
@@ -26,11 +28,11 @@ function convertToArray(val) {
 }
 
 function filterByName(term = '', values = []) {
-  const search = createSearchExp(term);
-  return values.filter(n => search.test(n.title));
+  const exp = searchExpression(term);
+  return values.filter(n => exp.test(n.title));
 }
 
-function createSearchExp(val = '') {
+function searchExpression(val = '') {
   const exp = val.replace(/ /g, '.*');
   return new RegExp(`.*${exp}.*`, 'gi')
 }
