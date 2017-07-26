@@ -4,7 +4,7 @@ import { StorageService, STORAGE_KEYS } from 'app/shared/services/storage.servic
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Promise, User, FirebaseError } from 'firebase/app';
+import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
 import { Email } from 'types/email';
 import { PostalCode } from 'types/postalcode';
 import { Phone } from 'types/phone';
@@ -21,7 +21,7 @@ export class AuthService {
     this.storage = storage;
   }
 
-  login(email: string, password: string): Promise<User> {
+  login(email: string, password: string): FirebasePromise<User> {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -42,7 +42,7 @@ export class AuthService {
     });
   }
 
-  requestPasswordReset(email: Email): Promise<any> {
+  requestPasswordReset(email: Email): FirebasePromise<any> {
     if (!email.valid) return;
     return this.authFirebase.auth.sendPasswordResetEmail(email.value);
   }
@@ -59,15 +59,15 @@ export class AuthService {
     return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
   }
 
-  verifyPasswordResetCode(code: string): Promise<any> {
+  verifyPasswordResetCode(code: string): FirebasePromise<any> {
     return this.authFirebase.auth.verifyPasswordResetCode(code);
   }
 
-  resetPassword(code: string, newPassword: string): Promise<any> {
+  resetPassword(code: string, newPassword: string): FirebasePromise<any> {
     return this.authFirebase.auth.confirmPasswordReset(code, newPassword);
   }
 
-  verifyEmail(code: string): Promise<any> {
+  verifyEmail(code: string): FirebasePromise<any> {
     return this.authFirebase.auth.applyActionCode(code);
   }
 }
