@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, MdCardModule } from '@angular/material';
+import { HttpModule } from '@angular/http';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordToggleComponent } from './components/password-toggle/password-toggle.component';
@@ -16,15 +17,16 @@ import { TelValidatorDirective } from './directives/telValidator.directive';
 import { CepValidatorDirective } from './directives/cepValidator.directive';
 
 import { AuthService } from './services/auth.service';
+import { BookService } from './services/book.service';
 import { LoaderService } from './services/loader.service';
 import { StorageService } from './services/storage.service';
 
 import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule, MdCardModule],
-  providers: [AuthGuard, AuthService, LoaderService, StorageService],
+  imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule, MdCardModule, HttpModule],
   declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, BookListComponent, SearchBarComponent],
+  providers: [AuthGuard, AuthService, LoaderService, StorageService, BookService],
   exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, BookListComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, SearchBarComponent]
 })
 export class SharedModule { }
