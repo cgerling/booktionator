@@ -2,19 +2,22 @@
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const cors = require('cors')({ origin: true });
 
 admin.initializeApp(functions.config().firebase);
 
 exports.search = functions.https.onRequest(function search(req, res) {
-  const { q, limit } = req.query;
-  if (!q) res.status(400).json("Search term parameter is not optional");
-  if (!limit) limit = 12;
+  cors(req, res, () => {
+    const { q, limit } = req.query;
+    if (!q) res.status(400).json("Search term parameter is not optional");
+    if (!limit) limit = 12;
 
-  admin.database().ref('/books').limitToFirst(limit).once('value').then(function data(snapshot) {
-    const result = filterByName(searchTerm, toArray(snapshot.val()));
-    res.json({ term: q, result: result });
-  }).catch(function onError(error) {
-    res.json(error);
+    admin.database().ref('/books').limitToFirst(limit).once('value').then(function data(snapshot) {
+      const result = filterByName(searchTerm, toArray(snapshot.val()));
+      res.json({ term: q, result: result });
+    }).catch(function onError(error) {
+      res.json(error);
+    });
   });
 });
 
