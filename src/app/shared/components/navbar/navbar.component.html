@@ -1,12 +1,12 @@
 <md-toolbar color="primary" class="nav">
   <md-toolbar-row *ngIf="withSearch" class="only-mobile">
-    <search-bar></search-bar>
+    <search-bar [exec]="createSearch()"></search-bar>
   </md-toolbar-row>
   <md-toolbar-row class="spaced">
     <a class="brand" routerLink="/home">
       <img class="logo" src="assets/logo.png">Booktionator
     </a>
-    <search-bar *ngIf="withSearch" class="hide-mobile"></search-bar>
+    <search-bar *ngIf="withSearch" [exec]="createSearch()" class="hide-mobile"></search-bar>
     <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
     <div *ngIf="isLogged">
       <button md-button [mdMenuTriggerFor]="menu">
