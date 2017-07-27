@@ -14,8 +14,11 @@ export class BookListComponent {
   @Input()
   books: Book[];
 
+  @Input()
+  link: string;
+
   constructor() {
     this.books = [];
   }
-  
+
 }
