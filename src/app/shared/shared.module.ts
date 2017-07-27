@@ -27,7 +27,7 @@ import { AuthGuard } from './guards/auth.guard';
 @NgModule({
   imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule, MdCardModule, MdSnackBarModule],
   declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, BookListComponent, SearchBarComponent, VerifyAccountComponent],
-  providers: [AuthGuard, AuthService, LoaderService, StorageService],
+  providers: [AuthGuard, AuthService, LoaderService, StorageService, BookService],
   exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, NavbarComponent, BookListComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, SearchBarComponent, VerifyAccountComponent]
 })
 export class SharedModule { }
