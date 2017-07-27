@@ -7,6 +7,10 @@ import { AuthService } from 'app/shared/services/auth.service';
 
 import { AngularFireDatabase} from 'angularfire2/database';
 
+import { Bid } from '../../../types/bid';
+import { Offer } from '../../../types/offer';
+import { Auction } from '../../../types/auction';
+
 @Component({
   selector: 'sell',
   templateUrl: './sell.component.html',
@@ -19,12 +23,16 @@ export class SellComponent {
   
   private dbFirebase: AngularFireDatabase;
   
+  private bid: Bid;
+  private offer: Offer;
+  private auction: Auction;
+  
   private bookKey: string;
   auctionKey: string;
   currentUser: any;
-  selectedModality: String;
-  modalities: String[];
-  exchange: String;
+  selectedModality: string;
+  modalities: string[];
+  exchange: string;
   due: Date;
   minDate: Date;
   maxDate: Date;
@@ -51,38 +59,26 @@ export class SellComponent {
   }
   
   sell(): void {
-    let self = this;
+    this.offer= new Offer(this.currentUser.uid, this.exchange, this.selectedModality);
     if(this.selectedModality === this.modalities[3]) {
       this.createAuction();
-      this.dbFirebase.object
-      (`books/${this.bookKey}/offers/${this.auctionKey}`).set({
-        authorUid: self.currentUser.uid,
-        exchange: self.exchange,
-        modality: self.selectedModality
-      });
+      this.dbFirebase.
+      object(`books/${this.bookKey}/offers/${this.auctionKey}`).
+      set(this.offer);
       return;
-    }
-    this.dbFirebase.list(`books/${this.bookKey}/offers`).push({
-      authorUid: self.currentUser.uid,
-      exchange: self.exchange,
-      modality: self.selectedModality
-    });
+    } this.dbFirebase.list(`books/${this.bookKey}/offers`).push(this.offer);
   }
   
   private createAuction(): void {
     let self = this;
-    this.dbFirebase.list('auctions').push({
-      author: self.currentUser.uid,
-      createdAt: new Date(),
-      due: self.due
-    }).then(auction => {
+    this.auction = new Auction(this.currentUser.uid, new Date(), this.due);
+    this.bid = new Bid(new Date(), this.exchange);
+    this.dbFirebase.list('auctions').push(this.auction).
+    then(auction => {
       self.auctionKey = auction.key;
     });
     this.dbFirebase.list(`auctions/${self.auctionKey}/bids`).
-    push({
-      at: new Date(),
-      value: self.exchange
-    });
+    push(this.bid);
   }
   
 }
