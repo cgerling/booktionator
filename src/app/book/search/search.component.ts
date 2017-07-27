@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
   private route: ActivatedRoute;
 
   private term: string;
-  private mode: string;
+  mode: string;
 
   @ViewChild(SearchBarComponent)
   searchBar: SearchBarComponent;
