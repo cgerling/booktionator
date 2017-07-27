@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { MdNativeDateModule } from '@angular/material';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -21,7 +22,8 @@ import { environment } from 'environments/environment';
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MdNativeDateModule
   ],
   declarations: [AppComponent],
   providers: [],
