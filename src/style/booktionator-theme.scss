@@ -20,6 +20,15 @@ $booktionator-theme: mat-light-theme($booktionator-primary, $booktionator-accent
 // that you are using.
 @include angular-material-theme($booktionator-theme);
 
+//Configure typography
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$booktionator-typography: mat-typography-config(
+  $font-family: 'Roboto'
+);
+
+@include angular-material-typography($booktionator-typography);
+
 //Workaround to hide the first md-toolbar-row that angular-material2 auto add
 md-toolbar-row.mat-toolbar-row:first-of-type {
   display: none;
