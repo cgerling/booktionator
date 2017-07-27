@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
   private bookService: BookService;
   private route: ActivatedRoute;
 
-  private term: string;
   mode: string;
 
   @ViewChild(SearchBarComponent)
@@ -38,11 +37,11 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     let paramsSubs = this.route.params.subscribe((params) => {
-      this.term = '';
+      this.searchBar.term = '';
 
       let { term } = params;
       if (term) {
-        this.term = this.searchBar.term = term;
+        this.searchBar.term = term;
         this.search();
       }
     });
