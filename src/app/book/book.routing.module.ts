@@ -2,13 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 
 import { SellComponent } from './sell/sell.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
-    path: 'sell', component: SellComponent
+    path: 'sell/:uid', component: SellComponent,
   },
   {
-    path: 'book/:uid', component: undefined
+    path: 'search/:term', component: SearchComponent
+  },
+  {
+    path: 'details/:uid', component: undefined
   }
 ];
 
@@ -17,3 +21,11 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class BookRoutingModule { }
+
+// /home
+// /book/register
+// /details/uid
+// /book/search/searchstring
+// /book/sell/uid
+// /user/settings
+// /user/offers

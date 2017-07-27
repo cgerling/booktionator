@@ -1,0 +1,13 @@
+<md-toolbar color="primary" class="search">
+  <md-toolbar-row>
+    <search-bar [exec]="createSearch()"></search-bar>
+  </md-toolbar-row>
+</md-toolbar>
+
+<book-list [books]="books" link=""></book-list>
+
+<button md-fab [hidden]="mode == 'find'" routerLink="['book/create']">
+  <md-icon>add</md-icon>
+</button>
+
+<navbar></navbar>
