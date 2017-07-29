@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: []
 })
-export class SettingsRoutingModule { }
+export class UserRoutingModule { }
