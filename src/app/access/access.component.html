@@ -1,5 +1,5 @@
-<md-progress-bar *ngIf="loading" mode="indeterminate"></md-progress-bar>
+<app-menu></app-menu>
+
+<md-progress-bar [hidden]="!loading" mode="indeterminate"></md-progress-bar>
 
 <router-outlet></router-outlet>
-
-<navbar withSearch="false"></navbar>
