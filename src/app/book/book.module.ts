@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSelectModule, MdToolbarModule  } from '@angular/material';
+import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSelectModule, MdToolbarModule } from '@angular/material';
 
 import { BookRoutingModule } from './book.routing.module';
 import { SharedModule } from 'app/shared/shared.module';
@@ -28,7 +28,7 @@ import { SellComponent } from './sell/sell.component';
   declarations: [
     DetailsComponent,
     SearchComponent,
-    SellComponent,
+    SellComponent
   ],
   providers: [],
   exports: []
