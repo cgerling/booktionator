@@ -1,0 +1,36 @@
+@import 'src/style/_include-media.scss';
+
+:host {
+  width: 100%;
+}
+
+.nav {
+  width: 100%;
+  z-index: 10;
+
+  .spaced {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .brand {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    padding-right: 5px;
+
+    img {
+      height: 40px;
+      margin-right: 5px;
+    }
+  }
+
+  a {
+    color: currentColor;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,24 @@
+<md-toolbar color="primary" class="nav">
+  <div class="spaced">
+    <a class="brand" routerLink="/home">
+      <img class="logo" src="assets/logo.png">Booktionator
+    </a>
+    <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
+    <div *ngIf="isLogged">
+      <button md-button [mdMenuTriggerFor]="menu">
+      {{loggedUser}}
+      <md-icon>account_box</md-icon>
+    </button>
+      <md-menu #menu="mdMenu" xPosition="before" yPosition="below">
+        <button md-menu-item>
+          <md-icon>settings</md-icon>
+          <span>Configurações</span>
+        </button>
+        <button md-menu-item (click)="logout()">
+          <md-icon>exit_to_app</md-icon>
+          <span>Sair</span>
+        </button>
+      </md-menu>
+    </div>
+  </div>
+</md-toolbar>
