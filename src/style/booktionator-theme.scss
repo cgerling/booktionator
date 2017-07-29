@@ -20,6 +20,15 @@ $booktionator-theme: mat-light-theme($booktionator-primary, $booktionator-accent
 // that you are using.
 @include angular-material-theme($booktionator-theme);
 
+//Configure typography
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$booktionator-typography: mat-typography-config(
+  $font-family: 'Roboto'
+);
+
+@include angular-material-typography($booktionator-typography);
+
 //Tranform all buttons text to uppercase according to Material Design Guide Lines
 button[md-button],
 button[md-raised-button],

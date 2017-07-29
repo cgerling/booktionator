@@ -1,0 +1,16 @@
+:host {
+  padding: 5% 10%;
+  height: 100%;
+}
+
+form {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5% 10%;
+  md-select {
+    margin: 10px;
+  }
+}

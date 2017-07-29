@@ -1,1 +1,24 @@
+<form (ngSubmit)="sell()">
+  <md-select placeholder="Modalidade" name="modality" [(ngModel)]="selectedModality" class="dropdown">
+    <md-option *ngFor="let modality of modalities" [value]="modality">
+      {{modality}}
+    </md-option>
+  </md-select>
+  <md-input-container required name="generic" class="generic">
+    <span mdPrefix *ngIf="selectedModality === 'Leilão' || selectedModality === 'Venda'">R$ &nbsp;</span>
+    <input *ngIf="selectedModality === ''" mdInput placeholder="Moeda de troca" type="text" [(ngModel)]="exchange" name="genericInput">
+    <input *ngIf="selectedModality === 'Troca'" mdInput placeholder="Livro desejado" type="text" [(ngModel)]="exchange" name="trading">
+    <input *ngIf="selectedModality === 'Venda'" mdInput placeholder="Preço" type="number" [(ngModel)]="exchange" name="selling">
+    <input *ngIf="selectedModality === 'Leilão'" mdInput placeholder="Lance inicial" type="number" [(ngModel)]="exchange" name="auctioning">
+  </md-input-container>
+  <md-input-container [hidden]="selectedModality !== 'Leilão'" name="aucionOnly" class="auctionInput">
+    <input mdInput [mdDatepicker]="picker" [(ngModel)]="due" [min]="minDate" [max]="maxDate" placeholder="Prazo do leilão" name="auctionDue">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    <md-datepicker touchUi="true" #picker></md-datepicker>
+  </md-input-container>
+
+  <divider></divider>
+
+  <button md-raised-button type="submit">Ofertar!</button>
+</form>
 <navbar></navbar>

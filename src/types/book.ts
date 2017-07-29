@@ -1,9 +1,7 @@
-import { Author } from 'types/author';
-
 export class Book {
   private _uid: string;
   private _title: string;
-  private _synopsis: string;
+  private _description: string;
   private _author: string;
   private _date: Date;
   private _score: number;
@@ -14,10 +12,10 @@ export class Book {
     return title !== '' && !isNaN(date.getTime());
   }
 
-  constructor(uid: string, title: string, synopsis: string = '', author: string, date: Date, publisher: string, score: number = 0.0, imageUrl: string = '') {
+  constructor(uid: string, title: string, description: string = '', author: string, date: Date, publisher: string, score: number = 0.0, imageUrl: string = '') {
     this._uid = uid;
     this._title = title;
-    this._synopsis = synopsis;
+    this._description = description;
     this._author = author;
     this._date = date;
     this._publisher = publisher;
@@ -33,8 +31,8 @@ export class Book {
     return this._title;
   }
 
-  get synopsis(): string {
-    return this._synopsis;
+  get description(): string {
+    return this._description;
   }
 
   get author(): string {
