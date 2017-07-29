@@ -11,7 +11,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], canActivateChild: [AuthGuard], canLoad: [AuthGuard]
   },
   {
-    path: 'settings', loadChildren: 'app/settings/settings.module#SettingsModule',
+    path: 'user', loadChildren: 'app/user/user.module#UserModule',
     canActivate: [AuthGuard], canActivateChild: [AuthGuard], canLoad: [AuthGuard]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
