@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, MdCardModule, MdSnackBarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
 import { PasswordToggleComponent } from './components/password-toggle/password-toggle.component';
 import { DividerComponent } from './components/divider/divider.component';
@@ -13,6 +12,7 @@ import { ResultViewerComponent } from './components/result-viewer/result-viewer.
 import { BookListComponent } from './components/book-list/book-list.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { EmailValidatorDirective } from './directives/emailValidator.directive';
 import { TelValidatorDirective } from './directives/telValidator.directive';
@@ -27,8 +27,8 @@ import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule, MdCardModule, MdSnackBarModule],
-  declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, BookListComponent, SearchBarComponent, VerifyAccountComponent],
+  declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, BookListComponent, SearchBarComponent, VerifyAccountComponent, NavbarComponent],
   providers: [AuthGuard, AuthService, LoaderService, StorageService, BookService],
-  exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, BookListComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, SearchBarComponent, VerifyAccountComponent]
+  exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, BookListComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, SearchBarComponent, VerifyAccountComponent, NavbarComponent]
 })
 export class SharedModule { }

@@ -1,33 +1,16 @@
-<md-toolbar color="primary" class="nav">
-  <md-toolbar-row *ngIf="withSearch" class="only-mobile">
-    <search-bar [exec]="createSearch()"></search-bar>
-  </md-toolbar-row>
-  <md-toolbar-row class="spaced">
-    <a class="brand" routerLink="/home">
-      <img class="logo" src="assets/logo.png">Booktionator
-    </a>
-    <search-bar *ngIf="withSearch" [exec]="createSearch()" class="hide-mobile"></search-bar>
-    <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
-    <div *ngIf="isLogged">
-      <button md-button [mdMenuTriggerFor]="menu">
-      {{loggedUser}}
-      <md-icon>account_box</md-icon>
-    </button>
-      <md-menu #menu="mdMenu" xPosition="before" yPosition="above">
-        <button md-menu-item>
-          <md-icon>perm_identity</md-icon>
-          <span>Perfil</span>
-        </button>
-        <button md-menu-item>
-          <md-icon>settings</md-icon>
-          <span>Configurações</span>
-        </button>
-        <button md-menu-item (click)="logout()">
-          <md-icon>exit_to_app</md-icon>
-          <span>Sair</span>
-        </button>
-      </md-menu>
+<md-toolbar class="fixed-bottom">
+  <nav>
+    <div class="item ripple" [class.active]="isActive('search')" (click)="activate('search')" [routerLink]="['book/search']">
+      <md-icon class="icon">search</md-icon>
+      <p>Busca</p>
     </div>
-  </md-toolbar-row>
+    <div class="item ripple" [class.active]="isActive('add')" (click)="activate('add')" routerLink="">
+      <md-icon class="icon">add</md-icon>
+      <p>Anunciar</p>
+    </div>
+    <div class="item ripple" [class.active]="isActive('history')" (click)="activate('history')" routerLink="">
+      <md-icon>history</md-icon>
+      <p>Histórico</p>
+    </div>
+  </nav>
 </md-toolbar>
-<div class="shadow simple" [class.expanded]="withSearch"></div>

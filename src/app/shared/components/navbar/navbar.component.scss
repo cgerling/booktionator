@@ -1,63 +1,102 @@
-@import 'src/style/_include-media.scss';
-
-:host {
-  width: 100%;
+@mixin evenly-spaced($min, $max) {
+  @for $i from $min through $max {
+    &:first-child:nth-last-child(#{$i}),
+    &:first-child:nth-last-child(#{$i}) ~ & {
+      width: 1 / $i * 100%;
+    }
+  }
 }
 
-.nav {
+$transition-duration: 100ms;
+$transition-type: linear;
+
+:host {
   bottom: 0;
   left: 0;
   position: fixed;
   right: 0;
   z-index: 10;
-
-  .spaced {
-    justify-content: space-between;
-  }
-
-  search-bar {
-    flex-grow: 1;
-  }
-
-  .brand {
-    align-items: center;
-    display: flex;
-    justify-content: flex-start;
-    padding-right: 5px;
-
-    img {
-      height: 40px;
-      margin-right: 5px;
-    }
-  }
-
-  a {
-    color: currentColor;
-    cursor: pointer;
-    text-decoration: none;
-  }
 }
 
-.shadow {
+nav {
+  font-size: 0;
+  height: 56px;
   width: 100%;
 
-  &.simple {
-    height: 63px;
-  }
-  &.expanded {
-    height: 127px;
+  .item {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    height: 38px;
+    line-height: 14px;
+    margin: 8px 0 10px 0;
+    max-width: 168px;
+    min-width: 80px;
+    padding: 0 12px;
+    transition: $transition-duration $transition-type;
+
+    &.active {
+      color: #03a9f4;
+      height: 40px;
+      line-height: 16px;
+      margin-top: 6px;
+      transition: $transition-duration $transition-type;
+
+      p {
+        font-size: 14px;
+      }
+    }
+
+    * {
+      color: inherit;
+      display: block;
+    }
+
+    md-icon {
+      height: 24px;
+      margin: 0 auto;
+      width: 24px;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: normal;
+      margin: 0;
+      text-align: center;
+      vertical-align: middle;
+    }
   }
 }
 
-@include media('<small') {
-  .shadow {
-    &.simple {
-      height: 56px;
-    }
-
-    &.expanded {
-      height: 112px;
-    }
-  }
+div {
+  @include evenly-spaced(3, 5);
 }
 
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #000 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10,10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+
+  &:active:after {
+    transform: scale(0,0);
+    opacity: .2;
+    transition: 0s;
+  }
+}
