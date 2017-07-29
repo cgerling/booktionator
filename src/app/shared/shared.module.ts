@@ -26,9 +26,50 @@ import { StorageService } from './services/storage.service';
 import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, RouterModule, MdCardModule, MdSnackBarModule],
-  declarations: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, BookListComponent, SearchBarComponent, VerifyAccountComponent, NavbarComponent],
-  providers: [AuthGuard, AuthService, LoaderService, StorageService, BookService],
-  exports: [CepValidatorDirective, DividerComponent, EmailValidatorDirective, AppMenuComponent, BookListComponent, PasswordToggleComponent, ResultViewerComponent, TelValidatorDirective, SearchBarComponent, VerifyAccountComponent, NavbarComponent]
+  imports: [
+    CommonModule,
+    FormsModule,
+    MdButtonModule,
+    MdCardModule,
+    MdIconModule,
+    MdInputModule,
+    MdMenuModule,
+    MdSnackBarModule,
+    MdToolbarModule,
+    RouterModule
+  ],
+  declarations: [
+    AppMenuComponent,
+    BookListComponent,
+    CepValidatorDirective,
+    DividerComponent,
+    EmailValidatorDirective,
+    NavbarComponent,
+    PasswordToggleComponent,
+    ResultViewerComponent,
+    TelValidatorDirective,
+    SearchBarComponent,
+    VerifyAccountComponent
+  ],
+  providers: [
+    AuthGuard,
+    AuthService,
+    BookService,
+    LoaderService,
+    StorageService
+  ],
+  exports: [
+    AppMenuComponent,
+    BookListComponent,
+    CepValidatorDirective,
+    DividerComponent,
+    EmailValidatorDirective,
+    NavbarComponent,
+    PasswordToggleComponent,
+    ResultViewerComponent,
+    TelValidatorDirective,
+    SearchBarComponent,
+    VerifyAccountComponent
+  ]
 })
 export class SharedModule { }

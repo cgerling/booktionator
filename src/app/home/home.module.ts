@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdCardModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { MdCardModule } from '@angular/material';
+
+import { HomeRoutingModule } from './home.routing.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 import { HomeComponent } from './home.component';
 
-import { SharedModule } from 'app/shared/shared.module';
-
-import { HomeRoutingModule } from './home.routing.module';
-
 @NgModule({
-  imports: [HomeRoutingModule, SharedModule, CommonModule, MdCardModule, RouterModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MdCardModule,
+    RouterModule,
+    SharedModule,
+  ],
   declarations: [HomeComponent],
   providers: [],
   exports: []
