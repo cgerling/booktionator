@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { UserRoutingModule } from './User.routing.module';
+import { UserRoutingModule } from './user.routing.module';
 
 @NgModule({
   imports: [UserRoutingModule],
