@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'search/:term', component: SearchComponent
   },
   {
-    path: 'details/:uid', component: undefined
+    path: 'details/:uid', component: DetailsComponent
   }
 ];
 
