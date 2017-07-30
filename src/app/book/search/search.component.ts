@@ -36,7 +36,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let paramsSubs = this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       this.searchBar.term = '';
 
       let { term } = params;
@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
       }
     });
 
-    let queryParamsSubs = this.route.queryParams.subscribe((queryParams) => {
+    this.route.queryParams.subscribe((queryParams) => {
       this.mode = queryParams.mode;
 
       this.bookLink = this.modes[this.mode];
