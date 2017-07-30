@@ -10,6 +10,9 @@ const routes: Routes = [
     path: 'sell/:uid', component: SellComponent,
   },
   {
+    path: 'search', component: SearchComponent
+  },
+  {
     path: 'search/:term', component: SearchComponent
   },
   {
