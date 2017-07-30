@@ -3,6 +3,8 @@
     <md-card-title>{{ book.title }}</md-card-title>
     <img md-card-image [src]="book.imageUrl" alt="Merlin configure a Book API">
     <md-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</md-card-subtitle>
-    <md-card-content>Pontuação: {{ book.score }}</md-card-content>
+    <md-card-content>
+      <rating [score]="book.score"></rating>
+    </md-card-content>
   </md-card>
 </div>
