@@ -1,14 +1,14 @@
 <md-toolbar class="fixed-bottom">
   <nav>
-    <div class="item ripple" [class.active]="isActive('search')" (click)="activate('search')" [routerLink]="['book/search']">
+    <div class="item ripple" [class.active]="isActive('search')" (click)="activate('search')">
       <md-icon class="icon">search</md-icon>
       <p>Busca</p>
     </div>
-    <div class="item ripple" [class.active]="isActive('add')" (click)="activate('add')" routerLink="">
+    <div class="item ripple" [class.active]="isActive('add')" (click)="activate('add')">
       <md-icon class="icon">add</md-icon>
       <p>Anunciar</p>
     </div>
-    <div class="item ripple" [class.active]="isActive('history')" (click)="activate('history')" routerLink="">
+    <div class="item ripple" [class.active]="isActive('history')" (click)="activate('history')">
       <md-icon>history</md-icon>
       <p>Histórico</p>
     </div>

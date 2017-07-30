@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -8,12 +8,41 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   private activated: string;
 
-  constructor() {
+  private links: { [key: string]: { path: string, params: object } };
+  private router: Router;
+
+  constructor(router: Router) {
+    this.router = router;
     this.activated = '';
+    this.links = {
+      'search': {
+        path: 'book/search',
+        params: {
+          queryParams: {
+            mode: 'find'
+          }
+        }
+      },
+      'add': {
+        path: 'book/search',
+        params: {
+          queryParams: {
+            mode: 'sell'
+          }
+        }
+      },
+      'history': {
+        path: 'home',
+        params: {}
+      }
+    };
   }
 
   activate(selected: string): void {
     this.activated = selected;
+    let route = this.links[selected];
+
+    this.router.navigate([route.path], route.params);
   }
 
   isActive(name: string): boolean {
