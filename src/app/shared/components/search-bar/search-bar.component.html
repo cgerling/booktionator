@@ -1,4 +1,14 @@
-<div class="search">
-  <input [(ngModel)]="term" type="search">
-  <button md-raised-button (click)="exec()" type="button">Buscar</button>
-</div>
+<form #searchForm="ngForm" (ngSubmit)="submit()" class="search">
+  <div class="input-container shadow">
+    <input type="search" placeholder="Buscar" name="search" autocomplete="on" [(ngModel)]="term">
+    <span class="icon left">
+      <md-icon>search</md-icon>
+    </span>
+    <span class="icon right" (click)="clear()">
+      <md-icon [hidden]="isEmpty()">close</md-icon>
+    </span>
+  </div>
+  <button class="shadow hide-mobile" type="submit">
+      <md-icon>arrow_forward</md-icon>
+    </button>
+</form>

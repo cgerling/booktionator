@@ -6,8 +6,26 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./search-bar.component.scss']
 })
 export class SearchBarComponent {
-  term: string;
-
   @Input()
   exec: Function;
+
+  term: string;
+  mode: string;
+
+  constructor() {
+    this.term = '';
+    this.mode = 'search';
+  }
+
+  isEmpty(): boolean {
+    return this.term.trim() === '';
+  }
+
+  clear(): void {
+    this.term = '';
+  }
+
+  submit(): void {
+    this.exec();
+  }
 }
