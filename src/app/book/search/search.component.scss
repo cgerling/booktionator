@@ -1,5 +1,10 @@
-.search {
-  search-bar {
-    width: 100%;
+.create-fab {
+  position: absolute;
+  bottom: 56px;
+  padding: 16px;
+  right: 0;
+
+  button[md-fab] {
+    color: #fff;
   }
 }

@@ -3,8 +3,10 @@
 
 <book-list [books]="books" [link]="bookLink"></book-list>
 
-<button md-fab [hidden]="mode == 'find'" routerLink="book/create">
-  <md-icon>add</md-icon>
-</button>
+<div class="create-fab">
+  <button md-fab [hidden]="mode == 'find'" routerLink="/book/create">
+    <md-icon>add</md-icon>
+  </button>
+</div>
 
 <navbar></navbar>
