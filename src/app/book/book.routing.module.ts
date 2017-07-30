@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'
 
+import { DetailsComponent } from './details/details.component';
 import { SearchComponent } from './search/search.component';
 import { SellComponent } from './sell/sell.component';
 
