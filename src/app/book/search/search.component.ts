@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { SearchBarComponent } from 'app/shared/components/search-bar/search-bar.component';
-import { BookService } from "app/shared/services/book.service";
+import { BookService } from 'app/shared/services/book.service';
 
 import { Book } from 'types/book';
 
