@@ -52,11 +52,14 @@ export class AuthService {
     return user !== null;
   }
 
-  async currentUser(): Promise<User> {
+  currentUser(): Promise<User> {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
-        resolve(user);
+        self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
+          let completeUser = Object.assign({}, user, userDb);
+          resolve(completeUser);
+        });
       });
     });
   }
