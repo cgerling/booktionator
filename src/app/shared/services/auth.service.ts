@@ -70,7 +70,7 @@ export class AuthService {
       if (password && password.trim() !== '')
         promises.push(user.updatePassword(password));
 
-      promises.push(this.dbFirebase.object(`/users/${user.getIdToken()}`).update({
+      promises.push(this.dbFirebase.object(`/users/${user.uid}`).update({
         postalcode: postalcode.value.trim() !== '' ? postalcode.value : undefined,
         phone: phone.value.trim() !== '' ? phone.value : undefined
       }));
