@@ -53,7 +53,7 @@ export class AuthService {
     return user !== null;
   }
 
-  getUserInfomation(): Promise<User> {
+  getUserInformation(): Promise<User> {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
