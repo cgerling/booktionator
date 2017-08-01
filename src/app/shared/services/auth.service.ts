@@ -52,7 +52,7 @@ export class AuthService {
     return user !== null;
   }
 
-  currentUser(): Promise<User> {
+  getUserInformation(): Promise<User> {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
@@ -60,6 +60,15 @@ export class AuthService {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);
         });
+      });
+    });
+  }
+
+  currentUser(): Promise<User> {
+    let self = this;
+    return new Promise<User>(function resolver(resolve) {
+      self.authFirebase.auth.onAuthStateChanged((user: User) => {
+        resolve(user);
       });
     });
   }
