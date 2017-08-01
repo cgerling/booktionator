@@ -1,0 +1,17 @@
+.form {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 8% 10%;
+
+  md-input-container,
+  password {
+    align-self: stretch;
+  }
+
+  button {
+    margin: 5% 0;
+  }
+}

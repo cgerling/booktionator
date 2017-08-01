@@ -1,12 +1,28 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule } from '@angular/material';
+import { SharedModule } from 'app/shared/shared.module';
+
+import { SettingsComponent } from './settings/settings.component';
 
 import { UserRoutingModule } from './user.routing.module';
 
 @NgModule({
   imports: [
-    UserRoutingModule
+    UserRoutingModule,
+    CommonModule,
+    FormsModule,
+    MdButtonModule,
+    MdIconModule,
+    MdInputModule,
+    MdProgressBarModule,
+    MdSnackBarModule,
+    SharedModule
   ],
-  declarations: [],
+  declarations: [
+    SettingsComponent
+  ],
   providers: [],
   exports: []
 })

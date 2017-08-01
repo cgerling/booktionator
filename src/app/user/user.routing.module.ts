@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { SettingsComponent } from './settings/settings.component';
 const routes: Routes = [
   {
-    path: '',
-    component: undefined,
+    path: 'settings',
+    component: SettingsComponent,
     children: []
   }
 ];

@@ -1,0 +1,26 @@
+<verify-account></verify-account>
+<app-menu></app-menu>
+
+<form (ngSubmit)="update()" #registerForm="ngForm" class="form" autocomplete="off">
+
+  <md-input-container>
+    <input mdInput [(ngModel)]="email" name="email" type="email" required placeholder="Email">
+    <md-error *ngIf="validator.errors.email">{{validator.errors.email}}</md-error>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="password" [type]="toggler.type" name="password" placeholder="Senha" minlength="6">
+    <password-toggle mdSuffix></password-toggle>
+    <md-error *ngIf="validator.errors.password">{{validator.errors.password}}</md-error>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="postalcode" name="postalcode" type="cep" required placeholder="CEP">
+    <md-error *ngIf="validator.errors.postalcode">{{validator.errors.postalcode}}</md-error>
+  </md-input-container>
+  <md-input-container>
+    <input mdInput [(ngModel)]="phone" name="phone" type="tel" required placeholder="Celular">
+    <md-error *ngIf="validator.errors.phone">{{validator.errors.phone}}</md-error>
+  </md-input-container>
+
+  <button md-raised-button type="submit">Salvar</button>
+</form>
+<navbar></navbar>
