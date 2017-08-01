@@ -5,6 +5,7 @@ import { StorageService, STORAGE_KEYS } from 'app/shared/services/storage.servic
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
+
 import { Email } from 'types/email';
 import { PostalCode } from 'types/postalcode';
 import { Phone } from 'types/phone';
@@ -29,7 +30,7 @@ export class AuthService {
     this.authFirebase.auth.signOut();
   }
 
-  register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<void> {
+  register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<{}> {
     let self = this, newUser;
     return new Promise(function executor(resolve, reject) {
       self.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
@@ -37,7 +38,7 @@ export class AuthService {
         return user.updateProfile({ displayName: name, photoURL: undefined });
       }).then(function updateSuccess() {
         newUser.sendEmailVerification();
-        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(resolve);
+        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve()});
       }).catch(reject);
     });
   }
@@ -52,14 +53,24 @@ export class AuthService {
     return user !== null;
   }
 
-  currentUser(): Promise<User> {
+  getUserInfomation(): Promise<User> {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
+        if(!user) return;
         self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);
         });
+      });
+    });
+  }
+
+  currentUser(): Promise<User> {
+    let self = this;
+    return new Promise<User>(function resolver(resolve) {
+      self.authFirebase.auth.onAuthStateChanged((user: User) => {
+        resolve(user);
       });
     });
   }
