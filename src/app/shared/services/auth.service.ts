@@ -61,6 +61,24 @@ export class AuthService {
     });
   }
 
+  updateUser(email?: string, password?: string, postalcode?: string, phone?: string): Promise<any> {
+    return this.currentUser().then((user: User) => {
+      let promises = [];
+      if (email && email !== user.email)
+        promises.push(user.updateEmail(email));
+
+      if (password)
+        promises.push(user.updatePassword(password));
+
+      promises.push(this.dbFirebase.object(`/users/${user.getIdToken()}`).update({
+        postalcode,
+        phone
+      }));
+
+      return Promise.all(promises);
+    })
+  }
+
   onAuthStateChanged(nextOrObserver: object, error = (a: FirebaseError) => { }, completed = () => { }): Function {
     return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
   }
