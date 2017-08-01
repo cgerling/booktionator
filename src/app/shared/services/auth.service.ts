@@ -61,18 +61,18 @@ export class AuthService {
     });
   }
 
-  updateUser(email?: string, password?: string, postalcode?: string, phone?: string): Promise<any> {
+  updateUser(email?: Email, password?: string, postalcode?: PostalCode, phone?: Phone): Promise<any> {
     return this.currentUser().then((user: User) => {
       let promises = [];
-      if (email && email !== user.email)
-        promises.push(user.updateEmail(email));
+      if (email && email.value.trim() !== '' && email.value !== user.email)
+        promises.push(user.updateEmail(email.value));
 
-      if (password)
+      if (password && password.trim() !== '')
         promises.push(user.updatePassword(password));
 
       promises.push(this.dbFirebase.object(`/users/${user.getIdToken()}`).update({
-        postalcode,
-        phone
+        postalcode: postalcode.value.trim() !== '' ? postalcode.value : undefined,
+        phone: phone.value.trim() !== '' ? phone.value : undefined
       }));
 
       return Promise.all(promises);
