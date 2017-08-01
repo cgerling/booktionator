@@ -1,0 +1,13 @@
+.create {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5% 10%;
+  width: 100%;
+
+  md-input-container {
+    align-self: stretch;
+  }
+}
