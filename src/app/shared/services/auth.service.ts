@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { StorageService, STORAGE_KEYS } from 'app/shared/services/storage.service';
-
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
@@ -14,12 +12,10 @@ import { Phone } from 'types/phone';
 export class AuthService {
   private authFirebase: AngularFireAuth;
   private dbFirebase: AngularFireDatabase;
-  private storage: StorageService;
 
-  constructor(authFirebase: AngularFireAuth, database: AngularFireDatabase, storage: StorageService) {
+  constructor(authFirebase: AngularFireAuth, database: AngularFireDatabase) {
     this.authFirebase = authFirebase;
     this.dbFirebase = database;
-    this.storage = storage;
   }
 
   login(email: string, password: string): FirebasePromise<User> {
