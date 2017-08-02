@@ -1,20 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss']
 })
-export class RatingComponent implements OnInit {
+export class RatingComponent implements OnChanges {
   @Input()
   score: number;
 
   roundScore: number;
   stars: string[];
 
-
-  ngOnInit(): void {
-    this.stars = this.toStars(this.score);
+  ngOnChanges(changes: SimpleChanges): void {
+    this.stars = this.toStars(changes.score.currentValue);
   }
 
   toStars(score: number): string[] {
