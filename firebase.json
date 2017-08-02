@@ -10,6 +10,14 @@
         "function": "search"
       },
       {
+        "source": "/api/auction/bid",
+        "function": "bid"
+      },
+      {
+        "source": "/api/book/order",
+        "function": "order"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
