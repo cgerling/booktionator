@@ -1,15 +1,21 @@
 import { Bid } from './bid';
 
 export class Auction {
+  private _uid: string;
   private _author: string;
   private _at: Date;
   private _due: Date;
   private _bids: [Bid];
   
-  constructor(author: string, at: Date, due: Date) {
+  constructor(author: string, at: Date, due: Date, uid?: string) {
+    this._uid = uid;
     this._author = author;
     this._at = at;
     this._due = due;
+  }
+  
+  get uid(): string {
+    return this._uid;
   }
   
   get author(): string {
