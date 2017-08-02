@@ -17,8 +17,13 @@ const functionInjected = function functionInjected(path, { firebase_functions, f
   return require(path)(firebase_functions, firebase_admin, cors);
 }
 
+const maxValue = function maxValue(array = [], comparator) {
+  return array.sort(comparator)[0];
+}
+
 module.exports = {
   toArray,
   isEmpty,
-  functionInjected
+  functionInjected,
+  maxValue
 }
