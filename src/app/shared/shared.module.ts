@@ -23,6 +23,7 @@ import { AuthService } from './services/auth.service';
 import { BookService } from './services/book.service';
 import { LoaderService } from './services/loader.service';
 import { StorageService } from './services/storage.service';
+import { TransactionService } from './services/transaction.service'
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -58,7 +59,8 @@ import { AuthGuard } from './guards/auth.guard';
     AuthService,
     BookService,
     LoaderService,
-    StorageService
+    StorageService,
+    TransactionService
   ],
   exports: [
     AppMenuComponent,
