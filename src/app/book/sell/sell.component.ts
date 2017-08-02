@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from 'firebase/app';
 
-import { AuthService } from 'app/shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-import { Bid } from '../../../types/bid';
-import { Offer } from '../../../types/offer';
-import { Auction } from '../../../types/auction';
+import { Bid } from 'types/bid';
+import { Offer } from 'types/offer';
+import { Auction } from 'types/auction';
 
 @Component({
   selector: 'sell',

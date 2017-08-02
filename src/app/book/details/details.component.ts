@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from 'firebase/app';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { TransactionService } from 'app/shared/services/transaction.service';
-import { AuthService } from 'app/shared/services/auth.service'
+import { TransactionService } from '../../shared/services/transaction.service';
+import { AuthService } from '../../shared/services/auth.service'
 
 import { Bid } from 'types/bid';
 import { Book } from 'types/book';

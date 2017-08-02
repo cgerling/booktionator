@@ -4,9 +4,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
 
-import { Email } from 'types/email';
-import { PostalCode } from 'types/postalcode';
-import { Phone } from 'types/phone';
+import { Email } from '../../../types/email';
+import { PostalCode } from '../../../types/postalcode';
+import { Phone } from '../../../types/phone';
 
 @Injectable()
 export class AuthService {

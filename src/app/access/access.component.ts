@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { LoaderService } from 'app/shared/services/loader.service';
-import { AuthService } from 'app/shared/services/auth.service';
+import { LoaderService } from '../shared/services/loader.service';
+import { AuthService } from '../shared/services/auth.service';
 
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'access',

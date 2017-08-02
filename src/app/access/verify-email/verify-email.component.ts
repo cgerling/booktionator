@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
-import { LoaderService } from 'app/shared/services/loader.service';
-import { AuthService } from 'app/shared/services/auth.service';
+import { LoaderService } from '../../shared/services/loader.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'verify-email',

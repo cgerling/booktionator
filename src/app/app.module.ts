@@ -7,12 +7,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { AppRoutingModule } from 'app/app-routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 
-import { environment } from 'environments/environment';
+import { environment } from '../environments/environment';
 
 @NgModule({
   imports: [

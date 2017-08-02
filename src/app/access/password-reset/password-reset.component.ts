@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { AuthService } from 'app/shared/services/auth.service';
-import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+import { AuthService } from '../../shared/services/auth.service';
+import { PasswordToggleComponent } from '../../shared/components/password-toggle/password-toggle.component';
 
-import { LoaderService } from 'app/shared/services/loader.service';
+import { LoaderService } from '../../shared/services/loader.service';
 
 @Component({
   selector: 'password-reset',

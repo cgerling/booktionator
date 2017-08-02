@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MdSnackBar } from '@angular/material';
 
-import { AuthService } from 'app/shared/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'verify-account',
