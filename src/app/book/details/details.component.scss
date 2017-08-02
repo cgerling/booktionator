@@ -1,0 +1,67 @@
+:host {
+  height: 100%;
+}
+
+.container {
+  padding: 20px;
+  md-card {
+    margin: 20px 0;
+  }
+  img {
+    width: 200px;
+  }
+  p {
+    text-align: justify;
+  }
+  md-card-title {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .book {
+    img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    .book {
+      display: block;
+      margin: 0 auto;
+      min-height: 400px;
+      max-width: 985px;
+      div {
+        float: left;
+      }
+      img {
+        margin: 0 20px 20px 20px;
+      }
+      p {
+        margin: 0 30px;
+      }
+      md-card-title {
+        min-height: 58px;
+      }
+      md-card-subtitle {
+        margin-left: 30px;
+        clear: both;
+      }
+    }
+    .offers {
+      md-card-content {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        * {
+          margin: auto 0;
+        }
+      }
+    }
+  }
+}

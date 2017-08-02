@@ -1,10 +1,79 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { User } from 'firebase/app';
+
+import { AngularFireDatabase} from 'angularfire2/database';
+
+import { TransactionService } from 'app/shared/services/transaction.service';
+import { AuthService } from 'app/shared/services/auth.service'
+
+import { Bid } from '../../../types/bid';
+import { Book } from '../../../types/book';
+import { Offer } from '../../../types/offer';
+import { Auction } from '../../../types/auction';
 
 @Component({
-  selector: 'details',
+  selector: 'book-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss']
 })
-export class DetailsComponent {
-
+export class DetailsComponent implements OnInit {
+  private router: Router;
+  private dbFirebase: AngularFireDatabase;
+  private auth: AuthService;
+  
+  private transaction: TransactionService;
+  
+  private user: User;
+  private auction: Auction;
+  private bookKey: string;
+  book: Book;
+  offers: Offer[];
+  
+  constructor(router: Router, db: AngularFireDatabase, tr: TransactionService, auth: AuthService) {
+    this.router = router;
+    this.auth = auth;
+    this.dbFirebase = db;
+    this.transaction = tr;
+  }
+  
+  ngOnInit(): void {
+    let self = this;
+    let _url = this.router.url.split('/');
+    this.bookKey = _url[_url.length - 1];
+    this.dbFirebase.object(`books/${this.bookKey}`).
+    subscribe(value => {
+      self.book = new Book(value.$key, value.title, value.description, value.author.name._name, new Date(value.date), value.publisher, value.score, value.imageUrl);
+    });
+    this.dbFirebase.list(`books/${this.bookKey}/offers`).
+    subscribe(values => {
+      self.offers = values.map(value => new Offer(value.authorUid, value.exchange, value.modality, value.$key));
+      for(let offer of self.offers) {
+        if(offer.modality === 'Leilão') {
+          offer.exchange = self.highestBid(offer.uid);
+        }
+      }
+    });
+  }
+  
+  buy(offerUid: string) {
+    this.auth.currentUser().then((user) => this.user = user)
+    this.transaction.buy(offerUid, this.book.uid, this.user.uid);
+  }
+  
+  private highestBid(offerKey: string): string {
+    let bids: Bid[];
+    this.dbFirebase.list(`auctions/${offerKey}/bids`, {
+      query: {
+        orderByChild: 'value',
+        limitToLast: 1
+      }
+    }).
+    subscribe(values => {
+      bids = values.map(value => new Bid(value.at, value.value));
+      return bids[bids.length - 1];
+    });
+    return null;
+  }
 }

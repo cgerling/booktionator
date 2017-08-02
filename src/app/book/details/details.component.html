@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+<div class="container">
+  <md-card class="book">
+    <md-card-title>{{ book.title }}</md-card-title>
+    <div>
+      <img md-card-image [src]="book.imageUrl" alt="Merlin configure a Book API">
+      <md-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</md-card-subtitle>
+    </div>
+    <p>{{ book.description }}</p>
+    <md-card-content>
+      <rating [score]="book.score"></rating>
+    </md-card-content>
+  </md-card>
+  <md-card class="offers" *ngFor="let offer of offers">
+    <md-card-content>
+      <p>Modalidade: {{ offer.modality }}</p>
+      <p *ngIf="offer.modality === 'Troca'">Item desejado: {{ offer.exchange }}</p>
+      <button md-raised-button *ngIf="offer.modality === 'Troca'" (click)="buy(offer.uid)">
+        Quero
+      </button>
+      <button md-raised-button *ngIf="offer.modality !== 'Troca'" (click)="buy(offer.uid)">R${{ offer.exchange }}</button>
+    </md-card-content>
+  </md-card>
+</div>
+<navbar></navbar>
