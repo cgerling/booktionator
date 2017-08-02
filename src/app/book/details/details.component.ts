@@ -56,7 +56,7 @@ export class DetailsComponent implements OnInit {
         self.offers = values.map(value => new Offer(value.authorUid, value.exchange, value.modality, value.$key));
         for (let offer of self.offers) {
           if (offer.modality === 'Leilão') {
-            offer.exchange = self.highestBid(offer.uid);
+            offer.exchange = ""+ ((+self.highestBid(offer.uid))*1.05);
           }
         }
       });
@@ -64,8 +64,15 @@ export class DetailsComponent implements OnInit {
   }
 
   buy(offerUid: string) {
-    this.auth.currentUser().then((user) => this.user = user)
+    this.auth.currentUser().then((user) => this.user = user);
     this.transaction.buy(offerUid, this.book.uid, this.user.uid);
+  }
+  
+  bid(offerUid: string, exchange: string) {
+    this.auth.currentUser().then((user) => this.user = user);
+    this.dbFirebase.
+    object(`auctions/${offerUid}/bids/${this.user.uid}`).
+    set(new Bid(new Date(), exchange));
   }
 
   private highestBid(offerKey: string): string {

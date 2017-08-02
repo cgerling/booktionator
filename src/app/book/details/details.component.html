@@ -18,7 +18,7 @@
       <button md-raised-button *ngIf="offer.modality === 'Troca'" (click)="buy(offer.uid)">
         Quero
       </button>
-      <button md-raised-button *ngIf="offer.modality !== 'Troca'" (click)="buy(offer.uid)">R${{ offer.exchange }}</button>
+      <button md-raised-button *ngIf="offer.modality === 'Venda'" (click)="buy(offer.uid)">R${{ offer.exchange }}</button><button md-raised-button *ngIf="offer.modality === 'Leilão'" (click)="bid(offer.uid, offer.exchange)">R${{ offer.exchange }}</button>
     </md-card-content>
   </md-card>
 </div>
