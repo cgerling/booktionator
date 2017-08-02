@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
-import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class TransactionService {
-  private http: HttpClient;
-  
-  constructor(http: HttpClient) {
+  private http: Http;
+
+  constructor(http: Http) {
     this.http = http;
   }
   
