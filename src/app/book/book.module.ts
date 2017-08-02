@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSelectModule, MdToolbarModule } from '@angular/material';
+import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSelectModule, MdToolbarModule, MdCardModule } from '@angular/material';
 
 import { BookRoutingModule } from './book.routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+
+import { TransactionService } from 'app/shared/services/transaction.service';
+import { AuthService } from 'app/shared/services/auth.service'
 
 import { CreateBookComponent } from './create-book/create-book.component';
 import { DetailsComponent } from './details/details.component';
@@ -24,6 +27,7 @@ import { SellComponent } from './sell/sell.component';
     MdInputModule,
     MdSelectModule,
     MdToolbarModule,
+    MdCardModule,
     SharedModule
   ],
   declarations: [
@@ -32,7 +36,7 @@ import { SellComponent } from './sell/sell.component';
     SearchComponent,
     SellComponent
   ],
-  providers: [],
+  providers: [TransactionService, AuthService],
   exports: []
 })
 export class BookModule { }
