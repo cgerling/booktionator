@@ -42,7 +42,7 @@ export class AppMenuComponent implements OnInit, OnDestroy {
     this.auth.logout();
   }
 
-  private routeHandle(value): void {
+  private routeHandle(value: any): void {
     this.updateUser();
   }
 

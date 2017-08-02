@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<{}> {
-    let self = this, newUser;
+    let self = this, newUser: User;
     return new Promise(function executor(resolve, reject) {
       self.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
         newUser = user;
