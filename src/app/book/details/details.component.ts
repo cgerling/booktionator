@@ -38,6 +38,8 @@ export class DetailsComponent implements OnInit {
     this.dbFirebase = db;
     this.transaction = tr;
     this.activated = activated;
+
+    this.book = new Book('', '', '', '', new Date(), '', 0, '');
   }
 
   ngOnInit(): void {
