@@ -28,8 +28,9 @@ export class SellComponent {
   private auction: Auction;
   
   private bookKey: string;
-  auctionKey: string;
-  currentUser: any;
+  private auctionKey: string;
+  private currentUser: User;
+  
   selectedModality: string;
   modalities: string[];
   exchange: string;
@@ -51,7 +52,7 @@ export class SellComponent {
   }
   
   ngOnInit(): void {
-    this.currentUser = this.auth.currentUser().then(user => {
+    this.auth.currentUser().then(user => {
       this.currentUser = user;
     });
     let _url = this.router.url.split('/');
