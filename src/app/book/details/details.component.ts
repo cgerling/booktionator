@@ -8,10 +8,10 @@ import { AngularFireDatabase} from 'angularfire2/database';
 import { TransactionService } from 'app/shared/services/transaction.service';
 import { AuthService } from 'app/shared/services/auth.service'
 
-import { Bid } from '../../../types/bid';
-import { Book } from '../../../types/book';
-import { Offer } from '../../../types/offer';
-import { Auction } from '../../../types/auction';
+import { Bid } from 'types/bid';
+import { Book } from 'types/book';
+import { Offer } from 'types/offer';
+import { Auction } from 'types/auction';
 
 @Component({
   selector: 'book-details',
