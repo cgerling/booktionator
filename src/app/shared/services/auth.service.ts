@@ -34,7 +34,7 @@ export class AuthService {
         return user.updateProfile({ displayName: name, photoURL: undefined });
       }).then(function updateSuccess() {
         newUser.sendEmailVerification();
-        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve()});
+        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve() });
       }).catch(reject);
     });
   }
@@ -53,7 +53,7 @@ export class AuthService {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
-        if(!user) return;
+        if (!user) return;
         self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);

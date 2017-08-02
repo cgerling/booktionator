@@ -23,7 +23,6 @@ export class DetailsComponent implements OnInit {
   private activated: ActivatedRoute;
   private dbFirebase: AngularFireDatabase;
   private auth: AuthService;
-
   private transaction: TransactionService;
 
   private user: User;

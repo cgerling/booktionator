@@ -23,10 +23,10 @@ export class VerifyAccountComponent implements OnInit {
     this.sent = false;
   }
 
-  sendEmail() : void{
+  sendEmail(): void {
     this.auth.currentUser().then((user) => {
       user.sendEmailVerification();
-      this.snackbar.open('Email enviado!', undefined,{
+      this.snackbar.open('Email enviado!', undefined, {
         duration: 4000
       });
       this.sent = true;

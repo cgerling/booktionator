@@ -13,8 +13,8 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class AccessComponent implements OnDestroy, OnInit {
   loading: boolean;
-
   private auth: AuthService;
+  private loader: LoaderService;
   private route: ActivatedRoute;
   private router: Router;
   private subscriber: Subscription;
@@ -23,10 +23,11 @@ export class AccessComponent implements OnDestroy, OnInit {
     this.auth = auth;
     this.route = route;
     this.router = router;
+    this.loader = loaderService;
 
     this.loading = false;
 
-    this.subscriber = loaderService.loading$.subscribe(this.onLoad.bind(this));
+    this.subscriber = this.loader.loading$.subscribe(this.onLoad.bind(this));
   }
 
   ngOnInit(): void {
