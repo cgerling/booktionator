@@ -21,7 +21,7 @@ import { Phone } from 'types/phone';
 })
 export class SettingsComponent implements AfterViewChecked, OnInit {
   @ViewChild(PasswordToggleComponent)
-  toggler = PasswordToggleComponent;
+  toggler: PasswordToggleComponent;
 
   @ViewChild(NgForm)
   form: NgForm;
