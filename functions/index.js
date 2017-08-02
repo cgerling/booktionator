@@ -15,9 +15,9 @@ const dependencies = {
 };
 
 const search = utils.functionInjected('./search', dependencies);
-const order = utils.functionInjected('./order', dependencies);
+const book = utils.functionInjected('./book', dependencies);
 const bid = utils.functionInjected('./auction', dependencies);
 
 exports.search = search.search;
-exports.order = order.order;
+exports.order = book.order;
 exports.bid = bid.bid;

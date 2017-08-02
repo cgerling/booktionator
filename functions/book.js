@@ -3,7 +3,6 @@
 const utils = require('./utils');
 
 module.exports = function exportModule(functions, firebase, cors) {
-  // Comprar: https://booktionator.firebaseapp.com/api/order?offer=OFFER_ID&book=BOOK_ID&user=USER_ID&modality=MODALITY
   const order = functions.https.onRequest(function onBuy(req, res) {
     cors(req, res, () => {
       let { offer, book, user, modality } = req.body;
@@ -38,7 +37,25 @@ module.exports = function exportModule(functions, firebase, cors) {
     });
   });
 
+  const rate = functions.https.onRequest(function onRate(req, res) {
+    cors(req, res, () => {
+      const { book, note } = req.body;
+
+      let total_buyers = 0;
+      firebase.database().ref(`/transactions`)
+        .orderByChild('product').equalTo(book).once('value').then(snapshot => {
+          //Get number of buys
+        });
+
+      firebase.database().ref(`/books/${book}`).once('value').then(snapshot => {
+        const book = snapshot.val();
+        b
+      });
+    });
+  });
+
   return {
-    order
+    order,
+    rate
   }
 }
