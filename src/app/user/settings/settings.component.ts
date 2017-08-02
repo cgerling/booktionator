@@ -99,7 +99,7 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
       self.snackbar.open('Alterações salvas!', undefined, {
         duration: 2000
       });
-    },function error(error) {
+    }, function error(error) {
       self.loader.update(false);
 
       self.snackbar.open(error.message, undefined, {
