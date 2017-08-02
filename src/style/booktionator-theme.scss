@@ -27,7 +27,9 @@ $booktionator-typography: mat-typography-config(
   $font-family: 'Roboto'
 );
 
-@include angular-material-typography($booktionator-typography);
+.booktionator-typography {
+  @include angular-material-typography($booktionator-typography);
+}
 
 //Tranform all buttons text to uppercase according to Material Design Guide Lines
 button[md-button],
