@@ -89,7 +89,7 @@ export class AuthService {
     })
   }
 
-  onAuthStateChanged(nextOrObserver: object, error = (a: FirebaseError) => { }, completed = () => { }): Function {
+  onAuthStateChanged(nextOrObserver: any, error = (a: FirebaseError): any => { }, completed = (): any => { }): Function {
     return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
   }
 
