@@ -1,5 +1,3 @@
-import { RegExp } from 'native';
-
 export class PostalCode {
   private _postalCode: string;
 
