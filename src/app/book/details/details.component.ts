@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { User } from 'firebase/app';
 
@@ -20,6 +20,7 @@ import { Auction } from 'types/auction';
 })
 export class DetailsComponent implements OnInit {
   private router: Router;
+  private activated: ActivatedRoute;
   private dbFirebase: AngularFireDatabase;
   private auth: AuthService;
 
@@ -31,23 +32,25 @@ export class DetailsComponent implements OnInit {
   book: Book;
   offers: Offer[];
 
-  constructor(router: Router, db: AngularFireDatabase, tr: TransactionService, auth: AuthService) {
+  constructor(router: Router, activated: ActivatedRoute, db: AngularFireDatabase, tr: TransactionService, auth: AuthService) {
     this.router = router;
     this.auth = auth;
     this.dbFirebase = db;
     this.transaction = tr;
+    this.activated = activated;
   }
 
   ngOnInit(): void {
     let self = this;
-    let _url = this.router.url.split('/');
-    this.bookKey = _url[_url.length - 1];
-    this.dbFirebase.object(`books/${this.bookKey}`).
-      subscribe(value => {
+
+    this.activated.params.subscribe((params) => {
+      this.bookKey = params.uid;
+
+      this.dbFirebase.object(`books/${this.bookKey}`).subscribe(value => {
         self.book = new Book(value.$key, value.title, value.description, value.author.name._name, new Date(value.date), value.publisher, value.score, value.imageUrl);
       });
-    this.dbFirebase.list(`books/${this.bookKey}/offers`).
-      subscribe(values => {
+
+      this.dbFirebase.list(`books/${this.bookKey}/offers`).subscribe(values => {
         self.offers = values.map(value => new Offer(value.authorUid, value.exchange, value.modality, value.$key));
         for (let offer of self.offers) {
           if (offer.modality === 'Leilão') {
@@ -55,6 +58,7 @@ export class DetailsComponent implements OnInit {
           }
         }
       });
+    });
   }
 
   buy(offerUid: string) {
