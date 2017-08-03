@@ -47,6 +47,10 @@ export class DetailsComponent implements OnInit {
     this.activated.params.subscribe((params) => {
       this.bookKey = params.uid;
 
+      this.auth.currentUser().then((user) => {
+        this.user = user;
+      });
+
       this.dbFirebase.object(`books/${this.bookKey}`).subscribe(value => {
         self.book = new Book(value.$key, value.title, value.description, value.author.name._name, new Date(value.date), value.publisher, value.score, value.imageUrl);
       });
@@ -63,15 +67,12 @@ export class DetailsComponent implements OnInit {
   }
 
   buy(offerUid: string) {
-    this.auth.currentUser().then((user) => this.user = user);
     this.transaction.buy(offerUid, this.book.uid, this.user.uid);
   }
-  
+
   bid(offerUid: string, exchange: string) {
-    this.auth.currentUser().then((user) => this.user = user);
-    this.dbFirebase.
-    object(`auctions/${offerUid}/bids/${this.user.uid}`).
-    set(new Bid(new Date(), exchange));
+    this.dbFirebase.object(`auctions/${offerUid}/bids/${this.user.uid}`).
+      set(new Bid(new Date(), exchange));
   }
 
   private highestBid(offerKey: string): string {
