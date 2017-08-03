@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import '_include-media';
-@import 'booktionator-theme';
+@import './_include-media.scss';
+@import './booktionator-theme.scss';
 /*Remove pre margin and padding from body and html*/
 html,
 body {

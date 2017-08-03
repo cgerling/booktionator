@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Book } from 'app/../types/book';
+import { Book } from '../../../../types/book';
 
 @Component({
   selector: 'book-list',

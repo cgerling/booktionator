@@ -1,14 +1,14 @@
-import { AfterViewChecked, Component, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 
-import { AuthService } from 'app/shared/services/auth.service';
-import { LoaderService } from 'app/shared/services/loader.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { LoaderService } from '../../shared/services/loader.service';
 
-import { FormValidator } from 'app/shared/services/formValidator.service';
+import { FormValidator } from '../../shared/services/formValidator.service';
 
-import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+import { PasswordToggleComponent } from '../../shared/components/password-toggle/password-toggle.component';
 
 import { Email } from 'types/email';
 import { PostalCode } from 'types/postalcode';

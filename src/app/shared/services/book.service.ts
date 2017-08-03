@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import { Book } from 'types/book';
+import { Book } from '../../../types/book';
 
 @Injectable()
 export class BookService {

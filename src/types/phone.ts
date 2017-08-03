@@ -1,5 +1,3 @@
-import { RegExp } from 'native';
-
 export class Phone {
   private _phone: string;
 

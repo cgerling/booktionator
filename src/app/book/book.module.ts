@@ -7,10 +7,10 @@ import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSele
 import { NgxMaskModule } from 'ngx-mask';
 
 import { BookRoutingModule } from './book.routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
-import { TransactionService } from 'app/shared/services/transaction.service';
-import { AuthService } from 'app/shared/services/auth.service'
+import { TransactionService } from '../shared/services/transaction.service';
+import { AuthService } from '../shared/services/auth.service'
 
 import { CreateBookComponent } from './create-book/create-book.component';
 import { DetailsComponent } from './details/details.component';

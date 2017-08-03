@@ -1,5 +1,3 @@
-import { RegExp } from 'native';
-
 export class Email {
   private _email: string;
 

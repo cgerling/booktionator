@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from 'app/shared/guards/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'access', loadChildren: 'app/access/access.module#AccessModule' },

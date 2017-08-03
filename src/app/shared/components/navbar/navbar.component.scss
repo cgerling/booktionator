@@ -1,4 +1,4 @@
-@import 'src/style/styles.scss';
+@import '../../../../style/styles.scss';
 
 @mixin evenly-spaced($min, $max) {
   @for $i from $min through $max {

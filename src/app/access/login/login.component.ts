@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from 'app/shared/services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 
 import { User } from 'firebase/app';
-import { PasswordToggleComponent } from 'app/shared/components/password-toggle/password-toggle.component';
+import { PasswordToggleComponent } from '../../shared/components/password-toggle/password-toggle.component';
 
 @Component({
   selector: 'login',

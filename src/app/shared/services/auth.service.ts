@@ -4,9 +4,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
 
-import { Email } from 'types/email';
-import { PostalCode } from 'types/postalcode';
-import { Phone } from 'types/phone';
+import { Email } from '../../../types/email';
+import { PostalCode } from '../../../types/postalcode';
+import { Phone } from '../../../types/phone';
 
 @Injectable()
 export class AuthService {
@@ -27,14 +27,14 @@ export class AuthService {
   }
 
   register(name: string, email: Email, password: string, postalcode: PostalCode, phone: Phone): Promise<{}> {
-    let self = this, newUser;
+    let self = this, newUser: User;
     return new Promise(function executor(resolve, reject) {
       self.authFirebase.auth.createUserWithEmailAndPassword(email.value, password).then(function creationSuccess(user: User) {
         newUser = user;
         return user.updateProfile({ displayName: name, photoURL: undefined });
       }).then(function updateSuccess() {
         newUser.sendEmailVerification();
-        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve()});
+        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve() });
       }).catch(reject);
     });
   }
@@ -53,7 +53,7 @@ export class AuthService {
     let self = this;
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
-        if(!user) return;
+        if (!user) return;
         self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);

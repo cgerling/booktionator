@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { LoaderService } from 'app/shared/services/loader.service';
-import { AuthService } from 'app/shared/services/auth.service';
+import { LoaderService } from '../shared/services/loader.service';
+import { AuthService } from '../shared/services/auth.service';
 
-import { Subscription } from "rxjs/Subscription";
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'access',
@@ -13,8 +13,8 @@ import { Subscription } from "rxjs/Subscription";
 })
 export class AccessComponent implements OnDestroy, OnInit {
   loading: boolean;
-
   private auth: AuthService;
+  private loader: LoaderService;
   private route: ActivatedRoute;
   private router: Router;
   private subscriber: Subscription;
@@ -23,10 +23,11 @@ export class AccessComponent implements OnDestroy, OnInit {
     this.auth = auth;
     this.route = route;
     this.router = router;
+    this.loader = loaderService;
 
     this.loading = false;
 
-    this.subscriber = loaderService.loading$.subscribe(this.onLoad.bind(this));
+    this.subscriber = this.loader.loading$.subscribe(this.onLoad.bind(this));
   }
 
   ngOnInit(): void {

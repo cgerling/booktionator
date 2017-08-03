@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MdCardModule } from '@angular/material';
 
 import { HomeRoutingModule } from './home.routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { HomeComponent } from './home.component';
 

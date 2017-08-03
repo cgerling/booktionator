@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, ViewChild, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'app/shared/services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
-import { SearchBarComponent } from 'app/shared/components/search-bar/search-bar.component';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -42,7 +42,7 @@ export class AppMenuComponent implements OnInit, OnDestroy {
     this.auth.logout();
   }
 
-  private routeHandle(value): void {
+  private routeHandle(value: any): void {
     this.updateUser();
   }
 
