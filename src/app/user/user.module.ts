@@ -5,6 +5,7 @@ import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSna
 import { SharedModule } from '../shared/shared.module';
 
 import { SettingsComponent } from './settings/settings.component';
+import { HistoryComponent } from './history/history.component';
 
 import { UserRoutingModule } from './user.routing.module';
 
@@ -21,7 +22,8 @@ import { UserRoutingModule } from './user.routing.module';
     SharedModule
   ],
   declarations: [
-    SettingsComponent
+    SettingsComponent,
+    HistoryComponent
   ],
   providers: [],
   exports: []
