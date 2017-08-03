@@ -18,6 +18,8 @@ export class AppMenuComponent implements OnInit, OnDestroy {
 
   private routeSubs: Subscription;
 
+  private links: { [link: string]: { path: string, params: object } };
+
   isLogged: boolean;
   loggedUser: string;
 
@@ -25,6 +27,29 @@ export class AppMenuComponent implements OnInit, OnDestroy {
     this.auth = auth;
     this.router = router;
     this.activatedRoute = activatedRoute;
+
+    this.links = {
+      'search': {
+        path: 'book/search',
+        params: {
+          queryParams: {
+            mode: 'find'
+          }
+        }
+      },
+      'add': {
+        path: 'book/search',
+        params: {
+          queryParams: {
+            mode: 'sell'
+          }
+        }
+      },
+      'history': {
+        path: '/user/history',
+        params: {}
+      }
+    };
   }
 
   ngOnInit(): void {
@@ -36,6 +61,12 @@ export class AppMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.routeSubs.unsubscribe();
+  }
+
+  redirect(link: string): void {
+    let route = this.links[link];
+
+    this.router.navigate([route.path], route.params);
   }
 
   logout(): void {

@@ -3,6 +3,17 @@
     <a class="brand" routerLink="/home">
       <img class="logo" src="assets/logo.png">Booktionator
     </a>
+    <div class="hide-mobile">
+      <button md-button (click)="redirect('search')">
+        <md-icon>search</md-icon> Buscar
+      </button>
+      <button md-button (click)="redirect('add')">
+        <md-icon>add</md-icon> Anunciar
+      </button>
+      <button md-button (click)="redirect('history')">
+        <md-icon>history</md-icon> Histórico
+      </button>
+    </div>
     <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
     <div *ngIf="isLogged">
       <button md-button [mdMenuTriggerFor]="menu">
