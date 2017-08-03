@@ -34,9 +34,9 @@
         "product",
         "modality"
       ],
+      ".read": "auth != null && auth.provider !== 'anonymous'",
+      ".write": "auth != null && (auth.uid == data.child('from').val() || auth.uid == data.child('to').val()) && auth.provider !== 'anonymous'",
       "$transaction_id": {
-        ".read": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
-        ".write": "auth != null && auth.uid == data.child('from').val() || auth.uid == data.child('to').val() && auth.provider !== 'anonymous'",
         ".validate": "newData.hasChildren(['from', 'to', 'beginAt', 'endAt', 'product', 'modality', 'exchange'])"
       }
     },
