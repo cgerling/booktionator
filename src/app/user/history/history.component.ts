@@ -22,15 +22,16 @@ export class HistoryComponent implements OnInit{
 
   private dbFirebase: AngularFireDatabase;
 
-  private self: User;
-
-  exchange: Transaction[];
-  buy: Transaction[];
+  exchanges: Transaction[];
+  buys: Transaction[];
 
   constructor(auth: AuthService, router: Router, db: AngularFireDatabase) {
-    this.auth = auth;
     this.router = router;
     this.dbFirebase = db;
+    this.auth = auth;
+
+    this.exchanges = [];
+    this.buys = [];
   }
 
   ngOnInit(){
@@ -38,19 +39,22 @@ export class HistoryComponent implements OnInit{
       this.dbFirebase.list('transactions', {
         query: {
           orderByChild: 'from',
-          equalTo: user.uid
+          equalTo: user.uid,
+          limitToFirst: 15
         }
       }).subscribe(values => {
-        this.exchange = values;
+        this.exchanges = values.map(opt => new Transaction(opt.$key, opt.from, opt.to, opt.beginAt, opt.endAt, opt.product, opt.exchange));
       });
 
       this.dbFirebase.list('transactions', {
         query: {
           orderByChild: 'to',
-          equalTo: user.uid
+          equalTo: user.uid,
+          limitToFirst: 15
+
         }
       }).subscribe(values => {
-        this.buy = values;
+        this.buys = values.map(opt => new Transaction(opt.$key, opt.from, opt.to, opt.beginAt, opt.endAt, opt.product, opt.exchange));
       });
     });
   }

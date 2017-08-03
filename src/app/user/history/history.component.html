@@ -1,19 +1,19 @@
 <app-menu></app-menu>
-  <md-tab-group>
-    <md-tab label="Compras">
-      <md-card *ngFor="let transaction of buys">
-        <md-card-title>{{ buy.product.title }}</md-card-title>
-        <md-card-subtitle>{{ buy.from }}, {{ transaction.endAt }}</md-card-subtitle>
-        <md-card-content>{{ buy.exchange }}</md-card-content>
-      </md-card>
-    </md-tab>
+<md-tab-group>
+  <md-tab label="Compras">
+    <md-card *ngFor="let transaction of buys">
+      <md-card-title>{{ transaction.product.title }}</md-card-title>
+      <md-card-subtitle>{{ transaction.from }}, {{ transaction.endAt }}</md-card-subtitle>
+      <md-card-content>{{ transaction.exchange }}</md-card-content>
+    </md-card>
+  </md-tab>
 
-    <md-tab label="Vendas">
-      <md-card *ngFor="let transaction of exchanges">
-        <md-card-title>{{ exchange.product.title }}</md-card-title>
-        <md-card-subtitle>{{ exchange.to }}, {{ transaction.endAt }}</md-card-subtitle>
-        <md-card-content>{{ exchange.exchange }}</md-card-content>
-      </md-card>
-    </md-tab>
-  </md-tab-group>
+  <md-tab label="Vendas">
+    <md-card *ngFor="let transaction of exchanges">
+      <md-card-title>{{ transaction.product }}</md-card-title>
+      <md-card-subtitle>{{ transaction.to }}, {{ exchanges.endAt }}</md-card-subtitle>
+      <md-card-content>{{ transaction.exchange }}</md-card-content>
+    </md-card>
+  </md-tab>
+</md-tab-group>
 <navbar></navbar>

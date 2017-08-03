@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule } from '@angular/material';
+import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule, MdTabsModule, MdCardModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
 import { SettingsComponent } from './settings/settings.component';
@@ -19,6 +19,8 @@ import { UserRoutingModule } from './user.routing.module';
     MdInputModule,
     MdProgressBarModule,
     MdSnackBarModule,
+    MdTabsModule,
+    MdCardModule,
     SharedModule
   ],
   declarations: [
