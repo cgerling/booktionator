@@ -32,7 +32,7 @@ export class NavbarComponent {
         }
       },
       'history': {
-        path: 'home',
+        path: '/user/history',
         params: {}
       }
     };
