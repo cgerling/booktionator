@@ -8,3 +8,9 @@
     color: #fff;
   }
 }
+
+@media only screen and (min-width: 601px) {
+  .create-fab {
+    bottom: 0;
+  }
+}
