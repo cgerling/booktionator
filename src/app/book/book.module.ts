@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdSelectModule, MdToolbarModule, MdCardModule } from '@angular/material';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 import { BookRoutingModule } from './book.routing.module';
 import { SharedModule } from '../shared/shared.module';
 
@@ -28,6 +30,7 @@ import { SellComponent } from './sell/sell.component';
     MdSelectModule,
     MdToolbarModule,
     MdCardModule,
+    NgxMaskModule,
     SharedModule
   ],
   declarations: [
