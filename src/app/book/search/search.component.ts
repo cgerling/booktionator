@@ -30,8 +30,8 @@ export class SearchComponent implements OnInit {
     this.route = route;
 
     this.modes = {
-      'sell': 'book/sell',
-      'find': 'book/details'
+      'sell': '/book/sell',
+      'find': '/book/details'
     }
   }
 
