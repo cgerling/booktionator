@@ -6,5 +6,9 @@ export const environment = {
     databaseURL: 'https://booktionator.firebaseio.com',
     projectId: 'booktionator',
     storageBucket: 'booktionator.appspot.com'
+  },
+  googleBooks: {
+    apiKey: 'AIzaSyBT1K_Wh7dHuYRZhHryLeRsIQS-yOF4oxc',
+    url: 'https://content.googleapis.com/books/v1'
   }
 };
