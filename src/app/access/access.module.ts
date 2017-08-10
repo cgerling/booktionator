@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 import { AccessRoutingModule } from './access.routing.module';
 
 import { AccessComponent } from './access.component';
@@ -23,6 +25,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     MdInputModule,
     MdProgressBarModule,
     MdSnackBarModule,
+    NgxMaskModule,
     SharedModule
   ],
   declarations: [
