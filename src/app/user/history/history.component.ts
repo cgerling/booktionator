@@ -5,7 +5,7 @@ import { User } from 'firebase/app';
 
 import { AuthService } from 'app/shared/services/auth.service';
 
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Transaction } from '../../../types/transaction';
 
@@ -15,7 +15,7 @@ import { Transaction } from '../../../types/transaction';
   styleUrls: ['./history.component.scss']
 })
 
-export class HistoryComponent implements OnInit{
+export class HistoryComponent implements OnInit {
   private auth: AuthService;
 
   private router: Router;
@@ -34,7 +34,7 @@ export class HistoryComponent implements OnInit{
     this.buys = [];
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.auth.getUserInformation().then(user => {
       this.dbFirebase.list('transactions', {
         query: {
