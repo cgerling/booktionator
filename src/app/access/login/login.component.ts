@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../../shared/services/auth.service';
 
-import { User } from 'firebase/app';
+import { User, FirebaseError } from 'firebase/app';
 import { PasswordToggleComponent } from '../../shared/components/password-toggle/password-toggle.component';
 
 @Component({
@@ -32,9 +32,27 @@ export class LoginComponent {
     this.error = false;
     this.service.login(this.email, this.password).then((user: User) => {
       this.router.navigate(['/home']);
-    }).catch(error => {
+    }).catch((error: FirebaseError) => {
       this.error = true;
-      this.errorMessage = 'Email ou senha inválidos.';
+      switch (error.code) {
+        case 'auth/network-request-failed':
+          this.errorMessage = 'Não foi possível completar a operação. Por favor verifique a sua conexão.';
+          break;
+        case 'auth/user-disabled':
+          this.errorMessage = 'Esse usuário foi desabilitado.';
+          break;
+        case 'auth/web-storage-unsupported':
+          this.errorMessage = 'Web Storage desabilitado ou o navegador não suporta este recurso.';
+          break;
+        case 'auth/too-many-requests':
+          this.errorMessage = 'Limite de tentavias excedido, tente novamente mais tarde.';
+          break;
+        case 'auth/user-not-found':
+          this.errorMessage = 'Email ou senha inválidas.';
+          break;
+        default:
+          this.errorMessage = 'Ocorreu um erro inesperado, tente novamente.';
+      }
     });
   }
 }
