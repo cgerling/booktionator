@@ -2,7 +2,7 @@
   "rules": {
     "users": {
       "$user_id": {
-        ".read": "auth != null && auth.uid === $user_id && auth.provider !== 'anonymous'",
+        ".read": "auth != null && auth.provider !== 'anonymous'",
         ".write": "auth != null && auth.uid === $user_id && auth.provider !== 'anonymous'",
         ".validate": "newData.hasChildren(['phone', 'postalcode'])"
       }
