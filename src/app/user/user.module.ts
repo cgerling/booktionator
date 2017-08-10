@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule, MdTabsModule, MdCardModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 import { SettingsComponent } from './settings/settings.component';
 import { HistoryComponent } from './history/history.component';
 
@@ -21,7 +23,8 @@ import { UserRoutingModule } from './user.routing.module';
     MdSnackBarModule,
     MdTabsModule,
     MdCardModule,
-    SharedModule
+    SharedModule,
+    NgxMaskModule
   ],
   declarations: [
     SettingsComponent,
