@@ -92,7 +92,6 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
     let self = this;
 
     this.service.updateUser(email, this.password, postalcode, phone).then(function saved(values) {
-      console.log(values);
       self.loader.update(false);
 
       self.reset();
