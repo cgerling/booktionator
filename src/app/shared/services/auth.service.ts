@@ -74,15 +74,15 @@ export class AuthService {
   updateUser(email?: Email, password?: string, postalcode?: PostalCode, phone?: Phone): Promise<any> {
     return this.currentUser().then((user: User) => {
       let promises = [];
-      if (email && email.value.trim() !== '' && email.value !== user.email)
+      if (email && email.value !== '' && email.value !== user.email)
         promises.push(user.updateEmail(email.value));
 
       if (password && password.trim() !== '')
         promises.push(user.updatePassword(password));
 
       promises.push(this.dbFirebase.object(`/users/${user.uid}`).update({
-        postalcode: postalcode.value.trim() !== '' ? postalcode.value : undefined,
-        phone: phone.value.trim() !== '' ? phone.value : undefined
+        postalcode: postalcode && postalcode.value !== '' ? postalcode.value : undefined,
+        phone: phone && phone.value !== '' ? phone.value : undefined
       }));
 
       return Promise.all(promises);
