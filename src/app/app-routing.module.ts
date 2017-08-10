@@ -7,8 +7,7 @@ const routes: Routes = [
   { path: 'access', loadChildren: 'app/access/access.module#AccessModule' },
   { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
   {
-    path: 'book', loadChildren: 'app/book/book.module#BookModule',
-    canActivate: [AuthGuard], canActivateChild: [AuthGuard], canLoad: [AuthGuard]
+    path: 'book', loadChildren: 'app/book/book.module#BookModule'
   },
   {
     path: 'user', loadChildren: 'app/user/user.module#UserModule',

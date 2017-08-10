@@ -6,9 +6,12 @@ import { SearchComponent } from './search/search.component';
 import { SellComponent } from './sell/sell.component';
 import { CreateBookComponent } from './create-book/create-book.component';
 
+import { AuthGuard } from '../shared/guards/auth.guard';
+
 const routes: Routes = [
   {
     path: 'sell/:uid', component: SellComponent,
+    canActivate: [AuthGuard], canLoad: [AuthGuard]
   },
   {
     path: 'search', component: SearchComponent
@@ -20,7 +23,8 @@ const routes: Routes = [
     path: 'details/:uid', component: DetailsComponent
   },
   {
-    path: 'create', component: CreateBookComponent
+    path: 'create', component: CreateBookComponent,
+    canActivate: [AuthGuard], canLoad: [AuthGuard]
   }
 ];
 
