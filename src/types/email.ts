@@ -11,7 +11,7 @@ export class Email {
   }
 
   get value(): string {
-    return this._email;
+    return this._email.trim();
   }
 
   get valid(): boolean {

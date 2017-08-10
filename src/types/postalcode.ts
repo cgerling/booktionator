@@ -11,7 +11,7 @@ export class PostalCode {
   }
 
   get value(): string {
-    return this._postalCode;
+    return this._postalCode.trim();
   }
 
   get valid(): boolean {

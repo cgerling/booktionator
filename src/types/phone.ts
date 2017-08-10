@@ -11,7 +11,7 @@ export class Phone {
   }
 
   get value(): string {
-    return this._phone;
+    return this._phone.trim();
   }
 
   get valid(): boolean {
