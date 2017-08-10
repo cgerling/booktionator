@@ -21,6 +21,7 @@ import { CepValidatorDirective } from './directives/cepValidator.directive';
 
 import { AuthService } from './services/auth.service';
 import { BookService } from './services/book.service';
+import { GoogleBooks } from './services/googleBooks.service';
 import { LoaderService } from './services/loader.service';
 import { TransactionService } from './services/transaction.service'
 
@@ -56,6 +57,7 @@ import { AuthGuard } from './guards/auth.guard';
   providers: [
     AuthGuard,
     AuthService,
+    GoogleBooks,
     BookService,
     LoaderService,
     TransactionService
