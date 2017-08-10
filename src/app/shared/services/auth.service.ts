@@ -34,7 +34,11 @@ export class AuthService {
         return user.updateProfile({ displayName: name, photoURL: undefined });
       }).then(function updateSuccess() {
         newUser.sendEmailVerification();
-        self.dbFirebase.object('/users/' + newUser.uid).set({ name, postalcode, phone }).then(() => { resolve() });
+        self.dbFirebase.object('/users/' + newUser.uid).set({
+          name,
+          postalcode: postalcode.value,
+          phone: phone.value
+        }).then(() => { resolve() });
       }).catch(reject);
     });
   }
