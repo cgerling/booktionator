@@ -13,11 +13,11 @@
     <md-error *ngIf="validator.errors.password">{{validator.errors.password}}</md-error>
   </md-input-container>
   <md-input-container>
-    <input mdInput mask="00000-000" [(ngModel)]="postalcode" name="postalcode" type="text" required placeholder="CEP">
+    <input mdInput mask="00000-000" [(ngModel)]="postalcode" name="postalcode" type="postalcode" required placeholder="CEP">
     <md-error *ngIf="validator.errors.postalcode">{{validator.errors.postalcode}}</md-error>
   </md-input-container>
   <md-input-container>
-    <input mdInput mask="(00) 0000-00000" specialCharacters="false" [(ngModel)]="phone" name="phone" type="text" required placeholder="Celular">
+    <input mdInput mask="(00) 0000-00000" specialCharacters="false" [(ngModel)]="phone" name="phone" type="phone" required placeholder="Celular">
     <md-error *ngIf="validator.errors.phone">{{validator.errors.phone}}</md-error>
   </md-input-container>
 
