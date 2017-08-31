@@ -1,14 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Book } from '../../../../types/book';
+import { Book } from '../../../../types/types';
 
 @Component({
   selector: 'book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss']
 })
-
 export class BookListComponent {
 
   @Input()
