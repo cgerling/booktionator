@@ -15,10 +15,7 @@
       ],
       "$book_id": {
         ".write": "auth != null && auth.provider !== 'anonymous'",
-        ".validate": "newData.hasChildren(['title','synopsis','author','date', 'publisher', 'score'])",
-        "author": {
-          ".validate": "newData.hasChildren(['name'])"
-        },
+        ".validate": "newData.hasChildren(['title','description','author','date', 'score', 'image', 'publisher'])",
         "offers": {
           "$offer_id": {
             ".write": "auth != null && newData.child('author').val() == auth.uid",
