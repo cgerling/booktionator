@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AngularFireDatabase} from 'angularfire2/database';
 
-import { Book } from '../../types/book';
+import { Book } from '../../types/types';
 
 @Component({
   selector: 'home',
@@ -32,8 +32,18 @@ export class HomeComponent implements OnInit {
         limitToLast: 12
       }
     }).subscribe(values => {
-      self.books = values.map(value => new Book(value.$key, value.title, value.description, value.author.name._name, new Date(value.date), value.publisher, value.score, value.imageUrl))
-        .sort((v1, v2) => (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0);
+      self.books = values.map(value => {
+        return <Book>{
+          uid: value.$key,
+          title: value.title,
+          description: value.description,
+          author: value.author,
+          date: new Date(value.date),
+          publisher: value.publisher,
+          score: value.score,
+          image: value.image
+        };
+      }).sort((v1, v2) => (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0);
     });
   }
 }
