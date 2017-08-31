@@ -9,8 +9,10 @@
     <span mdPrefix *ngIf="selectedModality === 'Leilão' || selectedModality === 'Venda'">R$ &nbsp;</span>
     <input *ngIf="selectedModality === ''" mdInput placeholder="Moeda de troca" type="text" [(ngModel)]="exchange" name="genericInput">
     <input *ngIf="selectedModality === 'Troca'" mdInput placeholder="Livro desejado" type="text" [(ngModel)]="exchange" name="trading">
-    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Venda'" mdInput placeholder="Preço" type="number" [(ngModel)]="exchange" name="selling">
-    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Leilão'" mdInput placeholder="Lance inicial" type="number" [(ngModel)]="exchange" name="auctioning">
+    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Venda'" mdInput placeholder="Preço" type="number"
+      [(ngModel)]="exchange" name="selling">
+    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Leilão'" mdInput placeholder="Lance inicial"
+      type="number" [(ngModel)]="exchange" name="auctioning">
   </md-input-container>
   <md-input-container [hidden]="selectedModality !== 'Leilão'" name="aucionOnly" class="auctionInput">
     <input mdInput [mdDatepicker]="picker" [(ngModel)]="due" [min]="minDate" [max]="maxDate" placeholder="Prazo do leilão" name="auctionDue">
