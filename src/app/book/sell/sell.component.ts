@@ -74,12 +74,13 @@ export class SellComponent {
     let self = this;
     this.auction = new Auction(this.currentUser.uid, new Date(), this.due);
     this.bid = new Bid(new Date(), this.exchange);
-    this.dbFirebase.list('auctions').push(this.auction).
-      then(auction => {
-        self.auctionKey = auction.key;
-      });
-    this.dbFirebase.list(`auctions/${self.auctionKey}/bids`).
-      push(this.bid);
+    this.dbFirebase.list('auctions').push({
+      ...this.auction,
+      due: this.auction.due.toJSON()
+    }).then(auction => {
+      self.auctionKey = auction.key;
+    });
+    this.dbFirebase.list(`auctions/${self.auctionKey}/bids`).push(this.bid);
   }
 
 }
