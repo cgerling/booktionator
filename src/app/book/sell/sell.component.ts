@@ -63,11 +63,10 @@ export class SellComponent {
     this.offer = new Offer(this.currentUser.uid, this.exchange, this.selectedModality);
     if (this.selectedModality === this.modalities[3]) {
       this.createAuction();
-      this.dbFirebase.
-        object(`books/${this.bookKey}/offers/${this.auctionKey}`).
-        set(this.offer);
-      return;
-    } this.dbFirebase.list(`books/${this.bookKey}/offers`).push(this.offer);
+      this.dbFirebase.object(`books/${this.bookKey}/offers/${this.auctionKey}`).set(this.offer);
+    } else {
+      this.dbFirebase.list(`books/${this.bookKey}/offers`).push(this.offer);
+    }
   }
 
   private createAuction(): void {
