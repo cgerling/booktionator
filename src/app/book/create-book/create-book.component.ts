@@ -36,10 +36,11 @@ export class CreateBookComponent {
       const imageDefault = '/assets/logo.png';
       const book = volume.items && volume.items.length > 0 ? volume.items[0] : imageDefault;
       const imageUrl = book.imageLinks ? book.imageLinks.thumbnail ? book.imageLinks.thumbnail : imageDefault : imageDefault;
+
       this.database.list('/books').push({
         title: this.title,
         author: this.author,
-        date: this.date,
+        date: this.date.toJSON(),
         score: 0,
         publisher: this.publisher,
         description: this.description,
