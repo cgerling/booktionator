@@ -38,9 +38,7 @@ export class CreateBookComponent {
       const imageUrl = book.imageLinks ? book.imageLinks.thumbnail ? book.imageLinks.thumbnail : imageDefault : imageDefault;
       this.database.list('/books').push({
         title: this.title,
-        author: {
-          name: this.author
-        },
+        author: this.author,
         date: this.date,
         score: 0,
         publisher: this.publisher,
