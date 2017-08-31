@@ -44,7 +44,7 @@ export class CreateBookComponent {
         score: 0,
         publisher: this.publisher,
         description: this.description,
-        imageUrl: imageUrl
+        image: imageUrl
       });
     });
   }
