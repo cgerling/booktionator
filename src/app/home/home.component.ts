@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Book } from '../../types/types';
 
