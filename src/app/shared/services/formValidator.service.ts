@@ -42,7 +42,7 @@ export class FormValidator {
         const messages = this.messages[field];
 
         for (const key in control.errors) {
-          this.errors[field] += messages[key] + '';
+          this.errors[field] += messages[key] || '';
         }
       }
     }
