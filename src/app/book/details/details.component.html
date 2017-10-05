@@ -8,7 +8,7 @@
     </div>
     <p>{{ book.description }}</p>
     <md-card-content>
-      <rate [score]="book.score"></rate>
+      <rate [score]="book.score" disabled></rate>
     </md-card-content>
   </md-card>
   <md-card class="offers" *ngFor="let offer of offers">
