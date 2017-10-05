@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'rating',
-  templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.scss']
+  selector: 'rate',
+  templateUrl: './rate.component.html',
+  styleUrls: ['./rate.component.scss']
 })
 export class RatingComponent implements OnInit, OnChanges {
   private icons: { [key: string]: string };

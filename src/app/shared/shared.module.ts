@@ -13,7 +13,7 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RatingComponent } from './components/rating/rating.component';
+import { RateComponent } from './components/rate/rate.component';
 
 import { EmailValidatorDirective } from './directives/emailValidator.directive';
 import { TelValidatorDirective } from './directives/telValidator.directive';
@@ -48,7 +48,7 @@ import { AuthGuard } from './guards/auth.guard';
     EmailValidatorDirective,
     NavbarComponent,
     PasswordToggleComponent,
-    RatingComponent,
+    RateComponent,
     ResultViewerComponent,
     TelValidatorDirective,
     SearchBarComponent,
@@ -70,7 +70,7 @@ import { AuthGuard } from './guards/auth.guard';
     EmailValidatorDirective,
     NavbarComponent,
     PasswordToggleComponent,
-    RatingComponent,
+    RateComponent,
     ResultViewerComponent,
     TelValidatorDirective,
     SearchBarComponent,
