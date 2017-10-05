@@ -1,9 +1,13 @@
 :host {
   align-items: center;
+  color: #ffd600;
+  cursor: pointer;
   display: flex;
   justify-content: center;
+  user-select: none;
+}
 
-  md-icon {
-    color: #ffd600
-  }
+:host([disabled]) {
+  cursor: default;
+  pointer-events: none;
 }

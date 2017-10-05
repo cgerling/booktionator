@@ -1,15 +1,20 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss']
 })
-export class RatingComponent implements OnChanges {
+export class RatingComponent implements OnInit, OnChanges {
   private icons: { [key: string]: string };
 
   @Input()
   score: number;
+  @Input()
+  disabled: string;
+
+  @Output()
+  rated: EventEmitter<number>;
 
   roundScore: number;
   stars: string[];
@@ -20,10 +25,17 @@ export class RatingComponent implements OnChanges {
       'half': 'star_half',
       'full': 'star'
     };
+
+    this.rated = new EventEmitter<number>(true);
+  }
+
+  ngOnInit(): void {
+    const score = Number.parseFloat(this.score.toString()) || 0;
+    this.setScore(score);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.stars = this.toStars(changes.score.currentValue);
+    this.setScore(changes.score.currentValue);
   }
 
   toStars(score: number): string[] {
@@ -43,5 +55,30 @@ export class RatingComponent implements OnChanges {
     }
 
     return stars;
+  }
+
+  rate(event, saveScore = false): void {
+    if (this.isDisabled()) return;
+
+    const note = Number.parseInt(event.target.attributes.index.value) + 1;
+    this.updateStars(note);
+
+    if (saveScore) {
+      this.setScore(note);
+      this.rated.emit(note);
+    }
+  }
+
+  updateStars(score = this.score): void {
+    this.stars = this.toStars(score);
+  }
+
+  setScore(score: number): void {
+    this.score = score;
+    this.updateStars();
+  }
+
+  private isDisabled(): boolean {
+    return typeof this.disabled === 'string' && this.disabled.length >= 0;
   }
 }
