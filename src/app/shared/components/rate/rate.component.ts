@@ -5,7 +5,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, Output, EventEmitte
   templateUrl: './rate.component.html',
   styleUrls: ['./rate.component.scss']
 })
-export class RatingComponent implements OnInit, OnChanges {
+export class RateComponent implements OnInit, OnChanges {
   private icons: { [key: string]: string };
 
   @Input()
