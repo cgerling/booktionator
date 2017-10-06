@@ -14,6 +14,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { VerifyAccountComponent } from './components/verify-account/verify-account.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RateComponent } from './components/rate/rate.component';
+import { InstructionsComponent } from './components/instructions/instructions.component';
 
 import { EmailValidatorDirective } from './directives/emailValidator.directive';
 import { TelValidatorDirective } from './directives/telValidator.directive';
@@ -52,7 +53,8 @@ import { AuthGuard } from './guards/auth.guard';
     ResultViewerComponent,
     TelValidatorDirective,
     SearchBarComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    InstructionsComponent
   ],
   providers: [
     AuthGuard,
@@ -74,7 +76,8 @@ import { AuthGuard } from './guards/auth.guard';
     ResultViewerComponent,
     TelValidatorDirective,
     SearchBarComponent,
-    VerifyAccountComponent
+    VerifyAccountComponent,
+    InstructionsComponent
   ]
 })
 export class SharedModule { }
