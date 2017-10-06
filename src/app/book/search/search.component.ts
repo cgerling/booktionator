@@ -23,7 +23,9 @@ export class SearchComponent implements OnInit {
   books: Book[];
   bookLink: string;
 
+  instructions: string;
   modes: { [key: string]: string };
+  instructionsMessages: { [key: string]: string };
 
   constructor(bookService: BookService, route: ActivatedRoute) {
     this.bookService = bookService;
@@ -32,7 +34,12 @@ export class SearchComponent implements OnInit {
     this.modes = {
       'sell': '/book/sell',
       'find': '/book/details'
-    }
+    };
+
+    this.instructionsMessages = {
+      'sell': 'Procure um livro ou cadastre um que ainda não existe no botão \'+\' para anunciar',
+      'find': 'Procure um livro para ver os detalhes e comprar'
+    };
   }
 
   ngOnInit(): void {
@@ -50,6 +57,7 @@ export class SearchComponent implements OnInit {
       this.mode = queryParams.mode;
 
       this.bookLink = this.modes[this.mode];
+      this.instructions = this.instructionsMessages[this.mode];
     });
   }
 
