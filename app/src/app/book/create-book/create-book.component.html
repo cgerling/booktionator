@@ -1,7 +1,3 @@
-<app-menu></app-menu>
-
-<md-progress-bar [hidden]="!loading" mode="indeterminate"></md-progress-bar>
-
 <form class="create" #createBookForm="ngForm" (ngSubmit)="save()">
   <md-input-container>
     <input mdInput [(ngModel)]="title" name="title" type="text" placeholder="Título" required>

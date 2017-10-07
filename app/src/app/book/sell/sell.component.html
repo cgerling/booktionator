@@ -1,4 +1,3 @@
-<app-menu></app-menu>
 <form (ngSubmit)="sell()">
   <md-select placeholder="Modalidade" name="modality" [(ngModel)]="selectedModality" class="dropdown">
     <md-option *ngFor="let modality of modalities" [value]="modality">
