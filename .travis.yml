@@ -17,8 +17,10 @@ script:
   - cd ..
 
 deploy:
+  provider: script
   skip_cleanup: true
-  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+  script:
+    - firebase deploy --token $FIREBASE_TOKEN --non-interactive
 
 notifications:
   email:
