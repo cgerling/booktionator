@@ -36,15 +36,15 @@ export class PasswordResetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loader.update(true);
+    this.loader.setState(true);
     this.activatedRoute.params.subscribe((params: Params) => {
       this.oobCode = params.oobCode;
       this.auth.verifyPasswordResetCode(this.oobCode)
         .then(email => {
-          this.loader.update(false);
+          this.loader.setState(false);
           this.email = email;
         }).catch(error => {
-          this.loader.update(false);
+          this.loader.setState(false);
           this.validCode = false;
           console.log(error.message);
         })
@@ -52,14 +52,14 @@ export class PasswordResetComponent implements OnInit {
   }
 
   resetPassword(): void {
-    this.loader.update(true);
+    this.loader.setState(true);
     this.auth.resetPassword(this.oobCode, this.newPassword).then(() => {
       return this.auth.login(this.email, this.newPassword);
     }).then(() => {
-      this.loader.update(false);
+      this.loader.setState(false);
       this.router.navigate(['/home']);
     }).catch(error => {
-      this.loader.update(false);
+      this.loader.setState(false);
       console.log(error)
     });
   }
