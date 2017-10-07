@@ -1,21 +1,28 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from "rxjs/Subject";
-import { Observable } from "rxjs/Observable";
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class LoaderService {
-  private isLoading: Subject<boolean>;
+  private static instance: LoaderService = null;
 
-  loading$: Observable<boolean>;
+  state: BehaviorSubject<boolean>;
 
-  constructor() {
-    this.isLoading = new Subject<boolean>();
+  public static getInstance(): LoaderService {
+    if (LoaderService.instance === null) {
+      LoaderService.instance = new LoaderService();
+    }
 
-    this.loading$ = this.isLoading.asObservable();
+    return LoaderService.instance;
   }
 
-  update(loading: boolean): void {
-    this.isLoading.next(loading);
+  constructor() {
+    this.state = new BehaviorSubject<boolean>(false);
+  }
+
+  setState(isLoading: boolean): void {
+    this.state.next(isLoading);
   }
 }
