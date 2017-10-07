@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './access.component.html',
   styleUrls: ['./access.component.scss']
 })
-export class AccessComponent implements OnDestroy, OnInit {
+export class AccessComponent implements OnInit {
   loading: boolean;
   private auth: AuthService;
   private loader: LoaderService;
@@ -24,10 +24,6 @@ export class AccessComponent implements OnDestroy, OnInit {
     this.route = route;
     this.router = router;
     this.loader = loaderService;
-
-    this.loading = false;
-
-    this.subscriber = this.loader.loading$.subscribe(this.onLoad.bind(this));
   }
 
   ngOnInit(): void {
@@ -52,13 +48,5 @@ export class AccessComponent implements OnDestroy, OnInit {
 
       this.router.navigate([route, oobCode]);
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subscriber.unsubscribe();
-  }
-
-  onLoad(isLoading: boolean): void {
-    this.loading = isLoading;
   }
 }
