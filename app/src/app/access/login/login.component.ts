@@ -2,6 +2,7 @@ import { Component, ViewChild, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../shared/services/auth.service';
+import { LoaderService } from 'app/shared/services/loader.service';
 
 import { User, FirebaseError } from 'firebase/app';
 import { PasswordToggleComponent } from '../../shared/components/password-toggle/password-toggle.component';
@@ -14,6 +15,7 @@ import { PasswordToggleComponent } from '../../shared/components/password-toggle
 export class LoginComponent {
   private service: AuthService;
   private router: Router;
+  private loader: LoaderService;
 
   @ViewChild(PasswordToggleComponent)
   toggler: PasswordToggleComponent;
@@ -26,14 +28,18 @@ export class LoginComponent {
   constructor(service: AuthService, router: Router) {
     this.service = service;
     this.router = router;
+    this.loader = LoaderService.getInstance();
   }
 
   login(): void {
     this.error = false;
+    this.loader.setState(true);
     this.service.login(this.email, this.password).then((user: User) => {
+      this.loader.setState(false);
       this.router.navigate(['/home']);
     }).catch((error: FirebaseError) => {
       this.error = true;
+      this.loader.setState(false);
       switch (error.code) {
         case 'auth/network-request-failed':
           this.errorMessage = 'Não foi possível completar a operação. Por favor verifique a sua conexão.';
