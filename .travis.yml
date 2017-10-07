@@ -10,13 +10,12 @@ install:
   - npm install -g firebase-tools @angular/cli
   - cd app/
   - npm install
-  - cd ../functions
-  - npm install
-
-before_script:
-  - cd ../app
+  - cd ..
 
 script:
+  - cd functions/
+  - npm install
+  - cd ../app
   - npm run ci
 
 after_success:
