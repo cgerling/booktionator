@@ -13,6 +13,9 @@ install:
   - cd ../functions
   - npm install
 
+before_script:
+  - cd ../app
+
 script:
   - npm run ci
 
