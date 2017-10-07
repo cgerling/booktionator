@@ -19,11 +19,8 @@ before_script:
 script:
   - npm run ci
 
-deploy:
-  provider: script
-  script:
+after_success:
     - firebase deploy --token $FIREBASE_TOKEN --non-interactive
-  skip_cleanup: true
 
 notifications:
   email:
