@@ -20,9 +20,10 @@ script:
   - npm run ci
 
 deploy:
-  - provider: script
-    script:
-      - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+  provider: script
+  script:
+    - firebase deploy --token $FIREBASE_TOKEN --non-interactive
+  skip_cleanup: true
 
 notifications:
   email:
