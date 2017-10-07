@@ -11,14 +11,14 @@ export class AppComponent implements OnInit {
 
   private loader: LoaderService;
 
-  constructor(loader: LoaderService) {
-    this.loader = loader;
+  constructor() {
+    this.loader = LoaderService.getInstance();
 
     this.loading = false;
   }
 
   ngOnInit(): void {
-    this.loader.loading$.subscribe(this.onLoad.bind(this));
+    this.loader.state.subscribe(this.onLoad.bind(this));
   }
 
   onLoad(isLoading: boolean): void {
