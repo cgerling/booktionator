@@ -59,10 +59,10 @@ export class RegisterComponent implements AfterViewChecked {
   private loader: LoaderService;
   private router: Router;
 
-  constructor(service: AuthService, snackbar: MdSnackBar, loaderService: LoaderService, router: Router) {
+  constructor(service: AuthService, snackbar: MdSnackBar, router: Router) {
     this.service = service;
     this.snackbar = snackbar;
-    this.loader = loaderService;
+    this.loader = LoaderService.getInstance();
     this.router = router;
 
     this.validator = new FormValidator(this.form, this.messages, this.error);
@@ -75,7 +75,7 @@ export class RegisterComponent implements AfterViewChecked {
   register(): void {
     if (!this.form.valid) return;
 
-    this.loader.update(true);
+    this.loader.setState(true);
 
     let email = new Email(this.email);
     let postalcode = new PostalCode(this.postalcode);
@@ -83,7 +83,7 @@ export class RegisterComponent implements AfterViewChecked {
 
     let self = this;
     this.service.register(this.name, email, this.password, postalcode, phone).then(function registered() {
-      self.loader.update(false);
+      self.loader.setState(false);
 
       self.reset();
       self.snackbar.open('Registro efetuado! Um email de confirmação foi enviado.', undefined, {
@@ -91,7 +91,7 @@ export class RegisterComponent implements AfterViewChecked {
       });
       self.router.navigate(['/home']);
     }, function error(error) {
-      self.loader.update(false);
+      self.loader.setState(false);
 
       self.snackbar.open(error.message, undefined, {
         duration: 2000

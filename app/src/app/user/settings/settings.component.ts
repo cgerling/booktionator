@@ -58,10 +58,10 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
   private loader: LoaderService;
   private router: Router;
 
-  constructor(service: AuthService, snackbar: MdSnackBar, loaderService: LoaderService, router: Router) {
+  constructor(service: AuthService, snackbar: MdSnackBar, router: Router) {
     this.service = service;
     this.snackbar = snackbar;
-    this.loader = loaderService;
+    this.loader = LoaderService.getInstance();
     this.router = router;
 
     this.validator = new FormValidator(this.form, this.messages, this.error);
@@ -83,7 +83,7 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
   update(): void {
     if (!this.form.valid) return;
 
-    this.loader.update(true);
+    this.loader.setState(true);
 
     let email = new Email(this.email);
     let phone = new Phone(this.phone);
@@ -92,14 +92,14 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
     let self = this;
 
     this.service.updateUser(email, this.password, postalcode, phone).then(function saved(values) {
-      self.loader.update(false);
+      self.loader.setState(false);
 
       self.reset();
       self.snackbar.open('Alterações salvas!', undefined, {
         duration: 2000
       });
     }, function error(error) {
-      self.loader.update(false);
+      self.loader.setState(false);
 
       self.snackbar.open(error.message, undefined, {
         duration: 2000

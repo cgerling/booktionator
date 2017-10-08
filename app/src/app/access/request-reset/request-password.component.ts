@@ -38,9 +38,9 @@ export class RequestPasswordComponent implements AfterViewChecked {
   private loader: LoaderService;
   private snackbar: MdSnackBar;
 
-  constructor(auth: AuthService, loader: LoaderService, snackbar: MdSnackBar) {
+  constructor(auth: AuthService, snackbar: MdSnackBar) {
     this.auth = auth;
-    this.loader = loader;
+    this.loader = LoaderService.getInstance();
     this.snackbar = snackbar;
     this.validator = new FormValidator(this.currentForm, this.validationMessages, this.formError);
   }
@@ -51,18 +51,18 @@ export class RequestPasswordComponent implements AfterViewChecked {
 
   send(): void {
     if (!this.currentForm.valid) return;
-    this.loader.update(true);
+    this.loader.setState(true);
 
     let self = this;
     let email = new Email(this.email);
 
     this.auth.requestPasswordReset(email).then(function resetEmailSend() {
-      self.loader.update(false);
+      self.loader.setState(false);
       self.snackbar.open('Email send!', null, {
         duration: 2000
       });
     }, function error(error) {
-      self.loader.update(false);
+      self.loader.setState(false);
       self.snackbar.open(error.message, null, {
         duration: 3500
       });
