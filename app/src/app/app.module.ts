@@ -24,7 +24,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxMaskModule,
+    NgxMaskModule.forRoot(),
     MatNativeDateModule
   ],
   declarations: [AppComponent],
