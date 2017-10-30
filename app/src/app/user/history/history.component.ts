@@ -36,26 +36,17 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.auth.getUserInformation().then(user => {
-      this.dbFirebase.list('transactions', {
-        query: {
-          orderByChild: 'from',
-          equalTo: user.uid,
-          limitToFirst: 15
-        }
-      }).subscribe(values => {
-        this.exchanges = values.map(opt => new Transaction(opt.$key, opt.from, opt.to, opt.beginAt, opt.endAt, opt.product, opt.exchange));
-      });
+      this.dbFirebase.list('transactions', (ref) => ref.orderByChild('from').equalTo(user.uid).limitToFirst(15)).valueChanges()
+        .subscribe(values => {
+          this.exchanges = values.map(opt =>
+            new Transaction(opt['$key'], opt['from'], opt['to'], opt['beginAt'], opt['endAt'], opt['product'], opt['exchange']));
+        });
 
-      this.dbFirebase.list('transactions', {
-        query: {
-          orderByChild: 'to',
-          equalTo: user.uid,
-          limitToFirst: 15
-
-        }
-      }).subscribe(values => {
-        this.buys = values.map(opt => new Transaction(opt.$key, opt.from, opt.to, opt.beginAt, opt.endAt, opt.product, opt.exchange));
-      });
+      this.dbFirebase.list('transactions', (ref) => ref.orderByChild('to').equalTo(user.uid).limitToFirst(15)).valueChanges()
+        .subscribe(values => {
+          this.buys = values.map(opt =>
+            new Transaction(opt['$key'], opt['from'], opt['to'], opt['beginAt'], opt['endAt'], opt['product'], opt['exchange']));
+        });
     });
   }
 

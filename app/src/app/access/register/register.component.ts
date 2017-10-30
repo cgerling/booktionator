@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { LoaderService } from '../../shared/services/loader.service';
@@ -55,11 +55,11 @@ export class RegisterComponent implements AfterViewChecked {
   };
 
   private service: AuthService;
-  private snackbar: MdSnackBar;
+  private snackbar: MatSnackBar;
   private loader: LoaderService;
   private router: Router;
 
-  constructor(service: AuthService, snackbar: MdSnackBar, router: Router) {
+  constructor(service: AuthService, snackbar: MatSnackBar, router: Router) {
     this.service = service;
     this.snackbar = snackbar;
     this.loader = LoaderService.getInstance();

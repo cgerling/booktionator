@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MdButtonModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSnackBarModule, MdTabsModule, MdCardModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatProgressBarModule, MatSnackBarModule, MatTabsModule, MatCardModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
 import { NgxMaskModule } from 'ngx-mask';
@@ -16,13 +16,13 @@ import { UserRoutingModule } from './user.routing.module';
     UserRoutingModule,
     CommonModule,
     FormsModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdProgressBarModule,
-    MdSnackBarModule,
-    MdTabsModule,
-    MdCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatTabsModule,
+    MatCardModule,
     SharedModule,
     NgxMaskModule
   ],

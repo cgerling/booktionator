@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Promise as FirebasePromise, User, FirebaseError } from 'firebase/app';
+import { User, FirebaseError } from 'firebase/app';
 
 import { Email } from '../../../types/email';
 import { PostalCode } from '../../../types/postalcode';
@@ -18,7 +18,7 @@ export class AuthService {
     this.dbFirebase = database;
   }
 
-  login(email: string, password: string): FirebasePromise<User> {
+  login(email: string, password: string): Promise<User> {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -43,7 +43,7 @@ export class AuthService {
     });
   }
 
-  requestPasswordReset(email: Email): FirebasePromise<any> {
+  requestPasswordReset(email: Email): Promise<any> {
     if (!email.valid) return;
     return this.authFirebase.auth.sendPasswordResetEmail(email.value);
   }
@@ -58,7 +58,8 @@ export class AuthService {
     return new Promise<User>(function resolver(resolve) {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
         if (!user) return;
-        self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
+
+        self.dbFirebase.object(`/users/${user.uid}`).valueChanges().subscribe((userDb) => {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);
         });
@@ -97,15 +98,15 @@ export class AuthService {
     return this.authFirebase.auth.onAuthStateChanged(nextOrObserver, error, completed);
   }
 
-  verifyPasswordResetCode(code: string): FirebasePromise<any> {
+  verifyPasswordResetCode(code: string): Promise<any> {
     return this.authFirebase.auth.verifyPasswordResetCode(code);
   }
 
-  resetPassword(code: string, newPassword: string): FirebasePromise<any> {
+  resetPassword(code: string, newPassword: string): Promise<any> {
     return this.authFirebase.auth.confirmPasswordReset(code, newPassword);
   }
 
-  verifyEmail(code: string): FirebasePromise<any> {
+  verifyEmail(code: string): Promise<any> {
     return this.authFirebase.auth.applyActionCode(code);
   }
 }

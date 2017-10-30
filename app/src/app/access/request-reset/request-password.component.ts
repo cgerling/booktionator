@@ -5,7 +5,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { FormValidator } from '../../shared/services/formValidator.service';
 import { LoaderService } from '../../shared/services/loader.service';
 
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { Email } from 'types/email';
 
@@ -36,9 +36,9 @@ export class RequestPasswordComponent implements AfterViewChecked {
 
   private auth: AuthService;
   private loader: LoaderService;
-  private snackbar: MdSnackBar;
+  private snackbar: MatSnackBar;
 
-  constructor(auth: AuthService, snackbar: MdSnackBar) {
+  constructor(auth: AuthService, snackbar: MatSnackBar) {
     this.auth = auth;
     this.loader = LoaderService.getInstance();
     this.snackbar = snackbar;

@@ -51,12 +51,13 @@ export class DetailsComponent implements OnInit {
         this.user = user;
       });
 
-      this.dbFirebase.object(`books/${this.bookKey}`).subscribe(value => {
-        self.book = new Book(value.$key, value.title, value.description, value.author.name._name, new Date(value.date), value.publisher, value.score, value.imageUrl);
+      this.dbFirebase.object(`books/${this.bookKey}`).valueChanges().subscribe(value => {
+        self.book = new Book(value['$key'], value['title'], value['description'],
+          value['author'], new Date(value['date']), value['publisher'], value['score'], value['image']);
       });
 
-      this.dbFirebase.list(`books/${this.bookKey}/offers`).subscribe(values => {
-        self.offers = values.map(value => new Offer(value.authorUid, value.exchange, value.modality, value.$key));
+      this.dbFirebase.list(`books/${this.bookKey}/offers`).valueChanges().subscribe(values => {
+        self.offers = values.map(value => new Offer(value['authorUid'], value['exchange'], value['modality'], value['$key']));
         for (let offer of self.offers) {
           if (offer.modality === 'Leilão') {
             self.highestBid(offer.uid, (highestBid) => {
@@ -79,13 +80,10 @@ export class DetailsComponent implements OnInit {
 
   private highestBid(offerKey: string, useValue: Function) {
     let bids: Bid[];
-    this.dbFirebase.list(`auctions/${offerKey}/bids`, {
-      query: {
-        orderByChild: 'value',
-        limitToLast: 1
-      }
-    }).subscribe(values => {
-      bids = values.map(value => new Bid(value.at, value.value));
+    this.dbFirebase.list(`auctions/${offerKey}/bids`, (ref) => {
+      return ref.orderByChild('value').limitToLast(1);
+    }).valueChanges().subscribe(values => {
+      bids = values.map(value => new Bid(value['at'], value['value']));
 
       useValue(bids[bids.length - 1]);
     });

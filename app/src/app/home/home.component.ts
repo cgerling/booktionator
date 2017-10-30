@@ -26,22 +26,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     let self = this;
-    this.dbFirebase.list('books', {
-      query: {
-        orderByChild: 'score',
-        limitToLast: 12
-      }
-    }).subscribe(values => {
+    this.dbFirebase.list('books', (ref) => ref.orderByChild('score').limitToLast(12)).valueChanges().subscribe(values => {
       self.books = values.map(value => {
         return <Book>{
-          uid: value.$key,
-          title: value.title,
-          description: value.description,
-          author: value.author,
-          date: new Date(value.date),
-          publisher: value.publisher,
-          score: value.score,
-          image: value.image
+          uid: value['$key'],
+          title: value['title'],
+          description: value['description'],
+          author: value['author'],
+          date: new Date(value['date']),
+          publisher: value['publisher'],
+          score: value['score'],
+          image: value['image']
         };
       }).sort((v1, v2) => (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0);
     });
