@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdButtonModule, MdDatepickerModule, MdIconModule, MdInputModule, MdProgressBarModule, MdSelectModule, MdToolbarModule, MdCardModule } from '@angular/material';
+import { MatButtonModule, MatDatepickerModule, MatIconModule, MatInputModule, MatProgressBarModule, MatSelectModule, MatToolbarModule, MatCardModule } from '@angular/material';
 
 import { NgxMaskModule } from 'ngx-mask';
 
@@ -23,14 +23,14 @@ import { SellComponent } from './sell/sell.component';
     CommonModule,
     FormsModule,
     HttpModule,
-    MdButtonModule,
-    MdDatepickerModule,
-    MdIconModule,
-    MdInputModule,
-    MdProgressBarModule,
-    MdSelectModule,
-    MdToolbarModule,
-    MdCardModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatCardModule,
     NgxMaskModule,
     SharedModule
   ],

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { LoaderService } from '../../shared/services/loader.service';
 import { AuthService } from '../../shared/services/auth.service';
@@ -14,7 +14,7 @@ export class VerifyEmailComponent implements OnInit {
   private activatedRoute: ActivatedRoute;
   private auth: AuthService;
   private loader: LoaderService;
-  private dialog: MdDialog;
+  private dialog: MatDialog;
 
   title: string;
   message: string;
