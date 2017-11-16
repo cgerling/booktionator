@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatNativeDateModule } from '@angular/material';
+import { MdNativeDateModule } from '@angular/material/';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -25,7 +25,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     SharedModule,
     NgxMaskModule.forRoot(),
-    MatNativeDateModule
+    MdNativeDateModule
   ],
   declarations: [AppComponent],
   providers: [],

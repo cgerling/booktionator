@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { LoaderService } from '../../shared/services/loader.service';
@@ -54,11 +54,11 @@ export class SettingsComponent implements AfterViewChecked, OnInit {
   };
 
   private service: AuthService;
-  private snackbar: MatSnackBar;
+  private snackbar: MdSnackBar;
   private loader: LoaderService;
   private router: Router;
 
-  constructor(service: AuthService, snackbar: MatSnackBar, router: Router) {
+  constructor(service: AuthService, snackbar: MdSnackBar, router: Router) {
     this.service = service;
     this.snackbar = snackbar;
     this.loader = LoaderService.getInstance();
