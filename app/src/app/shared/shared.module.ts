@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MdButtonModule, MdIconModule, MdInputModule, MdMenuModule, MdToolbarModule, MdCardModule, MdSnackBarModule, MdProgressBarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatMenuModule, MatToolbarModule, MatCardModule, MatSnackBarModule, MatProgressBarModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 
 import { AppMenuComponent } from './components/app-menu/app-menu.component';
@@ -33,14 +33,14 @@ import { AuthGuard } from './guards/auth.guard';
   imports: [
     CommonModule,
     FormsModule,
-    MdButtonModule,
-    MdCardModule,
-    MdIconModule,
-    MdInputModule,
-    MdMenuModule,
-    MdProgressBarModule,
-    MdSnackBarModule,
-    MdToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatToolbarModule,
     RouterModule
   ],
   declarations: [

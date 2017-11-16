@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MdButtonModule, MdIconModule, MdInputModule, MdSnackBarModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 
 import { NgxMaskModule } from 'ngx-mask';
@@ -20,10 +20,10 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     AccessRoutingModule,
     CommonModule,
     FormsModule,
-    MdButtonModule,
-    MdIconModule,
-    MdInputModule,
-    MdSnackBarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatSnackBarModule,
     NgxMaskModule,
     SharedModule
   ],

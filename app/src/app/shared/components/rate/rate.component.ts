@@ -39,7 +39,7 @@ export class RateComponent implements OnInit, OnChanges {
   }
 
   toStars(score: number): string[] {
-    const int = Mdh.floor(score), decimal = score - int;
+    const int = Math.floor(score), decimal = score - int;
     const stars: string[] = [];
 
     for (let i = 0; i < 5; i++) {

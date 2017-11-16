@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 import { AuthService } from '../../services/auth.service';
 
@@ -10,13 +10,13 @@ import { AuthService } from '../../services/auth.service';
 })
 export class VerifyAccountComponent implements OnInit {
   private auth: AuthService;
-  private snackbar: MdSnackBar;
+  private snackbar: MatSnackBar;
 
   verified: boolean;
   sent: boolean;
   content: string;
 
-  constructor(auth: AuthService, snackbar: MdSnackBar) {
+  constructor(auth: AuthService, snackbar: MatSnackBar) {
     this.auth = auth;
     this.snackbar = snackbar;
     this.content = 'Verifique seu email';
