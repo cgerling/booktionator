@@ -18,7 +18,7 @@ export class AuthService {
     this.dbFirebase = database;
   }
 
-  login(email: string, password: string): Promise<User> {
+  login(email: string, password: string): Promise<any> {
     return this.authFirebase.auth.signInWithEmailAndPassword(email, password);
   }
 
@@ -43,7 +43,7 @@ export class AuthService {
     });
   }
 
-  requestPasswordReset(email: Email): Promise<any> {
+  requestPasswordReset(email: Email): firebase.Promise<any> {
     if (!email.valid) return;
     return this.authFirebase.auth.sendPasswordResetEmail(email.value);
   }
@@ -59,7 +59,7 @@ export class AuthService {
       self.authFirebase.auth.onAuthStateChanged((user: User) => {
         if (!user) return;
 
-        self.dbFirebase.object(`/users/${user.uid}`).valueChanges().subscribe((userDb) => {
+        self.dbFirebase.object(`/users/${user.uid}`).subscribe((userDb) => {
           let completeUser = Object.assign({}, user, userDb);
           resolve(completeUser);
         });
