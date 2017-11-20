@@ -32,10 +32,10 @@ $booktionator-typography: mat-typography-config(
 }
 
 //Tranform all buttons text to uppercase according to Material Design Guide Lines
-button[md-button],
-button[md-raised-button],
-button[md-icon-button],
-button[md-fab],
-button[md-mini-fab] {
+button[mat-button],
+button[mat-raised-button],
+button[mat-icon-button],
+button[mat-fab],
+button[mat-mini-fab] {
   text-transform: uppercase;
 }
