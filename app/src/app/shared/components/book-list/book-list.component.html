@@ -1,10 +1,10 @@
 <div class="container">
-  <md-card [routerLink]="[link, book.uid]" *ngFor="let book of books">
-    <md-card-title>{{ book.title }}</md-card-title>
-    <img md-card-image [src]="book.image">
-    <md-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</md-card-subtitle>
-    <md-card-content>
+  <mat-card [routerLink]="[link, book.uid]" *ngFor="let book of books">
+    <mat-card-title>{{ book.title }}</mat-card-title>
+    <img mat-card-image [src]="book.image">
+    <mat-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</mat-card-subtitle>
+    <mat-card-content>
       <rate [score]="book.score" disabled></rate>
-    </md-card-content>
-  </md-card>
+    </mat-card-content>
+  </mat-card>
 </div>

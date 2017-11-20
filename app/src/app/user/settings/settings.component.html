@@ -2,24 +2,24 @@
 
 <form (ngSubmit)="update()" #registerForm="ngForm" class="form" autocomplete="off">
 
-  <md-input-container>
-    <input mdInput [(ngModel)]="email" name="email" type="email" required placeholder="Email">
-    <md-error *ngIf="validator.errors.email">{{validator.errors.email}}</md-error>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="password" [type]="toggler.type" name="password" placeholder="Senha" minlength="6">
-    <password-toggle mdSuffix></password-toggle>
-    <md-error *ngIf="validator.errors.password">{{validator.errors.password}}</md-error>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput mask="00000-000" [(ngModel)]="postalcode" name="postalcode" type="postalcode" required placeholder="CEP">
-    <md-error *ngIf="validator.errors.postalcode">{{validator.errors.postalcode}}</md-error>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput mask="(00) 0000-00000" specialCharacters="false" [(ngModel)]="phone" name="phone" type="phone" required placeholder="Celular">
-    <md-error *ngIf="validator.errors.phone">{{validator.errors.phone}}</md-error>
-  </md-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="email" name="email" type="email" required placeholder="Email">
+    <mat-error *ngIf="validator.errors.email">{{validator.errors.email}}</mat-error>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="password" [type]="toggler.type" name="password" placeholder="Senha" minlength="6">
+    <password-toggle matSuffix></password-toggle>
+    <mat-error *ngIf="validator.errors.password">{{validator.errors.password}}</mat-error>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput mask="00000-000" [(ngModel)]="postalcode" name="postalcode" type="postalcode" required placeholder="CEP">
+    <mat-error *ngIf="validator.errors.postalcode">{{validator.errors.postalcode}}</mat-error>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput mask="(00) 0000-00000" specialCharacters="false" [(ngModel)]="phone" name="phone" type="phone" required placeholder="Celular">
+    <mat-error *ngIf="validator.errors.phone">{{validator.errors.phone}}</mat-error>
+  </mat-input-container>
 
-  <button md-raised-button type="submit">Salvar</button>
+  <button mat-raised-button type="submit">Salvar</button>
 </form>
 <navbar></navbar>

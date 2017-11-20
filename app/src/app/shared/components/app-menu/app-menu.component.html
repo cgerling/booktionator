@@ -1,35 +1,35 @@
-<md-toolbar color="primary" class="nav">
+<mat-toolbar color="primary" class="nav">
   <div class="spaced">
     <a class="brand" routerLink="/home">
       <img class="logo" src="assets/logo.png">Booktionator
     </a>
     <div class="hide-mobile">
-      <button md-button (click)="redirect('search')">
-        <md-icon>search</md-icon> Buscar
+      <button mat-button (click)="redirect('search')">
+        <mat-icon>search</mat-icon> Buscar
       </button>
-      <button md-button (click)="redirect('add')">
-        <md-icon>add</md-icon> Anunciar
+      <button mat-button (click)="redirect('add')">
+        <mat-icon>add</mat-icon> Anunciar
       </button>
-      <button md-button (click)="redirect('history')">
-        <md-icon>history</md-icon> Histórico
+      <button mat-button (click)="redirect('history')">
+        <mat-icon>history</mat-icon> Histórico
       </button>
     </div>
-    <button md-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
+    <button mat-button *ngIf="!isLogged" routerLink="/access/login">Entrar</button>
     <div *ngIf="isLogged">
-      <button md-button [mdMenuTriggerFor]="menu">
+      <button mat-button [matMenuTriggerFor]="menu">
       {{loggedUser}}
-      <md-icon>account_box</md-icon>
+      <mat-icon>account_box</mat-icon>
     </button>
-      <md-menu #menu="mdMenu" xPosition="before" yPosition="below">
-        <button md-menu-item routerLink="/user/settings">
-          <md-icon>settings</md-icon>
+      <mat-menu #menu="matMenu" xPosition="before" yPosition="below">
+        <button mat-menu-item routerLink="/user/settings">
+          <mat-icon>settings</mat-icon>
           <span>Configurações</span>
         </button>
-        <button md-menu-item (click)="logout()">
-          <md-icon>exit_to_app</md-icon>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
           <span>Sair</span>
         </button>
-      </md-menu>
+      </mat-menu>
     </div>
   </div>
-</md-toolbar>
+</mat-toolbar>

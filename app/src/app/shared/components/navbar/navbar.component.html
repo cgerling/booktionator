@@ -1,16 +1,16 @@
-<md-toolbar class="fixed-bottom">
+<mat-toolbar class="fixed-bottom">
   <nav>
     <div class="item ripple" [class.active]="isActive('search')" (click)="activate('search')">
-      <md-icon class="icon">search</md-icon>
+      <mat-icon class="icon">search</mat-icon>
       <p>Busca</p>
     </div>
     <div class="item ripple" [class.active]="isActive('add')" (click)="activate('add')">
-      <md-icon class="icon">add</md-icon>
+      <mat-icon class="icon">add</mat-icon>
       <p>Anunciar</p>
     </div>
     <div class="item ripple" [class.active]="isActive('history')" (click)="activate('history')">
-      <md-icon>history</md-icon>
+      <mat-icon>history</mat-icon>
       <p>Histórico</p>
     </div>
   </nav>
-</md-toolbar>
+</mat-toolbar>

@@ -2,13 +2,13 @@
   <div class="input-container shadow">
     <input type="search" placeholder="Buscar" name="search" autocomplete="on" [(ngModel)]="term">
     <span class="icon left">
-      <md-icon>search</md-icon>
+      <mat-icon>search</mat-icon>
     </span>
     <span class="icon right" (click)="clear()">
-      <md-icon [hidden]="isEmpty()">close</md-icon>
+      <mat-icon [hidden]="isEmpty()">close</mat-icon>
     </span>
   </div>
   <button class="shadow hide-mobile" type="submit">
-      <md-icon>arrow_forward</md-icon>
+      <mat-icon>arrow_forward</mat-icon>
     </button>
 </form>

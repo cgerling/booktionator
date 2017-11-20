@@ -1,24 +1,24 @@
 <div class="container">
-  <md-card class="book">
-    <md-card-title>{{ book.title }}</md-card-title>
+  <mat-card class="book">
+    <mat-card-title>{{ book.title }}</mat-card-title>
     <div>
-      <img md-card-image [src]="book.imageUrl" alt="Merlin configure a Book API">
-      <md-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</md-card-subtitle>
+      <img mat-card-image [src]="book.imageUrl" alt="Merlin configure a Book API">
+      <mat-card-subtitle>{{ book.author }}, {{ book.date.getFullYear() }}</mat-card-subtitle>
     </div>
     <p>{{ book.description }}</p>
-    <md-card-content>
+    <mat-card-content>
       <rate [score]="book.score" disabled></rate>
-    </md-card-content>
-  </md-card>
-  <md-card class="offers" *ngFor="let offer of offers">
-    <md-card-content>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="offers" *ngFor="let offer of offers">
+    <mat-card-content>
       <p>Modalidade: {{ offer.modality }}</p>
       <p *ngIf="offer.modality === 'Troca'">Item desejado: {{ offer.exchange }}</p>
-      <button md-raised-button *ngIf="offer.modality === 'Troca'" (click)="buy(offer.uid)">
+      <button mat-raised-button *ngIf="offer.modality === 'Troca'" (click)="buy(offer.uid)">
         Quero
       </button>
-      <button md-raised-button *ngIf="offer.modality === 'Venda'" (click)="buy(offer.uid)">R${{ offer.exchange }}</button><button md-raised-button *ngIf="offer.modality === 'Leilão'" (click)="bid(offer.uid, offer.exchange)">R${{ offer.exchange }}</button>
-    </md-card-content>
-  </md-card>
+      <button mat-raised-button *ngIf="offer.modality === 'Venda'" (click)="buy(offer.uid)">R${{ offer.exchange }}</button><button mat-raised-button *ngIf="offer.modality === 'Leilão'" (click)="bid(offer.uid, offer.exchange)">R${{ offer.exchange }}</button>
+    </mat-card-content>
+  </mat-card>
 </div>
 <navbar></navbar>

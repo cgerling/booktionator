@@ -1,5 +1,5 @@
 <span (mouseleave)="setScore(this.score)">
-  <md-icon *ngFor="let star of stars; let i = index" [attr.index]="i" (click)="rate($event, true)" (mouseenter)="rate($event)">
+  <mat-icon *ngFor="let star of stars; let i = index" [attr.index]="i" (click)="rate($event, true)" (mouseenter)="rate($event)">
     {{star}}
-  </md-icon>
+  </mat-icon>
 </span>

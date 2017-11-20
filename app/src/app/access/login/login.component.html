@@ -1,16 +1,16 @@
 <result-viewer [hidden]="!error" [content]="errorMessage" error="true"></result-viewer>
 <form (ngSubmit)="login()" #loginForm="ngForm" class="form">
-  <md-input-container>
-    <input mdInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="password" required name="password" placeholder="Senha" [type]="toggler.type">
-    <password-toggle mdSuffix></password-toggle>
-  </md-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="email" required name="email" placeholder="Email" type="email">
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="password" required name="password" placeholder="Senha" [type]="toggler.type">
+    <password-toggle matSuffix></password-toggle>
+  </mat-input-container>
   <a routerLink="/access/request-reset" class="forget-password">Esqueceu a sua senha?</a>
-  <button md-raised-button type="submit">Entrar</button>
+  <button mat-raised-button type="submit">Entrar</button>
 </form>
 
 <divider></divider>
 
-<button md-button routerLink="/access/register" class="center">Registrar</button>
+<button mat-button routerLink="/access/register" class="center">Registrar</button>
