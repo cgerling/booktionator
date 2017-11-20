@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MatButtonModule, MatDatepickerModule, MatIconModule, MatInputModule, MatProgressBarModule, MatSelectModule, MatToolbarModule, MatCardModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatInputModule, MatProgressBarModule, MatSelectModule, MatToolbarModule, MatCardModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { NgxMaskModule } from 'ngx-mask';
 

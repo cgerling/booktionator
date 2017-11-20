@@ -1,26 +1,27 @@
 <form (ngSubmit)="sell()">
-  <md-select placeholder="Modalidade" name="modality" [(ngModel)]="selectedModality" class="dropdown">
-    <md-option *ngFor="let modality of modalities" [value]="modality">
+  <mat-select placeholder="Modalidade" name="modality" [(ngModel)]="selectedModality" class="dropdown">
+    <mat-option *ngFor="let modality of modalities" [value]="modality">
       {{modality}}
-    </md-option>
-  </md-select>
-  <md-input-container required name="generic" class="generic">
-    <span mdPrefix *ngIf="selectedModality === 'Leilão' || selectedModality === 'Venda'">R$ &nbsp;</span>
-    <input *ngIf="selectedModality === ''" mdInput placeholder="Moeda de troca" type="text" [(ngModel)]="exchange" name="genericInput">
-    <input *ngIf="selectedModality === 'Troca'" mdInput placeholder="Livro desejado" type="text" [(ngModel)]="exchange" name="trading">
-    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Venda'" mdInput placeholder="Preço" type="number"
+    </mat-option>
+  </mat-select>
+  <mat-input-container required name="generic" class="generic">
+    <span matPrefix *ngIf="selectedModality === 'Leilão' || selectedModality === 'Venda'">R$ &nbsp;</span>
+    <input *ngIf="selectedModality === ''" matInput placeholder="Moeda de troca" type="text" [(ngModel)]="exchange" name="genericInput">
+    <input *ngIf="selectedModality === 'Troca'" matInput placeholder="Livro desejado" type="text" [(ngModel)]="exchange" name="trading">
+    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Venda'" matInput placeholder="Preço" type="number"
       [(ngModel)]="exchange" name="selling">
-    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Leilão'" mdInput placeholder="Lance inicial"
+    <input mask="000.00" specialCharacters="false" *ngIf="selectedModality === 'Leilão'" matInput placeholder="Lance inicial"
       type="number" [(ngModel)]="exchange" name="auctioning">
-  </md-input-container>
-  <md-input-container [hidden]="selectedModality !== 'Leilão'" name="aucionOnly" class="auctionInput">
-    <input mdInput [mdDatepicker]="picker" [(ngModel)]="due" [min]="minDate" [max]="maxDate" placeholder="Prazo do leilão" name="auctionDue">
-    <button mdSuffix [mdDatepickerToggle]="picker"></button>
-    <md-datepicker touchUi="true" #picker></md-datepicker>
-  </md-input-container>
+  </mat-input-container>
+  <mat-input-container [hidden]="selectedModality !== 'Leilão'" name="aucionOnly" class="auctionInput">
+    <input matInput [matDatepicker]="picker" [(ngModel)]="due" [min]="minDate" [max]="maxDate" placeholder="Prazo do leilão" name="auctionDue">
+    <!-- <button matSuffix [matDatepickerToggle]="picker"></button> -->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-input-container>
 
   <divider></divider>
 
-  <button md-raised-button type="submit">Ofertar!</button>
+  <button mat-raised-button type="submit">Ofertar!</button>
 </form>
 <navbar></navbar>

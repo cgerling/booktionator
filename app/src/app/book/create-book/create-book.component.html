@@ -1,21 +1,22 @@
 <form class="create" #createBookForm="ngForm" (ngSubmit)="save()">
-  <md-input-container>
-    <input mdInput [(ngModel)]="title" name="title" type="text" placeholder="Título" required>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="author" name="author" type="text" placeholder="Autor" required>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [mdDatepicker]="picker" [(ngModel)]="date" name="date" placeholder="Lançamento" required>
-    <button mdSuffix [mdDatepickerToggle]="picker"></button>
-    <md-datepicker touchUi="true" #picker></md-datepicker>
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="publisher" name="publisher" type="text" placeholder="Editora" required>
-  </md-input-container>
-  <md-input-container>
-    <textarea mdInput mdTextareaAutosize [(ngModel)]="description" #desc name="description" maxlength="250" rows="3" placeholder="Descrição"></textarea>
-    <md-hint align="end">{{desc.value.length}} / 250</md-hint>
-  </md-input-container>
-  <button md-raised-button type="submit">Salvar</button>
+  <mat-input-container>
+    <input matInput [(ngModel)]="title" name="title" type="text" placeholder="Título" required>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="author" name="author" type="text" placeholder="Autor" required>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="date" name="date" placeholder="Lançamento" required>
+    <!-- <button matSuffix [matDatepickerToggle]="picker"></button> -->
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi="true" #picker></mat-datepicker>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput [(ngModel)]="publisher" name="publisher" type="text" placeholder="Editora" required>
+  </mat-input-container>
+  <mat-input-container>
+    <textarea matInput matTextareaAutosize [(ngModel)]="description" #desc name="description" maxlength="250" rows="3" placeholder="Descrição"></textarea>
+    <mat-hint align="end">{{desc.value.length}} / 250</mat-hint>
+  </mat-input-container>
+  <button mat-raised-button type="submit">Salvar</button>
 </form>
