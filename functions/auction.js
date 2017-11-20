@@ -1,7 +1,5 @@
 'use strict';
 
-let functions, firebase, cors;
-
 const utils = require('./utils');
 
 module.exports = function exportModule(functions, firebase, cors) {
