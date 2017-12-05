@@ -3,7 +3,7 @@
 }
 
 .container {
-  padding: 6% 8%;
+  padding: 3% 4%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -13,7 +13,6 @@ mat-card {
   width: 200px;
   cursor: pointer;
   margin: 20px 0;
-  padding: 40px;
   * {
     min-width: 100px;
   }
