@@ -16,6 +16,18 @@ export class HomeComponent implements OnInit {
 
   private dbFirebase: AngularFireDatabase;
 
+  sortBy = 'score';
+  sortMethods = [
+    {
+      en: 'score', pt: 'Nota'
+    },
+    {
+      en: 'author', pt: 'Autor'
+    },
+    {
+      en: 'title', pt: 'Título'
+    }
+  ];
   books: Book[];
 
   constructor(router: Router, db: AngularFireDatabase) {
@@ -24,9 +36,9 @@ export class HomeComponent implements OnInit {
     this.books = [];
   }
 
-  ngOnInit(): void {
+  getBooks(): void {
     let self = this;
-    this.dbFirebase.list('books', (ref) => ref.orderByChild('score').limitToLast(12)).valueChanges().subscribe(values => {
+    this.dbFirebase.list('books', (ref) => ref.orderByChild(self.sortBy).limitToLast(12)).valueChanges().subscribe(values => {
       self.books = values.map(value => {
         return <Book>{
           uid: value['$key'],
@@ -38,7 +50,16 @@ export class HomeComponent implements OnInit {
           score: value['score'],
           image: value['image']
         };
-      }).sort((v1, v2) => (v1.score < v2.score) ? 1 : (v1.score > v2.score) ? -1 : 0);
+      }).sort((v1, v2) => (v1[self.sortBy] < v2[self.sortBy]) ? -1 : (v1[self.sortBy] > v2[self.sortBy]) ? 1 : 0);
     });
+  }
+
+  onChange(value: string): void {
+    this.sortBy = value;
+    this.getBooks();
+  }
+
+  ngOnInit(): void {
+    this.getBooks();
   }
 }

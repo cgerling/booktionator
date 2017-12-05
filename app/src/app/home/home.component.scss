@@ -1,0 +1,11 @@
+.sort {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+
+    mat-form-field {
+        align-self: flex-end;
+        margin-right: 4%;
+    }
+}

@@ -1,1 +1,10 @@
+<div class="sort">
+    <mat-form-field>
+        <mat-select placeholder="Ordenar por" name="sortBy" (change)="onChange($event.value)" class="dropdown">
+            <mat-option *ngFor="let method of sortMethods" [value]="method.en">
+                {{ method.pt }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
 <book-list [books]="books" link="/book/details"></book-list>
