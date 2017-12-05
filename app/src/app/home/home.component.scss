@@ -8,4 +8,9 @@
         align-self: flex-end;
         margin-right: 4%;
     }
+
+    @media (min-width: 1250px) {
+        width: 1150px;
+        margin: 0 auto;
+      }
 }
