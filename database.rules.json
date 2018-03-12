@@ -18,8 +18,7 @@
         ".validate": "newData.hasChildren(['title','description','author','date', 'score', 'image', 'publisher'])",
         "offers": {
           "$offer_id": {
-            ".write": "auth != null && newData.child('author').val() == auth.uid",
-            ".validate": "newData.hasChildren(['author', 'modality', 'exchange'])"
+            ".validate": "newData.hasChildren(['author', 'modality', 'exchange']) && newData.child('author').val() == auth.uid"
           }
         }
       }
