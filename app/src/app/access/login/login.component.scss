@@ -3,6 +3,12 @@
   margin-bottom: 10px;
 }
 
+form {
+  * {
+    width: 100%;
+  }
+}
+
 a {
   &, &:visited, &:link, &:hover {
     color: blue;

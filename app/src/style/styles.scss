@@ -29,3 +29,11 @@ input[type=search]::-webkit-search-cancel-button {
     display: none!important;
   }
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.mat-form-field {
+  width: auto!important;
+}

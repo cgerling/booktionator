@@ -1,14 +1,14 @@
 <mat-toolbar class="fixed-bottom">
   <nav>
-    <div class="item ripple" [class.active]="isActive('search')" (click)="activate('search')">
-      <mat-icon class="icon">search</mat-icon>
+    <div class="item" [class.active]="isActive('search')" (click)="activate('search')">
+      <mat-icon>search</mat-icon>
       <p>Busca</p>
     </div>
-    <div class="item ripple" [class.active]="isActive('add')" (click)="activate('add')">
-      <mat-icon class="icon">add</mat-icon>
+    <div class="item" [class.active]="isActive('add')" (click)="activate('add')">
+      <mat-icon>add</mat-icon>
       <p>Anunciar</p>
     </div>
-    <div class="item ripple" [class.active]="isActive('history')" (click)="activate('history')">
+    <div class="item" [class.active]="isActive('history')" (click)="activate('history')">
       <mat-icon>history</mat-icon>
       <p>Histórico</p>
     </div>

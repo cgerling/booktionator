@@ -35,12 +35,12 @@ mat-card {
 
   cursor: pointer;
   margin: 20px 0;
+  width: 300px;
   * {
     min-width: 100px;
   }
   mat-card-title {
     text-align: center;
-    height: 140px;
   }
   mat-card-subtitle {
     text-align: right;
